@@ -29,7 +29,7 @@ img_url         | string    | not null, default: default_img_url
 plays           | integer   | not null, default: 0
 description     | text      |
 
-*Potentially include img_file_name, img_content_type, img_file_size, img_updated_at*
+*Potentially include img_file_name, img_content_type, img_file_size, img_updated_at*  
 *Potentially include audio_file_name, audio_content_type, audio_file_size, audio_updated_at*
 
 ## follows

@@ -32,10 +32,6 @@
 - `POST /api/follows` ~create
 - `DELETE /api/follows/:id` ~destroy
 
-### Likes
-
-- `POST /api/likes` ~ create
-- `DELETE /api/likes/:id` ~ delete
 
 ### Comments
 
@@ -56,3 +52,8 @@
 
 - `POST /api/playlistings` ~ create a playlisting
 - `DELETE /api/playlistings/:id` ~destroy a playlisting
+
+### Likes
+
+- `POST /api/likes` ~ create
+- `DELETE /api/likes/:id` ~ delete
