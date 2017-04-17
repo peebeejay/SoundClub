@@ -9,7 +9,6 @@
   - UserContainer
   - UploadContainer
 
-  
 
 
 - AuthFormContainer
@@ -26,7 +25,7 @@
 - Welcome Container
   - Welcome Component
     - Banner
-      - Demo Login button
+      - Demo Login Button
       - Signup Button
       - Login Button
 

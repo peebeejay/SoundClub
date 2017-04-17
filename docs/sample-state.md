@@ -1,4 +1,4 @@
-{
+```{
   session: {
     currentUser: {
       id: 1,
@@ -6,7 +6,7 @@
     }
   },
 
-  forms: {
+  errors: {
     signUp: {errors: []},
     logIn: {errors: []},
     UploadSong: {errors: ["Can't Upload Song"]}
@@ -113,3 +113,4 @@
     img_url: "https://blah.aws.com/blah/blah"  
   }
 }
+```

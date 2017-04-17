@@ -17,7 +17,7 @@ SoundClub is a web application inspired by the audio distribution platform, Soun
 - [ ] Playing songs with progress bar with continuous play
 - [ ] Comments
 - [ ] User pages
-- [ ] Production README [sample](docs/production_readme.md)
+- [ ] Production README
 
 *Bonus*
 - [ ] Wave Forms *
@@ -38,7 +38,7 @@ SoundClub is a web application inspired by the audio distribution platform, Soun
 ### Phase 1: Back-End Setup & Front-End Authentication (2 Days) ~ (Tuesday, Wednesday)
 **Objective:** Functioning rails project with front-end Authentication
 
-  - Setup Database tables
+  - Setup initial database tables - generate tables sequentially, by feature
   - Create User Model/Controller, Session Controller
   - Create Root View
   - Create JSON endpoints for User & Session
@@ -52,11 +52,10 @@ SoundClub is a web application inspired by the audio distribution platform, Soun
 **Objective:** Songs can be uploaded, and additionally viewed on the stream, discover, and user pages. Songs additionally have their own show pages
 
   - Create Song Model/Controller
+  - Explore Paperclip to generate appropriate migrations regarding image & audio assets
   - Create JSON views for song data
   - Seed DB with Songs
   - Create Follows Model/Controller
-  - Create User Show Page
-    - Shows first 10 songs uploaded by user
   - Create Song Show Page
     - No comments yet
   - Create Upload Page & Functionality
@@ -80,6 +79,8 @@ SoundClub is a web application inspired by the audio distribution platform, Soun
 
 ### Phase 5: User Pages (1 Day) ~ (Wednesday into Thursday)
 **Objective** Users have their own show pages accessible via a button in the nav bar, a user id, or clicking on the artist name of a song.
+  - Create User Show Page
+  - Shows first 10 songs uploaded by user
 
 ### Phase 6: Production README (.5 Day) ~ Rest of Thursday
 **Objective** Create the Production README for SoundClub.
