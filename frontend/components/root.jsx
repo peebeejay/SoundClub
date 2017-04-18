@@ -12,7 +12,7 @@ class Root extends React.Component {
   }
 
   _redirectIfLoggedIn(nextState, replace) {
-    debugger
+    // debugger
     if (this.props.store.getState().session.currentUser) {
       replace('/');
     }
@@ -33,3 +33,4 @@ class Root extends React.Component {
 }
 
 export default Root;
+// <IndexRoute component={ WelcomePageContainer }
