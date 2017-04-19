@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login } from '../actions/session_actions';
-import { showModal, hideModal } from '../actions/modal_actions';
+import { login } from '../../actions/session_actions';
+import { showModal, hideModal } from '../../actions/modal_actions';
 import { merge } from 'lodash';
 
-class TestComponent extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    // this.getText = this.getText.bind(this);
     this.state = { username: "", password: "" };
     this.update = this.update.bind(this);
     this.submitCredentials = this.submitCredentials.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   submitCredentials() {
@@ -25,6 +25,10 @@ class TestComponent extends React.Component {
     };
   }
 
+  cancel() {
+    this.props.hideModal("loginForm");
+  }
+
   update(field) {
     return (e) => {
       this.setState({[field]: e.target.value});
@@ -32,7 +36,6 @@ class TestComponent extends React.Component {
   }
 
   render() {
-    // let isShowing = true;
     let { isShowing } = this.props;
     return (
       <div className="confirm-modal">
@@ -56,8 +59,8 @@ class TestComponent extends React.Component {
                        onChange={this.update('password')}/>
               </label>
 
-              <button className="btn" onClick={this.submitCredentials()}>OK</button>
-              <button className="btn" >Cancel</button>
+              <button className="btn" onClick={this.submitCredentials()}>Submit</button>
+              <button className="btn" onClick={() => this.cancel()}>Cancel</button>
             </div>
           </div>
         }
@@ -67,7 +70,6 @@ class TestComponent extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return({
     isShowing: state.modal.loginForm
   });
@@ -81,20 +83,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TestComponent);
-
-// export default TestComponent;
-
-// <div className="confirm-modal">
-//   { isShowing &&
-//     <div>
-//       <div className="modal-backdrop"></div>
-//       <div className="confirm-modal-content">
-//         <span className="confirm-modal-message">{message}</span>
-//         <input className="confirm-modal-input" type="text" ref={(_ref) => this.confirmInput = _ref}/>
-//         <button className="btn" onClick={() => this.getTextAndConfirm()}>OK</button>
-//         <button className="btn" onClick={() => onCancel()}>Cancel</button>
-//       </div>
-//     </div>
-//   }
-// </div>
+)(LoginForm);
