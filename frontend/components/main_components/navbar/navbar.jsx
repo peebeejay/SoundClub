@@ -2,21 +2,12 @@ import React from 'react';
 import { Link, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from "../../../actions/session_actions";
-import { showModal, hideModal } from '../../../actions/modal_actions';
+import { showModal, hideModal, toggleModal } from '../../../actions/modal_actions';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.loggedInUser = this.loggedInUser.bind(this);
-  }
-
-  //temp method
-  loggedInUser() {
-    if (this.props.currentUser) {
-      return (<li><Link to={"/"}>{this.props.currentUser.username}</Link></li>);
-    } else {
-      return "";
-    }
+    // this.loggedInUser = this.loggedInUser.bind(this);
   }
 
   render() {
@@ -33,7 +24,7 @@ class Navbar extends React.Component {
             </ul>
             <ul>
               <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>
-              {this.loggedInUser()}
+              <li><Link to={"/"}>{this.props.currentUser.username}</Link></li>
               <li><button className="nav-signout-button" onClick={() => this.props.logout()}> Sign Out</button></li>
             </ul>
           </header>
@@ -54,12 +45,10 @@ class Navbar extends React.Component {
             <ul>
               <li className="navbar-signup-section">
                 <button className="navbar-signin">Guest</button>
-                <button className="navbar-signin" onClick={ () => this.props.showModal("loginForm") }>Sign In</button>
+                <button className="navbar-signin" onClick={ () => this.props.toggleModal("loginForm") }>Sign In</button>
                 or
-                <button className="navbar-signup" onClick={ () => this.props.showModal("createUserForm") }>Create account</button>
+                <button className="navbar-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Create account</button>
               </li>
-              <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>
-
             </ul>
           </header>
         </section>
@@ -79,7 +68,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return({
     logout: () => dispatch(logout()),
     hideModal: (modal_name) => dispatch(hideModal(modal_name)),
-    showModal: (modal_name) => dispatch(showModal(modal_name))
+    showModal: (modal_name) => dispatch(showModal(modal_name)),
+    toggleModal: (modal_name) => dispatch(toggleModal(modal_name))
   });
 };
 

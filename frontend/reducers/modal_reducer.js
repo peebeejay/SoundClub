@@ -1,4 +1,4 @@
-import { SHOW_MODAL, HIDE_MODAL } from '../actions/modal_actions.js';
+import { SHOW_MODAL, HIDE_MODAL, TOGGLE_MODAL } from '../actions/modal_actions.js';
 import { merge } from 'lodash';
 
 const _initialModalStates = {
@@ -12,16 +12,33 @@ const ModalReducer = (state = _initialModalStates, action) => {
   // debugger
   switch(action.type) {
     case SHOW_MODAL:
-      newState[action.modal_name] = true;
+      if (noFormsCurrentlyOpen(newState, action.modal_name))
+        newState[action.modal_name] = true;
       return newState;
+
     case HIDE_MODAL:
       newState[action.modal_name] = false;
       return newState;
 
-    //ADD TOGGLE MODAL ACTION;
+    case TOGGLE_MODAL:
+      if (noFormsCurrentlyOpen(newState, action.modal_name))
+        newState[action.modal_name] = newState[action.modal_name] === true ? false : true;
+      return newState;
+
     default:
       return state;
   }
+};
+
+//Helper Functions
+const noFormsCurrentlyOpen = (newState, modal_name) => {
+  // Checks whether any other modals are currently open.
+  // If so, don't make any additional modals visible
+  for (let form in newState) {
+    if (newState[form] === true && form !== modal_name)
+      return false;
+  }
+  return true;
 };
 
 export default ModalReducer;
