@@ -1,0 +1,50 @@
+.modal-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: gray;
+  opacity: 0.3;
+  z-index: 10;
+}
+
+.confirm-modal-content {
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: white;
+  z-index: 11;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 10px 0 rgba(0,0,0,0.3);
+}
+
+.confirm-modal-message {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.confirm-modal-input {
+  display: block;
+  border-radius: 5px;
+  padding: 7px;
+  /* border: none; */
+  outline: none;
+  border: 1px solid gray;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+// .btn {
+//   padding: 10px;
+//   border: 1px solid gray;
+//   min-width: 75px;
+//   border-radius: 5px;
+//   margin-right: 10px;
+// }
+.name {
+  font-size: 30px;
+  padding-top: 16px;
+}

@@ -19,21 +19,23 @@ class Root extends React.Component {
   _redirectIfLoggedIn(nextState, replace) {
     // debugger
     if (this.props.store.getState().session.currentUser) {
-      replace('/');
+      replace('/stream');
     }
   }
 
   render() {
+
     return(
       <Provider store={ this.props.store }>
         <Router history={ hashHistory }>
-          <Route path="/" component={ App }>
-            <IndexRoute component={ SplashContainer } />
+          <Route path="/" component={ App } >
+            <IndexRoute component={ SplashContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/stream" component= { StreamContainer } />
             <Route path="/discover" component= { DiscoverContainer } />
             <Route path="/upload" component= { UploadContainer } />
+            <Route path="/test" component= { TestComponent } />
           </Route>
         </Router>
       </Provider>

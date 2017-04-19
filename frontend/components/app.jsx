@@ -2,20 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GreetingContainer from './greetings/greeting_container';
 import SessionFormContainer from './sessions/session_form_container';
+import Main from './main.jsx';
 import { Link } from 'react-router';
+
 
 const App = ({ children }) => {
   // debugger
   return (
     <div>
-      <h1>Welcome to SoundClub</h1>&nbsp;
-      <Link to={"/"}>Home</Link>&nbsp;
-      <Link to={"/stream"}>Stream</Link>&nbsp;
-      <Link to={"/discover"}>Discover</Link>&nbsp;
-      <Link to={"/upload"}>Upload</Link>&nbsp;
-
-      <GreetingContainer />
-      { children }
+      <Main>
+        <GreetingContainer />
+        { children }
+      </Main>
     </div>
   );
 
