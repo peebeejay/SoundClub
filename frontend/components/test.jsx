@@ -7,19 +7,15 @@ import { merge } from 'lodash';
 class TestComponent extends React.Component {
   constructor(props) {
     super(props);
-    // this.getText = this.getText.bind(this);
     this.state = { username: "", password: "" };
     this.update = this.update.bind(this);
     this.submitCredentials = this.submitCredentials.bind(this);
   }
 
   submitCredentials() {
-    let that = this;
-
     return () => {
       let stateCopy = merge({}, this.state);
       this.state = { username: "", password: "" };
-      let x = that;
       this.props.login(stateCopy).then(
         () => this.props.hideModal("loginForm"));
     };
@@ -32,7 +28,6 @@ class TestComponent extends React.Component {
   }
 
   render() {
-    // let isShowing = true;
     let { isShowing } = this.props;
     return (
       <div className="confirm-modal">
@@ -67,7 +62,6 @@ class TestComponent extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return({
     isShowing: state.modal.loginForm
   });
@@ -82,19 +76,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TestComponent);
-
-// export default TestComponent;
-
-// <div className="confirm-modal">
-//   { isShowing &&
-//     <div>
-//       <div className="modal-backdrop"></div>
-//       <div className="confirm-modal-content">
-//         <span className="confirm-modal-message">{message}</span>
-//         <input className="confirm-modal-input" type="text" ref={(_ref) => this.confirmInput = _ref}/>
-//         <button className="btn" onClick={() => this.getTextAndConfirm()}>OK</button>
-//         <button className="btn" onClick={() => onCancel()}>Cancel</button>
-//       </div>
-//     </div>
-//   }
-// </div>

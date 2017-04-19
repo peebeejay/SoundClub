@@ -14,12 +14,9 @@ class LoginForm extends React.Component {
   }
 
   submitCredentials() {
-    let that = this;
-
     return () => {
       let stateCopy = merge({}, this.state);
       this.state = { username: "", password: "" };
-      let x = that;
       this.props.login(stateCopy).then(
         () => this.props.hideModal("loginForm"));
     };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from "../../../actions/session_actions";
+import { logout, login } from "../../../actions/session_actions";
 import { showModal, hideModal, toggleModal } from '../../../actions/modal_actions';
 
 class Navbar extends React.Component {
@@ -10,8 +10,15 @@ class Navbar extends React.Component {
     // this.loggedInUser = this.loggedInUser.bind(this);
   }
 
-  render() {
+  loginGuest() {
+    return () => {
+      this.props.login({ username: "Guest", password: "YesWeCan" }).then(
+        () => this.props.router.push('/stream')
+      );
+    };
+  }
 
+  render() {
     if (this.props.currentUser) {
       // Render when logged in **
       return(
@@ -44,7 +51,7 @@ class Navbar extends React.Component {
             </ul>
             <ul>
               <li className="navbar-signup-section">
-                <button className="navbar-signin">Guest</button>
+                <button className="navbar-signin" onClick={ this.loginGuest() }>Guest</button>
                 <button className="navbar-signin" onClick={ () => this.props.toggleModal("loginForm") }>Sign In</button>
                 or
                 <button className="navbar-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Create account</button>
@@ -67,6 +74,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return({
     logout: () => dispatch(logout()),
+    login: (user) => dispatch(login(user)),
     hideModal: (modal_name) => dispatch(hideModal(modal_name)),
     showModal: (modal_name) => dispatch(showModal(modal_name)),
     toggleModal: (modal_name) => dispatch(toggleModal(modal_name))

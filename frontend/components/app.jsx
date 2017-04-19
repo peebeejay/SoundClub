@@ -12,7 +12,6 @@ const App = ({ children }) => {
       <Main>
         <Modals />
         { children }
-        <GreetingContainer />
       </Main>
     </div>
   );

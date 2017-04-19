@@ -9,4 +9,10 @@
 
 User.destroy_all
 
-User.create!(username: "Guest Account", password: "YesWeCan")
+# Seed Guest Account
+User.create!(username: "Guest", password: "YesWeCan")
+
+# Seed Test Accounts
+User.create!(username: "GeorgeBush", password: "NeverBeFooledAgain")
+User.create!(username: "BarackObama", password: "YesWeCan")
+User.create!(username: "DonaldTrump", password: "$$$$$$")
