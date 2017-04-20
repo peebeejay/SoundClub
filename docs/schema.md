@@ -24,7 +24,6 @@ column name     | data type | details
 id              | integer   | not null, primary key
 title           | string    | not null, unique, indexed **
 user_id         | integer   | not null, indexed**, foreign key
-plays           | integer   | not null, default: 0
 audio_url       | string    | not null, unique
 img_url         | string    | not null, default: default_img_url
 description     | text      |

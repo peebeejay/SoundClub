@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418161900) do
+ActiveRecord::Schema.define(version: 20170420160016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "title",              null: false
+    t.integer  "user_id",            null: false
+    t.string   "description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "img_file_name"
+    t.string   "img_content_type"
+    t.integer  "img_file_size"
+    t.datetime "img_updated_at"
+    t.string   "audio_file_name"
+    t.string   "audio_content_type"
+    t.integer  "audio_file_size"
+    t.datetime "audio_updated_at"
+  end
+
+  add_index "songs", ["title", "user_id"], name: "index_songs_on_title_and_user_id", using: :btree
+  add_index "songs", ["title"], name: "index_songs_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
