@@ -6,7 +6,7 @@ class Api::SongsController < ApplicationController
 
   def discover
     @songs = Song.order("RANDOM()").limit(10)
-    render :index
+    render "api/songs/index"
   end
 
   def show
@@ -27,9 +27,7 @@ class Api::SongsController < ApplicationController
     end
   end
 
-  end
-
-  def song_params
+  private def song_params
     params.require(:song).permit(:title, :user_id, :audio)
   end
 end
