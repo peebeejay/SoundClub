@@ -1,4 +1,5 @@
 import React from 'react';
+import Main from '../main.jsx';
 
 class Stream extends React.Component {
   constructor(props) {
@@ -7,9 +8,11 @@ class Stream extends React.Component {
 
   render() {
     return(
-      <div>
-        Stream Component Placeholder
-      </div>
+      <Main>
+        <div>
+          Stream Component Placeholder
+        </div>
+      </Main>
     );
   }
 }

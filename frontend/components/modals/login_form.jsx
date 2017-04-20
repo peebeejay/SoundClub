@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 import { showModal, hideModal } from '../../actions/modal_actions';
 import { merge } from 'lodash';
+import { withRouter } from 'react-router';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -18,7 +19,9 @@ class LoginForm extends React.Component {
       let stateCopy = merge({}, this.state);
       this.state = { username: "", password: "" };
       this.props.login(stateCopy).then(
-        () => this.props.hideModal("loginForm"));
+        () => this.props.hideModal("loginForm")).then(
+        () => this.props.router.push('stream')
+        );
     };
   }
 
@@ -80,4 +83,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginForm);
+)(withRouter(LoginForm));

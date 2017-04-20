@@ -20,3 +20,15 @@ body {
   min-height: 100vh;
   flex-direction: column;
 }
+
+button:focus {
+  outline: none;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left
+}

@@ -8,7 +8,7 @@ import TestComponent from './test.jsx';
 import StreamContainer from './stream/stream_container.jsx';
 import DiscoverContainer from './discover/discover_container.jsx';
 import UploadContainer from './upload/upload_container.jsx';
-import SplashContainer from './splash/splash_container.jsx';
+import Splash from './splash/splash.jsx';
 
 class Root extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Root extends React.Component {
       <Provider store={ this.props.store }>
         <Router history={ hashHistory }>
           <Route path="/" component={ App } >
-            <IndexRoute component={ SplashContainer } onEnter={this._redirectIfLoggedIn}/>
+            <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/stream" component= { StreamContainer } />

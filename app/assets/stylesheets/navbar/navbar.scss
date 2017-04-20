@@ -24,7 +24,7 @@
   }
 
   li {
-    float: left;
+    // float: left;
   }
 
   a {
@@ -72,11 +72,6 @@
     color: #eeeeee;
   }
 
-  button:focus {
-    outline: none;
-  }
-
-
   li.navbar-signup-section {
     padding: 10px;
     color: darkgray;
@@ -104,9 +99,9 @@
   }
 
   button.navbar-signup {
-    background-color: rgb(255, 85, 0);;
+    background-color: rgb(255, 85, 0);
     margin-left: 10px;
-    border: 1px solid rgb(255, 85, 0);;
+    border: 1px solid rgb(255, 85, 0);
   }
 
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Main from '../main.jsx';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -7,9 +8,11 @@ class Upload extends React.Component {
 
   render() {
     return(
-      <div>
-        Upload Component Placeholder
-      </div>
+      <Main>
+        <div>
+          Upload Component Placeholder
+        </div>
+      </Main>
     );
   }
 }

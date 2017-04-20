@@ -2,17 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import GreetingContainer from './greetings/greeting_container';
 import SessionFormContainer from './sessions/session_form_container';
-import Main from './main.jsx';
 import Modals from './modals/modals.jsx';
 import { Link } from 'react-router';
 
 const App = ({ children }) => {
   return (
     <div>
-      <Main>
-        <Modals />
-        { children }
-      </Main>
+      <Modals />
+      { children }
     </div>
   );
 };

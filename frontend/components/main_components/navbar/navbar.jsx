@@ -7,6 +7,7 @@ import { showModal, hideModal, toggleModal } from '../../../actions/modal_action
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   loginGuest() {
@@ -15,6 +16,14 @@ class Navbar extends React.Component {
         () => this.props.router.push('/stream')
       );
     };
+  }
+
+  logout() {
+    return () => {
+      this.props.logout().then(
+        () => this.props.router.push('/')
+      )
+    }
   }
 
   render() {
@@ -31,7 +40,7 @@ class Navbar extends React.Component {
             <ul>
               <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>
               <li><Link to={"/"}>{this.props.currentUser.username}</Link></li>
-              <li><button className="nav-signout-button" onClick={() => this.props.logout()}> Sign Out</button></li>
+              <li><button className="nav-signout-button" onClick={this.logout()}> Sign Out</button></li>
             </ul>
           </header>
         </section>

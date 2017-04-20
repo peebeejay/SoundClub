@@ -1,4 +1,5 @@
 import React from 'react';
+import Main from '../main.jsx';
 
 class Discover extends React.Component {
   constructor(props) {
@@ -7,9 +8,11 @@ class Discover extends React.Component {
 
   render() {
     return(
-      <div>
-        Discover Component Placeholder
-      </div>
+      <Main>
+        <div>
+            Discover Component Placeholder
+        </div>
+      </Main>
     );
   }
 }

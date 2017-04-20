@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './main_components/navbar/navbar.jsx';
 import FooterContainer from './main_components/footer/footer_container.jsx';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 class Main extends React.Component {
   constructor(props) {
@@ -9,10 +10,12 @@ class Main extends React.Component {
   }
 
   render() {
+    // debugger
     let { children, currentUser } = this.props;
+    // <Navbar />
     return (
       <div className="main">
-        <Navbar />
+        { (this.props.router.location.pathname !== '/') && <Navbar /> }
         <div className="content-wrapper">
           <div className="content">
             { children }
@@ -23,7 +26,6 @@ class Main extends React.Component {
     );
   }
 }
-// { (currentUser !== null) && <Navbar /> }
 
 const mapStateToProps = (state, ownProps) => {
   return({
@@ -39,4 +41,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(withRouter(Main));
