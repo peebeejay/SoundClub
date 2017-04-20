@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
+  has_many :songs,
+    class_name: 'Song',
+    primary_key: :id,
+    foreign_key: :user_id
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end

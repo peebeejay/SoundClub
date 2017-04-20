@@ -11,5 +11,8 @@ class Song < ActiveRecord::Base
     'audio/x-mpegaudio'
   ]
 
-
+  belongs_to :artist,
+    class_name: 'User',
+    primary_key: :id,
+    foreign_key: :user_id
 end

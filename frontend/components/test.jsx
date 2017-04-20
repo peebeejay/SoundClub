@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/session_actions';
 import { showModal, hideModal } from '../actions/modal_actions';
 import { merge } from 'lodash';
+import Main from './main';
 
 class TestComponent extends React.Component {
   constructor(props) {
@@ -30,33 +31,35 @@ class TestComponent extends React.Component {
   render() {
     let { isShowing } = this.props;
     return (
-      <div className="confirm-modal">
-        { isShowing &&
-          <div>
-            <div className="modal-backdrop"></div>
-            <div className="confirm-modal-content">
-              <span className="confirm-modal-message">Login</span>
+      <Main>
+        <div className="confirm-modal">
+          { isShowing &&
+            <div>
+              <div className="modal-backdrop"></div>
+              <div className="confirm-modal-content">
+                <span className="confirm-modal-message">Login</span>
 
-            <label>Username
-                <input className="confirm-modal-input"
-                       type="text"
-                       value={this.state.username}
-                       onChange={this.update('username')}/>
-              </label>
+              <label>Username
+                  <input className="confirm-modal-input"
+                         type="text"
+                         value={this.state.username}
+                         onChange={this.update('username')}/>
+                </label>
 
-              <label>Password
-                <input className="confirm-modal-input"
-                       type="text"
-                       value={this.state.password}
-                       onChange={this.update('password')}/>
-              </label>
+                <label>Password
+                  <input className="confirm-modal-input"
+                         type="text"
+                         value={this.state.password}
+                         onChange={this.update('password')}/>
+                </label>
 
-              <button className="btn" onClick={this.submitCredentials()}>OK</button>
-              <button className="btn" >Cancel</button>
+                <button className="btn" onClick={this.submitCredentials()}>OK</button>
+                <button className="btn" >Cancel</button>
+              </div>
             </div>
-          </div>
-        }
-      </div>
+          }
+        </div>
+      </Main>
     );
   }
 }
