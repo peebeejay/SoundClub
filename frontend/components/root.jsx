@@ -6,7 +6,7 @@ import App from './app';
 import SessionFormContainer from './sessions/session_form_container';
 import TestComponent from './test.jsx';
 import StreamContainer from './stream/stream_container.jsx';
-import DiscoverContainer from './discover/discover_container.jsx';
+import Discover from './discover/discover.jsx';
 import UploadContainer from './upload/upload_container.jsx';
 import Splash from './splash/splash.jsx';
 
@@ -31,7 +31,7 @@ class Root extends React.Component {
             <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/stream" component= { StreamContainer } />
-            <Route path="/discover" component= { DiscoverContainer } />
+            <Route path="/discover" component= { Discover } />
             <Route path="/upload" component= { UploadContainer } />
             <Route path="/test" component= { TestComponent } />
           </Route>

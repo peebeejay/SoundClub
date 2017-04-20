@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import GreetingContainer from './greetings/greeting_container';
 import SessionFormContainer from './sessions/session_form_container';
 import Modals from './modals/modals.jsx';
