@@ -1,13 +1,14 @@
 .navbar {
   background-color: rgb(51, 51, 51);
-  // height: 46px;
   width: 100%;
   position: fixed;
 }
 
 .navbar-content {
-  width: 1240px;
+  min-width: 700px;
+  width: 70%;
   margin: 0px auto;
+
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -18,8 +19,6 @@
 
   ul {
     list-style-type: none;
-    // margin: 0;
-    // padding: 0;
     overflow: hidden;
     display: flex
   }

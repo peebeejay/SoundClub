@@ -17,14 +17,12 @@ class Root extends React.Component {
   }
 
   _redirectIfLoggedIn(nextState, replace) {
-    // debugger
     if (this.props.store.getState().session.currentUser) {
       replace('/stream');
     }
   }
 
   render() {
-
     return(
       <Provider store={ this.props.store }>
         <Router history={ hashHistory }>
@@ -44,5 +42,3 @@ class Root extends React.Component {
 }
 
 export default Root;
-// <IndexRoute component={ WelcomePageContainer }
-// onEnter={this.redirectIfLoggedIn}

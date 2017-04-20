@@ -7,7 +7,6 @@ import { showModal, hideModal, toggleModal } from '../../../actions/modal_action
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    // this.loggedInUser = this.loggedInUser.bind(this);
   }
 
   loginGuest() {
@@ -84,4 +83,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar);
+)(withRouter(Navbar));

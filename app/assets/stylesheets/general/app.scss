@@ -2,15 +2,17 @@ body {
   background-color: #f2f2f2;
 }
 
-.content {
+.content-wrapper {
   margin: 46px auto 0px auto;
-  // margin: 0px auto;
-
-  width: 1180px;
-  padding: 20px 30px;
-
+  min-width: 700px;
+  width: 70%;
+  padding: 20px 0px;
   background-color: white;
   flex: 1;
+}
+
+.content {
+  padding: 0px 30px;
 }
 
 .main {
