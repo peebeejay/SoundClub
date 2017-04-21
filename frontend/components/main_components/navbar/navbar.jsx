@@ -22,8 +22,8 @@ class Navbar extends React.Component {
     return () => {
       this.props.logout().then(
         () => this.props.router.push('/')
-      )
-    }
+      );
+    };
   }
 
   render() {
@@ -59,8 +59,7 @@ class Navbar extends React.Component {
           <header className="navbar-content">
             <ul>
               <li><Link className="logo-temp" to={"/"}>SoundClub</Link></li>
-              <li><Link className="nav-home" activeClassName="active" to={"/stream"}>Home</Link></li>
-              <li><Link className="nav-discover" activeClassName="active" to={"/discover"}>Discover</Link></li>
+              <li><Link className="nav-discover" activeClassName="active" to={"/charts"}>Charts</Link></li>
             </ul>
             <ul>
               <li className="navbar-signup-section">
@@ -69,6 +68,7 @@ class Navbar extends React.Component {
                 or
                 <button className="navbar-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Create account</button>
               </li>
+              <li><Link></Link></li>
             </ul>
           </header>
         </section>

@@ -5,7 +5,8 @@ class Api::SongsController < ApplicationController
   end
 
   def discover
-    @songs = Song.order("RANDOM()").limit(12)
+    @songs = Song.includes(:artist).order("RANDOM()").limit(12)
+    # debugger
     render "api/songs/index"
   end
 

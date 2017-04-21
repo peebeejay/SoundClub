@@ -10,17 +10,21 @@ class LeftTabsNavigation extends React.Component {
   render () {
     let discoverActive;
     let streamActive;
+    let chartsActive;
     if (this.props.location.pathname === '/discover') {
       discoverActive = true;
     } else if (this.props.location.pathname === '/stream') {
       streamActive = true;
+    } else if (this.props.location.pathname === '/charts') {
+      chartsActive = true;
     }
-
+    // debugger
     return(
       <div className="left-tabs-nav">
         <ul className="left-tabs-list">
-          <li className={streamActive ? "active-li" : ""}><Link to={"/stream"} activeClassName="active" >Stream</Link></li>
-          <li className={discoverActive ? "active-li" : ""}><Link to={"/discover"} activeClassName="active">Discover</Link></li>
+          { this.props.currentUser && <li className={streamActive ? "active-li" : ""}><Link to={"/stream"} activeClassName="active" >Stream</Link></li> }
+          { this.props.currentUser && <li className={discoverActive ? "active-li" : ""}><Link to={"/discover"} activeClassName="active">Discover</Link></li> }
+          <li className={chartsActive ? "active-li" : ""}><Link to={"/charts"} activeClassName="active">Charts</Link></li>
         </ul>
       </div>
     );
@@ -28,9 +32,11 @@ class LeftTabsNavigation extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({})
+const mapStateToProps = (state, ownProps) => ({
+  currentUser: state.session.currentUser
+});
 
-const mapDispatchToProps = (dispatch, ownProps) => ({})
+const mapDispatchToProps = (dispatch, ownProps) => ({});
 
 export default connect(
   mapStateToProps,
