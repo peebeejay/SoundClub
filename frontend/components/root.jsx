@@ -10,16 +10,26 @@ import Discover from './discover/discover.jsx';
 import UploadContainer from './upload/upload_container.jsx';
 import Splash from './splash/splash.jsx';
 import Charts from './charts/charts.jsx';
+import SongShow from './song_show/song_show.jsx';
+import ArtistShow from './artist_show/artist_show.jsx';
+import Signup from './sessions/signup.jsx';
 
 class Root extends React.Component {
   constructor(props) {
     super(props);
     this._redirectIfLoggedIn = this._redirectIfLoggedIn.bind(this);
+    this._redirectIfLoggedOut = this._redirectIfLoggedOut.bind(this);
   }
 
   _redirectIfLoggedIn(nextState, replace) {
     if (this.props.store.getState().session.currentUser) {
       replace('/stream');
+    }
+  }
+
+  _redirectIfLoggedOut(nextState, replace) {
+    if (!this.props.store.getState().session.currentUser) {
+      replace('/signup');
     }
   }
 
@@ -29,11 +39,14 @@ class Root extends React.Component {
         <Router history={ hashHistory }>
           <Route path="/" component={ App } >
             <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn}/>
-            <Route path="/stream" component= { StreamContainer } />
+            <Route path="/stream" component= { StreamContainer } onEnter={this._redirectIfLoggedOut}/>
+            <Route path="/discover" component= { Discover } onEnter={this._redirectIfLoggedOut}/>
             <Route path="/charts" component= { Charts } />
-            <Route path="/discover" component= { Discover } />
-            <Route path="/upload" component= { UploadContainer } />
+            <Route path="/upload" component= { UploadContainer } onEnter={this._redirectIfLoggedOut}/>
             <Route path="/test" component= { TestComponent } />
+            <Route path="/songs/:id" component= { SongShow } />
+            <Route path="/artists/:id" component= { ArtistShow } />
+            <Route path="/signup" component= { Signup } />
           </Route>
         </Router>
       </Provider>
@@ -42,6 +55,3 @@ class Root extends React.Component {
 }
 
 export default Root;
-
-// <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
-// <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>

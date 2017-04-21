@@ -13,7 +13,7 @@ class Stream extends React.Component {
         <div className={"content-left-wrapper"}>
           <div className={"content-left"}>
             <LeftTabsNavigation />
-
+            <div className="left-tab-header">Hear the latest songs from the people you follow:</div>
           </div>
         </div>
         <div className={"content-right-wrapper"}>

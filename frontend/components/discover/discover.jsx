@@ -16,7 +16,7 @@ class Discover extends React.Component {
         <div className={"content-left-wrapper"}>
           <div className={"content-left"}>
             <LeftTabsNavigation />
-            <div className="discover-header">Suggested tracks curated just for you:</div>
+            <div className="left-tab-header">Suggested tracks curated just for you:</div>
             <DiscoverSongList />
           </div>
         </div>

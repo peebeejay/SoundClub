@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from '../main.jsx';
+import LeftTabsNavigation from '../modular/left_tabs_navigation.jsx';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
@@ -11,8 +12,17 @@ class Charts extends React.Component {
   render() {
     return(
       <Main>
-        <div>
-            Charts Component Placeholder
+        <div className={"content-left-wrapper"}>
+          <div className={"content-left"}>
+            <LeftTabsNavigation />
+            <div className="left-tab-header">Listen to the most popular tracks:</div>
+          </div>
+        </div>
+        <div className={"content-right-wrapper"}>
+          <div className={"content-right"}>
+            Right Content
+
+          </div>
         </div>
       </Main>
     );
