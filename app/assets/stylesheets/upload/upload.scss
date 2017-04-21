@@ -1,0 +1,28 @@
+.upload-wrapper {
+  padding: 40px 0;
+  margin: 0 auto;
+
+  .upload-header {
+    font: 100 24px/1.5  'Open Sans', sans-serif;
+    margin-bottom: 50px;
+  }
+
+
+  button.navbar-signin {
+    border: 1px solid #6b6b6b;
+    background-color: transparent;
+    margin-right: 10px;
+  }
+
+  
+  button.navbar-signin:hover {
+    border: 1px solid lightgray;
+  }
+
+  button.navbar-signup {
+    background-color: rgb(255, 85, 0);
+    margin-left: 10px;
+    border: 1px solid rgb(255, 85, 0);
+  }
+
+}
