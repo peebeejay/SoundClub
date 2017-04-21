@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from '../main.jsx';
+import { connect } from 'react-redux';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -9,12 +10,26 @@ class Upload extends React.Component {
   render() {
     return(
       <Main>
-        <div>
-          Upload Component Placeholder
+        <div className="upload-wrapper">
+          <div className="upload-header">Upload to SoundClub</div>
+          <div className="upload-buttons">
+            <button></button>
+          </div>
         </div>
       </Main>
     );
   }
 }
 
-export default Upload;
+const mapStateToProps = (state, ownProps) => ({
+
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Upload);

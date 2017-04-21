@@ -68,7 +68,7 @@ class Navbar extends React.Component {
                 or
                 <button className="navbar-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Create account</button>
               </li>
-              <li><Link></Link></li>
+              <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>
             </ul>
           </header>
         </section>

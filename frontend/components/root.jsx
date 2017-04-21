@@ -7,7 +7,7 @@ import SessionFormContainer from './sessions/session_form_container';
 import TestComponent from './test.jsx';
 import StreamContainer from './stream/stream_container.jsx';
 import Discover from './discover/discover.jsx';
-import UploadContainer from './upload/upload_container.jsx';
+import Upload from './upload/upload.jsx';
 import Splash from './splash/splash.jsx';
 import Charts from './charts/charts.jsx';
 import SongShow from './song_show/song_show.jsx';
@@ -42,7 +42,7 @@ class Root extends React.Component {
             <Route path="/stream" component= { StreamContainer } onEnter={this._redirectIfLoggedOut}/>
             <Route path="/discover" component= { Discover } onEnter={this._redirectIfLoggedOut}/>
             <Route path="/charts" component= { Charts } />
-            <Route path="/upload" component= { UploadContainer } onEnter={this._redirectIfLoggedOut}/>
+            <Route path="/upload" component= { Upload } onEnter={this._redirectIfLoggedOut}/>
             <Route path="/test" component= { TestComponent } />
             <Route path="/songs/:id" component= { SongShow } />
             <Route path="/artists/:id" component= { ArtistShow } />
