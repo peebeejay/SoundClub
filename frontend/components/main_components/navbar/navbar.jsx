@@ -29,13 +29,18 @@ class Navbar extends React.Component {
   render() {
     if (this.props.currentUser) {
       // Render when logged in **
+      let discoverActive;
+      if (this.props.location.pathname === '/discover')
+        discoverActive = true;
+
+
       return(
         <section className="navbar">
           <header className="navbar-content">
             <ul>
               <li><Link className="logo-temp" to={"/"}>SoundClub</Link></li>
-              <li><Link className="nav-home" activeClassName="active" to={"/stream"}>Home</Link></li>
-              <li><Link className="nav-discover" activeClassName="active" to={"/discover"}>Discover</Link></li>
+              <li><Link className={discoverActive ? "active nav-home" : "nav-home"} activeClassName="active" to={"/stream"}>Home</Link></li>
+              <li><Link className="nav-charts" activeClassName="active" to={"/charts"}>Charts</Link></li>
             </ul>
             <ul>
               <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>

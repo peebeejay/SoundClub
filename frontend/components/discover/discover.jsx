@@ -1,5 +1,7 @@
 import React from 'react';
 import Main from '../main.jsx';
+import LeftTabsNavigation from '../modular/left_tabs_navigation.jsx';
+import DiscoverSongList from '../modular/discover_song_list.jsx';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
@@ -11,8 +13,17 @@ class Discover extends React.Component {
   render() {
     return(
       <Main>
-        <div>
-            Discover Component Placeholder
+        <div className={"content-left-wrapper"}>
+          <div className={"content-left"}>
+            <LeftTabsNavigation />
+            <div className="discover-header">Suggested tracks curated just for you:</div>
+            <DiscoverSongList />
+          </div>
+        </div>
+        <div className={"content-right-wrapper"}>
+          <div className={"content-right"}>
+            Right Content
+          </div>
         </div>
       </Main>
     );

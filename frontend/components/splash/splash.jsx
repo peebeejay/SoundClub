@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toggleModal } from '../../actions/modal_actions';
 import { login } from '../../actions/session_actions';
+import DiscoverSongList from '../modular/discover_song_list';
 // import Explore from './explore.jsx';
 
 class Splash extends React.Component {
@@ -12,7 +13,7 @@ class Splash extends React.Component {
   loginGuest() {
     let that = this
     return () => {
-      
+
       let x = that;
       this.props.login({ username: "Guest", password: "YesWeCan" }).then(
         () => this.props.router.push('/stream')
@@ -38,6 +39,9 @@ class Splash extends React.Component {
           </header>
 
           <h2>Explore What's Trending</h2>
+            <div className={"splash-discover"}>
+              <DiscoverSongList />
+            </div>
         </div>
       </div>
     );

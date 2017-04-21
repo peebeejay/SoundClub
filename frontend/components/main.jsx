@@ -10,9 +10,7 @@ class Main extends React.Component {
   }
 
   render() {
-    // debugger
     let { children, currentUser } = this.props;
-    // <Navbar />
     return (
       <div className="main">
         { (this.props.router.location.pathname !== '/') && <Navbar /> }

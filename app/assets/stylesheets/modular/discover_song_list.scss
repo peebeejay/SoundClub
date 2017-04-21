@@ -1,0 +1,13 @@
+.discover-header {
+  font: 100 18px/1.5  'Open Sans', sans-serif;
+  color: #999999;
+  margin-bottom: 30px;
+}
+.discover-song-list-row {
+  display: flex;
+  margin: 0px auto 60px;
+
+  .discover-item-img {
+    margin-right: 20px;
+  }
+}

@@ -9,6 +9,7 @@ import StreamContainer from './stream/stream_container.jsx';
 import Discover from './discover/discover.jsx';
 import UploadContainer from './upload/upload_container.jsx';
 import Splash from './splash/splash.jsx';
+import Charts from './charts/charts.jsx';
 
 class Root extends React.Component {
   constructor(props) {
@@ -28,9 +29,8 @@ class Root extends React.Component {
         <Router history={ hashHistory }>
           <Route path="/" component={ App } >
             <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn}/>
-            <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
-            <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
             <Route path="/stream" component= { StreamContainer } />
+            <Route path="/charts" component= { Charts } />
             <Route path="/discover" component= { Discover } />
             <Route path="/upload" component= { UploadContainer } />
             <Route path="/test" component= { TestComponent } />
@@ -42,3 +42,6 @@ class Root extends React.Component {
 }
 
 export default Root;
+
+// <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
+// <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
