@@ -17,6 +17,7 @@ node_modules/
 bundle.js
 bundle.js.map
 npm-debug.log
+/app/assets/audio
 
 # Ignore application configuration
 /config/application.yml
