@@ -1,6 +1,8 @@
 import React from 'react';
 import Main from '../main.jsx';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { createSong } from '../../actions/song_actions.js';
 
 class Upload extends React.Component {
   constructor(props) {
@@ -8,10 +10,12 @@ class Upload extends React.Component {
     this.state = { showForm: false, audioFile: null,
                    audioUrl: null, imageFile: null,
                    imageUrl: null, title: '',
-                   description: ''
+                   description: '', disableSubmit: false
                  }
     this.processAudioFile = this.processAudioFile.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
+    this._cancel = this._cancel.bind(this);
+    this._submit = this._submit.bind(this);
   }
 
   processAudioFile(e) {
@@ -54,8 +58,31 @@ class Upload extends React.Component {
       fileReader.readAsDataURL(file);
   }
 
-  update(field) {
+  _update(field) {
     return (e) => this.setState({ [field] : e.target.value })
+  }
+
+  _cancel() {
+    this.props.router.push('/stream');
+  }
+
+  _submit(e) {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("song[title]", this.state.title)
+    formData.append("song[description]", this.state.description)
+    formData.append("song[audio]", this.state.audioFile)
+    formData.append("song[img]", this.state.imageFile)
+    debugger
+    this.setState({ disableSubmit: true })
+
+    debugger
+    this.props.createSong(formData).then(
+      ({ song }) => {
+        // debugger
+        this.props.router.push(`songs/${song.id}`)
+      }
+    )
   }
 
   render() {
@@ -106,7 +133,7 @@ class Upload extends React.Component {
                         type="text"
                         name="title"
                         value={ this.state.title }
-                        onChange={this.update("title")}/>
+                        onChange={this._update("title")}/>
 
 
                       <label>Description</label>
@@ -114,28 +141,23 @@ class Upload extends React.Component {
                              type="textarea"
                              name="description"
                              value={ this.state.description }
-                             onChange={this.update("description")}/>
+                             onChange={this._update("description")}/>
 
-                           <div className="submit-buttons flex-justify-end">
-                        <button className="cancel">Cancel</button>
-                        <button className="submit">Submit</button>
+                       <div className="submit-buttons">
+                        <button className={this.state.disableSubmit ? "disable" : "cancel" }
+                                disabled={this.state.disableSubmit}
+                                onClick={this._cancel}>Cancel</button>
+
+                        <button className={this.state.disableSubmit ? "disable" : "submit" }
+                                disabled={this.state.disableSubmit}
+                                onClick={this._submit}>Submit
+                        </button>
                       </div>
-
                     </div>
-
                   </div>
                 </form>
-
               </div>
-
-
-
-
-
-
             }
-
-
         </div>
       </Main>
     );
@@ -143,14 +165,14 @@ class Upload extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-
+  songs: state.songs
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-
+  createSong: (formData) => dispatch(createSong(formData))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Upload);
+)(withRouter(Upload));

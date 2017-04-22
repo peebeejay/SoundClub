@@ -20,10 +20,13 @@ export const discoverSongs = () => {
 };
 
 // May have to change in the future
-export const createSong = (song) => {
+export const createSong = (formData) => {
   return $.ajax({
     method: "POST",
     url: 'api/songs',
-    data: { song }
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: formData
   });
 };

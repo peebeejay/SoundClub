@@ -5,8 +5,10 @@ class Api::SongsController < ApplicationController
   end
 
   def discover
-    @songs = Song.includes(:artist).order("RANDOM()").limit(12)
+    @songs = Song.order("RANDOM()").limit(8).includes(:artist)
     # debugger
+    p @songs.pluck(:title)
+    p @songs.pluck(:id)
     render "api/songs/index"
   end
 
@@ -20,7 +22,7 @@ class Api::SongsController < ApplicationController
   end
 
   def create
-    @song = Song.new(song_params)
+    @song = current_user.songs.new(song_params)
     if @song.save!
       render "api/songs/show"
     else
@@ -29,6 +31,6 @@ class Api::SongsController < ApplicationController
   end
 
   private def song_params
-    params.require(:song).permit(:title, :user_id, :audio)
+    params.require(:song).permit(:title, :description, :audio, :img)
   end
 end
