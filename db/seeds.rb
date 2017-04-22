@@ -16,7 +16,7 @@ u1 = User.create!(username: "Guest", password: "YesWeCan")
 u2 = User.create!(username: "GeorgeBush", password: "NeverBeFooledAgain")
 u3 = User.create!(username: "BarackObama", password: "YesWeCan")
 u4 = User.create!(username: "DonaldTrump", password: "$$$$$$")
-u5 = User.create!(username: "Chopin", password: "EtudeNocturne")
+u5 = User.create!(username: "FredericChopin", password: "EtudeNocturne")
 
 # Etudes
 AUDIO_URLS = {
