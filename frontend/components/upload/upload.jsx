@@ -73,10 +73,10 @@ class Upload extends React.Component {
     formData.append("song[description]", this.state.description)
     formData.append("song[audio]", this.state.audioFile)
     formData.append("song[img]", this.state.imageFile)
-    debugger
+    // debugger
     this.setState({ disableSubmit: true })
 
-    debugger
+    // debugger
     this.props.createSong(formData).then(
       ({ song }) => {
         // debugger

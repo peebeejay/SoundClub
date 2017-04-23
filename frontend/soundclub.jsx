@@ -7,6 +7,7 @@ import Root from './components/root';
 import { login } from './actions/session_actions';
 import { showModal, hideModal } from './actions/modal_actions';
 import { fetchSong, fetchSongs, discoverSongs, createSong, removeSong, removeSongs } from './actions/song_actions';
+import { fetchUser } from './actions/user_actions';
 // END REMOVE IN PRODUCTION
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.createSong = createSong;
   window.removeSong = removeSong;
   window.removeSongs = removeSongs;
+  window.fetchUser = fetchUser;
   // END REMOVE IN PRODUCTION //
 
   const root = document.getElementById("root");
