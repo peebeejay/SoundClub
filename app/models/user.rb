@@ -1,11 +1,14 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :display_name, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   before_validation :ensure_session_token
+
+  has_attached_file :img, default_url: "http://www.atelier-eme.it/wp-content/uploads/2016/03/avatar-default.png"
+  validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
 
   has_many :songs,
     class_name: 'Song',
