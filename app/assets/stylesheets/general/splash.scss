@@ -29,6 +29,10 @@
   border-top: 3px solid #FF5500;
   border-bottom: 1px solid darkgray;
 
+  position: relative;
+  // text-align: center;
+  font: 100 14px/1.5  'Open Sans', sans-serif;
+
   ul {
     padding: 20px
   }
@@ -41,11 +45,10 @@
     letter-spacing: 1.5px;
   }
 
-  li.login-signup-section >button {
+  button {
     border-radius: 3px;
     color: white;
-    font: 100 14px/1.5  'Open Sans', sans-serif;
-    -webkit-font-smoothing: subpixel-antialiased;
+    font: inherit;
     padding: 3px 11px 3px 10px;
     text-align: center;
     cursor: pointer;
@@ -55,7 +58,6 @@
     border: 1px solid white;
     background-color: transparent;
     margin-right: 10px;
-    // opacity: 0.2;
   }
 
   button.login-signin:hover {
@@ -66,6 +68,31 @@
     background-color: rgb(255, 85, 0);
     margin-left: 10px;
     border: 1px solid rgb(255, 85, 0);
+  }
+
+  .center-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+
+    .main-text {
+      font: inherit;
+      font-size: 36px;
+      // font-weight: bold;
+    }
+
+    .sub-text {
+      font: inherit;
+      font-size: 16px;
+      padding-bottom: 10px;
+    }
+
+    button {
+      padding: 6px 14px 6px 14px;
+    }
   }
 
 }

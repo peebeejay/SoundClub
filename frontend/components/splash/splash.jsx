@@ -36,6 +36,14 @@ class Splash extends React.Component {
                 <button className="login-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Create account</button>
               </li>
             </ul>
+
+            <div className="center-header">
+              <div className="main-text">Connect on SoundClub</div>
+              <div className="sub-text">Discover and listen to music from around the world</div>
+              <div className="button">
+                <button className="login-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Sign up for free</button>
+              </div>
+            </div>
           </header>
 
           <h2>Explore What's Trending</h2>

@@ -6,6 +6,8 @@ class Api::SongsController < ApplicationController
 
   def discover
     @songs = Song.includes(:artist).order("RANDOM()").limit(8)
+
+    p @songs.map { |song| song.title }
     render "api/songs/index"
   end
 

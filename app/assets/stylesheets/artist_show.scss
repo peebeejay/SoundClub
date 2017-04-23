@@ -39,12 +39,9 @@
         margin-right: 20px;
         height: 175px;
         width: 175px;
-        background: url(http://www.atelier-eme.it/wp-content/uploads/2016/03/avatar-default.png);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        border: 0;
+        object-fit: cover;
         border-radius: 50%;
+        overflow: hidden;
       }
 
       .user-details {

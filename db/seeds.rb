@@ -8,15 +8,20 @@
 
 
 User.destroy_all
+Song.destroy_all
 
 # Seed Guest Account
-u1 = User.create!(username: "Guest", password: "YesWeCan")
+u1 = User.create!(username: "Guest", password: "YesWeCan", display_name: "Guest Account", img: open("https://www.poets.org/sites/default/files/styles/286x289/public/images/biographies/EdgarGuest_NewBioImage.jpg?itok=HQXa6PJW"))
 
 # Seed Test Accounts
-u2 = User.create!(username: "GeorgeBush", password: "NeverBeFooledAgain")
-u3 = User.create!(username: "BarackObama", password: "YesWeCan")
-u4 = User.create!(username: "DonaldTrump", password: "$$$$$$")
-u5 = User.create!(username: "FredericChopin", password: "EtudeNocturne")
+u2 = User.create!(username: "GeorgeBush", password: "NeverBeFooledAgain", display_name: "George Bush", location: "Texas")
+u3 = User.create!(username: "BarackObama", password: "YesWeCan", display_name: "Barack Obama", location: "Hyde Park, Chicago", img: open("http://img.usmagazine.com/article-leads-vertical-300/1250529817_barack_obama_290x402.jpg"))
+u4 = User.create!(username: "DonaldTrump", password: "$$$$$$", display_name: "Donald Trump", location: "New York, NY")
+u5 = User.create!(username: "FrederickChopin", password: "EtudeNocturne", display_name: "Frederick Chopin", location: "Paris")
+
+p "Complete Seeding Users"
+p u1.id, u2.id, u3.id, u4.id, u5.id
+
 
 # Etudes
 AUDIO_URLS = {
@@ -78,7 +83,7 @@ IMAGE_URL = "http://s3.amazonaws.com/soundclub-assets-dev/songs/imgs/000/000/005
 p "Begin Seeding Songs..."
 (1..24).each do |num|
   Song.create!(title: "Etude 0#{num}", user_id: ARTIST_ID[num], audio: open(AUDIO_URLS[num]), img: open(IMAGE_URL))
-  p "..Seed Song #{num}"
+  p "..Seed Song #{num}, user_id: #{ARTIST_ID[num]}"
 end
 #
 # Song.create!(title: 'Etude 02', user_id: 2, audio: File.open('app/assets/audio/02_Etudes.mp3'), img: File.open('app/assets/images/album.png'))
