@@ -44,7 +44,7 @@ class Navbar extends React.Component {
             </ul>
             <ul>
               <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>
-              <li><Link to={"/"}>{this.props.currentUser.username}</Link></li>
+              <li><Link to={`/artists/${this.props.currentUser.id}`}>{this.props.currentUser.username}</Link></li>
               <li><button className="nav-signout-button" onClick={this.logout()}> Sign Out</button></li>
             </ul>
           </header>

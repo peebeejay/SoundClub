@@ -8,16 +8,19 @@ import DiscoverSongBlank from './discover_song_blank.jsx';
 class DiscoverSongList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { receivedSongs: false }
   }
 
   componentDidMount() {
     let that = this;
+    this.state.receivedSongs = false;
     this.props.removeSongs();
 
     // debugger
     window.setTimeout(() => {
       this.props.discoverSongs().then(() => {
         let x = that;
+        this.setState({ receivedSongs: true })
         // debugger
       });
       console.log("done");
@@ -25,27 +28,20 @@ class DiscoverSongList extends React.Component {
   }
 
   render() {
-    let recievedSongs = false;
-    if (this.props.songs.length !== 0) {
-      // debugger
-      window.setTimeout(() => console.log("complete"), 2000);
-      recievedSongs = true;
-    }
-
     return(
       <div className="discover-song-list">
         <ul className="discover-song-list-row">
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[0]}/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[1]}/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[2]}/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[3]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[0]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[1]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[2]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[3]}/> : <DiscoverSongBlank /> }</li>
         </ul>
 
         <ul className="discover-song-list-row">
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[4]}/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[5]}/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[6]}/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[7]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[4]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[5]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[6]}/> : <DiscoverSongBlank /> }</li>
+          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[7]}/> : <DiscoverSongBlank /> }</li>
         </ul>
       </div>
     );
