@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { signUp } from '../../actions/session_actions'; //*****
 import { showModal, hideModal } from '../../actions/modal_actions';
 import { merge } from 'lodash';
+import { withRouter } from 'react-router';
 
 class CreateUserForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: "", display_name: "", location: "", password: "" };
     this.update = this.update.bind(this);
     this.submitCredentials = this.submitCredentials.bind(this);
     this.cancel = this.cancel.bind(this);
@@ -16,9 +17,11 @@ class CreateUserForm extends React.Component {
   submitCredentials() {
     return () => {
       let stateCopy = merge({}, this.state);
-      this.state = { username: "", password: "" };
+      this.state = { username: "", display_name: "", location: "", password: "" };
       this.props.signUp(stateCopy).then(
-        () => this.props.hideModal("createUserForm"));
+        () => this.props.hideModal("createUserForm")).then(
+        () => this.props.router.push('/stream')
+      );
     };
   }
 
@@ -42,22 +45,38 @@ class CreateUserForm extends React.Component {
             <div className="confirm-modal-content">
               <span className="confirm-modal-message">Create account</span>
 
-            <label>Username
+            <label>Username*
                 <input className="confirm-modal-input"
                        type="text"
                        value={this.state.username}
                        onChange={this.update('username')}/>
               </label>
 
-              <label>Password
+              <label>Display Name*
+                  <input className="confirm-modal-input"
+                         type="text"
+                         value={this.state.display_name}
+                         onChange={this.update('display_name')}/>
+              </label>
+
+              <label>Location
+                  <input className="confirm-modal-input"
+                         type="text"
+                         value={this.state.location}
+                         onChange={this.update('location')}/>
+              </label>
+
+              <label>Password*
                 <input className="confirm-modal-input"
-                       type="text"
+                       type="password"
                        value={this.state.password}
                        onChange={this.update('password')}/>
               </label>
 
-              <button className="btn" onClick={this.submitCredentials()}>Submit</button>
-              <button className="btn" onClick={() => this.cancel()}>Cancel</button>
+              <div className="buttons-container">
+                <button className="cancel" onClick={() => this.cancel()}>Cancel</button>
+                <button className="submit" onClick={this.submitCredentials()}>Submit</button>
+              </div>
             </div>
           </div>
         }
@@ -80,4 +99,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateUserForm);
+)(withRouter(CreateUserForm));
