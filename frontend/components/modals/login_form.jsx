@@ -1,3 +1,4 @@
+import keydown from 'react-keydown';
 import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
@@ -12,18 +13,26 @@ class LoginForm extends React.Component {
     this.update = this.update.bind(this);
     this.submitCredentials = this.submitCredentials.bind(this);
     this.cancel = this.cancel.bind(this);
+    // this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   submitCredentials() {
-    return () => {
       let stateCopy = merge({}, this.state);
       this.state = { username: "", password: "" };
       this.props.login(stateCopy).then(
         () => this.props.hideModal("loginForm")).then(
         () => this.props.router.push('stream')
-        );
-    };
-  }
+      );
+    }
+
+  // handleKeyPress(e) {
+  //   e.preventDefault();
+  //   console.log(e);
+  //   console.log("In On KeyPress")
+  //   if (e.key === 'Enter') {
+  //     this.submitCredentials()();
+  //   }
+  // }
 
   cancel() {
     this.props.hideModal("loginForm");
@@ -54,13 +63,15 @@ class LoginForm extends React.Component {
 
               <label>Password
                 <input className="confirm-modal-input"
-                       type="text"
+                       type="password"
                        value={this.state.password}
                        onChange={this.update('password')}/>
               </label>
 
-              <button className="btn" onClick={this.submitCredentials()}>Submit</button>
-              <button className="btn" onClick={() => this.cancel()}>Cancel</button>
+              <div className="buttons-container">
+                <button className="cancel" onClick={this.cancel}>Cancel</button>
+                <button className="submit"  onClick={this.submitCredentials}>Submit</button>
+              </div>
             </div>
           </div>
         }

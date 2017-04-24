@@ -1,50 +1,96 @@
-.modal-backdrop {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: gray;
-  opacity: 0.3;
-  z-index: 10;
-}
+.confirm-modal {
+  font: 100 14px/1.5  'Open Sans', sans-serif;
 
-.confirm-modal-content {
-  position: fixed;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  background: white;
-  z-index: 11;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 1px 2px 10px 0 rgba(0,0,0,0.3);
-}
+  label, span {
+    font: 100 14px/1.5  'Open Sans', sans-serif;
 
-.confirm-modal-message {
-  display: block;
-  margin-bottom: 6px;
-}
+  }
+  .modal-backdrop {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: gray;
+    opacity: 0.3;
+    z-index: 10;
+  }
 
-.confirm-modal-input {
-  display: block;
-  border-radius: 5px;
-  padding: 7px;
-  /* border: none; */
-  outline: none;
-  border: 1px solid gray;
-  width: 90%;
-  margin-bottom: 10px;
-}
+  .confirm-modal-content {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background: white;
+    z-index: 11;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 10px 0 rgba(0,0,0,0.3);
+  }
 
-// .btn {
-//   padding: 10px;
-//   border: 1px solid gray;
-//   min-width: 75px;
-//   border-radius: 5px;
-//   margin-right: 10px;
-// }
-.name {
-  font-size: 30px;
-  padding-top: 16px;
+  .confirm-modal-message {
+    display: block;
+    margin-bottom: 6px;
+    font: 100 24px/1.5  'Open Sans', sans-serif;
+  }
+
+  .confirm-modal-input {
+    display: block;
+    border-radius: 5px;
+    padding: 5px;
+    /* border: none; */
+    outline: none;
+    border: 1px solid gray;
+    width: 90%;
+    margin-bottom: 10px;
+    font: inherit;
+  }
+
+  .name {
+    font-size: 30px;
+    padding-top: 16px;
+  }
+
+  .buttons-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    
+    button {
+      margin: 5px;
+      border-radius: 3px;
+      font: 100 13px/1.5  'Open Sans', sans-serif;
+      -webkit-font-smoothing: subpixel-antialiased;
+      padding: 2px 11px 2px 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    button.cancel {
+      border: 1px solid #6b6b6b;
+      background-color: transparent;
+      margin-right: 10px;
+      color: #6b6b6b;
+    }
+
+    button.cancel:hover {
+      border: 1px solid lightgray;
+    }
+
+    button.submit {
+      background-color: #ff5500;
+      border: 1px solid rgb(255, 85, 0);
+      color: white;
+    }
+
+    button.submit:hover {
+      background-color: #ec4d08;
+    }
+  }
+
+
+
+
+
+
 }
