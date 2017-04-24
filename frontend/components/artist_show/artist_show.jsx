@@ -2,9 +2,10 @@ import React from 'react';
 import Main from '../main.jsx';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { fetchUser, removeUser } from '../../actions/user_actions.js';
 import Navbar from '../main_components/navbar/navbar.jsx';
 import FooterContainer from '../main_components/footer/footer_container.jsx';
+import SongList from '../modular/song_list.jsx';
+import { fetchUser, removeUser } from '../../actions/user_actions.js';
 
 class ArtistShow extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class ArtistShow extends React.Component {
   render() {
     let _user = {};
     let _img;
-    if (this.props.user) {
+    if (Object.keys(this.props.user).length > 0) {
       _user = this.props.user
       // debugger
     }
@@ -52,9 +53,12 @@ class ArtistShow extends React.Component {
                     { _user.display_name && <div className="display-name"><span>{_user.display_name}</span></div> }
                     { _user.location && <div className="location"><span>{_user.location}</span></div> }
                   </div>
-
                 </div>
+              </div>
 
+
+              <div className="song-list">
+                { _user.songs && <SongList songs={_user.songs} /> }
               </div>
 
           </div>

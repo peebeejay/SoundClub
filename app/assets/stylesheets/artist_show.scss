@@ -13,12 +13,14 @@
   // padding: 0px 30px;
   display: flex;
   width: 100%;
+  flex-direction: column;
 
   .artist-header {
     background: linear-gradient(135deg, #70929c 0%, #846170 100%);
     width: 100%;
     height: 250px;
     position: relative;
+    margin-top: 2px;
 
     .artist-header-content {
       width: 90%;
@@ -68,11 +70,10 @@
           margin-bottom: 5px;
         }
       }
-
-
-
     }
+  }
 
-
+  .song-list {
+    // margin-top: 400px;
   }
 }
