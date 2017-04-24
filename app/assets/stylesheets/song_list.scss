@@ -1,0 +1,117 @@
+.song-list-item-container {
+  margin: 0 0 15px 10px;
+  display: flex;
+  flex-direction: row;
+  // height: 200px;
+  width: 700px;
+  // border: 1px solid red;
+  font: 100 14px/1.5  'Open Sans', sans-serif;
+
+
+
+  .round-button {
+  	box-sizing: border-box;
+  	display:block;
+  	width:40px;
+  	height:40px;
+  	padding-top: 6px;
+  	padding-left: 4px;
+  	line-height: 10px;
+  	border: 3px solid #ff5500;
+  	font-size:11px;
+  	border-radius: 50%;
+  	color:#f5f5f5;
+  	text-align:center;
+  	text-decoration:none;
+  	background-color: #ff5500;
+  	font-weight:bold;
+  	transition: all 0.1s ease;
+    cursor: pointer;
+  }
+  .round-button:hover {
+  	background-color: #ec4d08;
+  	border: 3px solid #ec4d08;
+  }
+
+  div {
+    // padding: 5px;
+    // border: 1px solid red;
+  }
+
+  .song-list-image {
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+  }
+
+  .music-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    width: 100%;
+    margin-left: 5px;
+
+    .play-info {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+
+      .play-button-container {
+        margin-right: 10px;
+      }
+
+
+      .artist-title {
+        flex: 1;
+
+        .artist a {
+          color: #999999;
+          cursor: auto;
+          text-decoration: none;
+          font: inherit;
+          font-weight: 100;
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+        .artist a:hover {
+          color: #333333;
+        }
+
+        .title a {
+          color: #333333;
+          font: inherit;
+          font-size: 15px;
+          line-height: 1.2;
+          font-weight: 100;
+          cursor: auto;
+          text-decoration: none;
+        }
+
+        .title a:hover {
+          color: #000000;
+        }
+
+      }
+
+      .date-container {
+        align-self: flex-start;
+        text-align: right;
+        // display: flex;
+        // flex-direction: row;
+
+        .date {
+          color: #cccccc;
+          font-size: 12px;
+          font-weight: 100;
+          line-height: 16px;
+          padding-top: 5px;
+        }
+
+      }
+    }
+
+  }
+
+
+}

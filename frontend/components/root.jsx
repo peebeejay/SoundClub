@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import SessionFormContainer from './sessions/session_form_container';
 import TestComponent from './test.jsx';
-import StreamContainer from './stream/stream_container.jsx';
+import Stream from './stream/stream.jsx';
 import Discover from './discover/discover.jsx';
 import Upload from './upload/upload.jsx';
 import Splash from './splash/splash.jsx';
@@ -39,7 +39,7 @@ class Root extends React.Component {
         <Router history={ hashHistory }>
           <Route path="/" component={ App } >
             <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn}/>
-            <Route path="/stream" component= { StreamContainer } onEnter={this._redirectIfLoggedOut}/>
+            <Route path="/stream" component= { Stream } onEnter={this._redirectIfLoggedOut}/>
             <Route path="/discover" component= { Discover } onEnter={this._redirectIfLoggedOut}/>
             <Route path="/charts" component= { Charts } />
             <Route path="/upload" component= { Upload } onEnter={this._redirectIfLoggedOut}/>

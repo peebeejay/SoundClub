@@ -77,11 +77,11 @@
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
+    opacity: 0.8;
 
     .main-text {
       font: inherit;
-      font-size: 36px;
-      // font-weight: bold;
+      font-size: 30px;
     }
 
     .sub-text {
@@ -94,7 +94,6 @@
       padding: 6px 14px 6px 14px;
     }
   }
-
 }
 
 .splash-discover {
