@@ -15,6 +15,10 @@
   width: 100%;
   flex-direction: column;
 
+  .left-tabs-nav {
+    margin-left: 20px;
+  }
+
   .artist-header {
     background: linear-gradient(135deg, #70929c 0%, #846170 100%);
     width: 100%;
