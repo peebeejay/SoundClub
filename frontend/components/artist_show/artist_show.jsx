@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from '../main.jsx';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter, Link } from 'react-router';
 import Navbar from '../main_components/navbar/navbar.jsx';
 import FooterContainer from '../main_components/footer/footer_container.jsx';
 import SongList from '../modular/song_list.jsx';
@@ -24,17 +24,14 @@ class ArtistShow extends React.Component {
     if (this.props.params.id !== newProps.params.id) {
       this.props.fetchUser(newProps.params.id);
     }
-    // debugger
   }
 
   render() {
     let _user = {};
     let _img;
     if (Object.keys(this.props.user).length > 0) {
-      _user = this.props.user
-      // debugger
+      _user = this.props.user;
     }
-    // debugger
 
     return(
       <div className="main">
@@ -56,6 +53,11 @@ class ArtistShow extends React.Component {
                 </div>
               </div>
 
+              <div className="left-tabs-nav">
+                <ul className="left-tabs-list">
+                  <li className="active-li"><Link activeClassName="active" >Songs</Link></li>
+                </ul>
+              </div>
 
               <div className="song-list">
                 { _user.songs && <SongList songs={_user.songs} /> }
