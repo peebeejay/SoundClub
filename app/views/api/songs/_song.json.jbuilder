@@ -1,4 +1,4 @@
-json.extract! song, :id, :title, :user_id, :audio, :img, :created_at, :updated_at
+json.extract! song, :id, :title, :user_id, :duration, :audio, :img, :created_at, :updated_at
 
 json.artist do
   json.partial! 'api/users/user', user: song.artist

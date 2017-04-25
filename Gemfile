@@ -27,6 +27,9 @@ gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk', '>= 2.0'
 
+# Extract audio metadata
+gem 'ruby-mp3info', require: 'mp3info'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
