@@ -2,6 +2,8 @@ class Song < ActiveRecord::Base
   # has_attached_file :audio
   # validates_attachment_content_type :audio, content_type: /\Aimage\/.*\z/
 
+  before_validation :extract_metadata
+
   validates :title, :user_id, presence: true
 
   has_attached_file :audio
@@ -18,4 +20,25 @@ class Song < ActiveRecord::Base
     class_name: 'User',
     primary_key: :id,
     foreign_key: :user_id
+
+
+  ###From EricMoy Songcloud
+  def extract_metadata
+    return unless (self.waveform.empty? || self.duration.zero?)
+    path = audio.queued_for_write[:original] &&
+           audio.queued_for_write[:original].path ||
+           audio.url
+
+    open(path) do |url_file|
+      io_command = "php vendor/assets/php-waveform-json.php #{url_file.path}"
+      # IO.popen(io_command) do |io|
+      #   self.waveform = JSON.parse(io.read)['left']
+      # end
+
+      open_opts = { :encoding => 'utf-8' }
+      Mp3Info.open(url_file.path, open_opts) do |mp3info|
+        self.duration = mp3info.length.to_i
+      end
+    end
+  end
 end

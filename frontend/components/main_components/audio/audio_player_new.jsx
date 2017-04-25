@@ -9,7 +9,8 @@ class AudioPlayerNew extends React.Component {
   constructor(props) {
     super(props);
     this.togglePlay = this.togglePlay.bind(this);
-    this.state = { duration: '', playTime: 0 };
+    this._printTime = this._printTime.bind(this);
+    this.state = { duration: 0, playTime: 0 };
   }
 
   updatePlayTime() {
@@ -21,7 +22,7 @@ class AudioPlayerNew extends React.Component {
     }, 1000);
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps(newProps) { // PRE-RENDER
     // If newProps includes the same 'nowPlaying' song, then simply toggle pause / play.
     // The second conditional filters for global state changes of the value of nowPlaying.playing.
     if (newProps.nowPlaying.song.id === this.props.nowPlaying.song.id &&
@@ -29,6 +30,16 @@ class AudioPlayerNew extends React.Component {
         this.togglePlay(newProps);
     }
   }
+
+  componentDidUpdate(prevProps, prevState) { // POST-RENDER
+    // debugger
+    if (this.props.nowPlaying.song.id !== prevProps.nowPlaying.song.id) {
+      this._setDuration();
+      // debugger
+      console.log(this.music.duration);
+    }
+  }
+
 
   togglePlay(newProps) {
     let props = newProps ? newProps : this.props;
@@ -45,6 +56,25 @@ class AudioPlayerNew extends React.Component {
     console.log("duration: " + this.music.duration);
   }
 
+  _setDuration() {
+    // debugger
+    this.setState({ duration: this.music.duration });
+    console.log("duration: " + this.music.duration);
+  }
+
+  _printTime(duration) {
+    let mins = Math.floor(duration / 60);
+    let secs = Math.floor(duration - mins * 60);
+
+    if (secs < 10)
+      secs = `0${secs}`;
+
+    // debugger
+    return (
+      `${mins}:${secs}`
+    )
+  }
+
   render() {
     let _song;
     if (Object.keys(this.props.nowPlaying.song).length > 0) {
@@ -52,7 +82,7 @@ class AudioPlayerNew extends React.Component {
     }
 
     return(
-      <div>
+
         <div className="ap" id="ap">
           <div className="ap__inner">
 
@@ -61,11 +91,32 @@ class AudioPlayerNew extends React.Component {
               <PlayButton type={"player"} />
               <NextButton />
             </div>
+
+
+            <div className="ap__item ap__item--track">
+              <div className="track">
+                <div className="track__title">Queue is empty</div>
+                <div className="track__time">
+                  <span className="track__time--current">--</span>
+                  <span> / </span>
+                  { _song && <span className="track__time--duration">{ this._printTime(this.props.nowPlaying.song.duration) }</span> }
+                </div>
+
+                <div className="progress-container">
+                  <div className="progress">
+                    <div className="progress__bar"></div>
+                    <div className="progress__preload"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
           </div>
+          { _song &&
+            <audio autoPlay="true" ref={(music) => { this.music = music; }} src={this.props.nowPlaying.song.audio} /> }
         </div>
-        { _song &&
-          <audio autoPlay="true" ref={(music) => { this.music = music; }} src={this.props.nowPlaying.song.audio} /> }
-      </div>
     );
   }
 }
@@ -87,25 +138,8 @@ export default connect(
   mapDispatchToProps
 )(withRouter(AudioPlayerNew));
 
+
 //
-// <div class="ap__item ap__item--track">
-//   <div class="track">
-//     <div class="track__title">Queue is empty</div>
-//     <div class="track__time">
-//       <span class="track__time--current">--</span>
-//       <span> / </span>
-//       <span class="track__time--duration">--</span>
-//     </div>
-//
-//     <div class="progress-container">
-//       <div class="progress">
-//         <div class="progress__bar"></div>
-//         <div class="progress__preload"></div>
-//       </div>
-//     </div>
-//
-//   </div>
-// </div>
 //
 //
 //

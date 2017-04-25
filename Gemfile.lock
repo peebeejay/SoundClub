@@ -143,6 +143,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
     rdoc (4.3.0)
+    ruby-mp3info (0.8.10)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -194,6 +195,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.8)
   rails_12factor
+  ruby-mp3info
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
