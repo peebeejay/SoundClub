@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   user: UserReducer,
   modal: ModalReducer,
   songs: SongReducer,
-  now_playing: NowPlayingReducer
+  nowPlaying: NowPlayingReducer
 });
 
 export default rootReducer;

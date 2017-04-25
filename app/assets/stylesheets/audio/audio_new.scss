@@ -1,0 +1,473 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 14px;
+}
+
+pre, code {
+  font-family: Consolas, Courier, monospace;
+  font-size: inherit;
+  color: #333;
+  background: rgb(250, 250, 250);
+}
+pre {
+  padding: 1rem;
+  border: 1px solid #eee;
+  overflow: auto;
+}
+/*-----------------------
+    Audio Player - AP
+------------------------*/
+// $primaryColor: steelblue;
+$primaryColor: steelblue;
+$apBG: #f2f2f2;
+$plBG: #fff;
+$plCurrentBG: $primaryColor;
+$plColorIcon: $primaryColor;
+$plCurrentColor: #fff;
+$plHoverColor: #f6f6f6;
+$iconColor: #777;
+$iconColorActive: $primaryColor;
+$iconBGActive: $primaryColor;
+$barBG: #ddd;
+$progressBG: $primaryColor;
+
+$font-family: inherit;
+$font-size: 14px;
+
+$apHeight: 50px;
+$apMaxWidth: 1440px;
+$barSize: 3px;
+
+$apZ: 99999;
+$volZ: 88888;
+$plZ: 77777;
+
+.ap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: $apHeight;
+
+  font-family: $font-family;
+  font-size: $font-size;
+
+  user-select: none;
+
+  border-top: 1px solid #ccc;
+  background: $apBG;
+  box-shadow: 0 -1px 10px rgba(0,0,0,.1);
+  z-index: $apZ;
+}
+.ap__inner {
+  display: flex;
+  max-width: $apMaxWidth;
+  margin: auto;
+}
+.ap__item {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.ap__item--playback > .ap__controls,
+.ap__item--settings > .ap__controls {
+  flex: 0 25%;
+}
+@keyframes fs {
+  0% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+// track bar
+.ap__item--track {
+  flex: 1 40%;
+  padding: 0 20px;
+}
+.track {
+  position: relative;
+  width: 100%;
+  align-self: flex-start;
+  padding: 5px 0 0;
+}
+.track__title {
+  position: absolute;
+  width: 100%;
+
+  overflow: hidden;
+
+  padding-right: 80px;
+
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.track__time {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+.progress-container {
+  position: relative;
+  padding: 7px 0;
+  margin-top: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover .progress__bar:after {
+    opacity: 1;
+  }
+}
+.progress {
+  height: $barSize;
+  border-radius: $barSize;
+  background: $barBG;
+}
+.progress__bar,
+.progress__preload {
+  position: absolute;
+
+  width: 0;
+  height: $barSize;
+
+  border-radius: $barSize 0 0 $barSize;
+}
+.progress__bar {
+  background: $progressBG;
+  z-index: 1;
+  &:after {
+    position: absolute;
+    top: 0;
+    right: -10px;
+
+    width: 10px;
+    height: 10px;
+    margin-top: -3px;
+
+    content: '';
+
+    border-radius: 6px;
+    background: $primaryColor;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+}
+.progress__bar--active {
+  &:after {
+    transform: scale(1.4);
+  }
+}
+.progress__preload {
+  background: darken($barBG, 10%);
+  z-index: 0;
+}
+
+// Controls
+.ap__controls,
+.ap button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+
+  position: relative;
+  display: block;
+  height: $apHeight;
+  text-align: center;
+  cursor: pointer;
+  transition: background .3s ease;
+  &:active {
+    background: rgba(0,0,0,.1);
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
+.icon-play > path {
+  transition: all .3s ease;
+}
+.is-playing {
+  .icon-play {
+    fill: $iconColorActive;
+  }
+}
+
+// Volume
+.volume-btn {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+.volume {
+  position: absolute;
+  left: 50%;
+  bottom: (#{$apHeight - 5px});
+  width: 40px;
+  margin-left: -20px;
+  height: 120px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all .3s cubic-bezier(0.17, 0.72, 0.26, 1.23);
+  background: $apBG;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  z-index: $volZ;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    border: 7px solid transparent;
+    border-top: 7px solid $apBG;
+    left: 50%;
+    margin-left: -7px;
+  }
+  &::after {
+    bottom: -14px;
+    z-index: -1;
+    border-top: 7px solid #ccc;
+  }
+}
+
+.volume-container:hover .volume {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+.volume__track {
+  position: relative;
+  display: block;
+  width: $barSize;
+  height: 100px;
+  margin: 10px auto;
+  background: $barBG;
+  border-radius: $barSize;
+  overflow: hidden;
+}
+.volume__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $progressBG;
+  height: 50%;
+}
+.icon-volume-off {
+  display: none;
+}
+.has-muted {
+  .icon-volume-on {
+    display: none;
+  }
+  .icon-volume-off {
+    display: inline;
+    opacity: .7;
+  }
+}
+.ap__controls.is-active {
+  > svg {
+    fill: $iconColorActive;
+    filter: drop-shadow(0 0 3px rgba($iconColorActive, .4));
+  }
+}
+@media(max-width:1024px) {
+  .ap__item > .ap__controls {
+    flex: 1;
+  }
+}
+@media(max-width:580px) {
+  .ap {
+    min-width: 250px;
+  }
+  .ap, .ap__inner {
+    height: auto;
+  }
+  .ap__inner {
+    flex-wrap: wrap;
+  }
+  .ap__item--track {
+    margin-bottom: 10px;
+    padding: 0 20px;
+
+    order: 1;
+    flex: 1 1 100%;
+  }
+  .ap__item--playback,
+  .ap__item--settings {
+    flex: 1 1 50%;
+    order: 2;
+  }
+}
+/*-----------------------
+    Playlist Player - PL
+------------------------*/
+.pl-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: $apHeight;
+  left: 0;
+  overflow: auto;
+
+  font-family: $font-family;
+  font-size: $font-size;
+
+  background: $plBG;
+  z-index: $plZ;
+}
+.pl-ul {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 30px 10px 100px 10px;
+}
+.pl-list {
+  display: flex;
+  align-items: center;
+  // transition: background .2s ease;
+  height: 40px;
+  line-height: 40px;
+  svg {
+    fill: $plColorIcon;
+  }
+}
+.pl-list + .pl-list {
+  border-top: 1px solid #eee;
+}
+.pl-list:not(.pl-list--current):hover {
+  background: $plHoverColor;
+}
+
+.pl-list__track,
+.pl-list__remove {
+  flex: 0 50px;
+  text-align: center;
+}
+
+.pl-list__icon {
+  display: inline-block;
+
+  width: 0;
+  height: 0;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #555;
+}
+
+.pl-list__title {
+  overflow: hidden;
+
+  padding-right: 10px;
+
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  flex: 1;
+}
+
+.pl-list__remove {
+  height: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.pl-list__remove > svg {
+  width: 16px;
+  height: 16px;
+}
+.pl-list__eq {
+  display: none;
+}
+.pl-list--current {
+  background: $plCurrentBG;
+  color: $plCurrentColor;
+}
+.pl-list--current {
+  svg {
+    fill: $plCurrentColor;
+  }
+  .pl-list__eq {
+    display: block;
+  }
+  .pl-list__icon {
+    display: none;
+  }
+}
+.pl-list:hover .pl-list__remove,
+.pl-list--current .pl-list__remove {
+  opacity: 1;
+}
+.pl-list--current .pl-list__remove:hover {
+  background: darken($plCurrentBG, 5%);
+}
+.pl-list--empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  font-size: 2rem;
+
+  transform: translate(-50%, -50%);
+  letter-spacing: 2px;
+
+  color: #ccc;
+}
+@keyframes eq {
+  0% { height: 3px; }
+  50% { height: 20px; }
+  100% { height: 3px; }
+}
+.eq {
+  display: flex;
+
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.eq__bar {
+  width: 4px;
+
+  background: $plCurrentColor;
+  filter: drop-shadow(0 0 5px $plCurrentColor);
+}
+.eq__bar:nth-child(1) {
+  animation: eq .8s ease-in-out infinite 0s;
+}
+.eq__bar:nth-child(2) {
+  animation: eq .8s ease-in-out infinite .2s;
+}
+.eq__bar:nth-child(3) {
+  animation: eq .8s ease-in-out infinite .4s;
+}
+.h-hide {
+  display: none;
+}
+.h-show {
+  display: block;
+}

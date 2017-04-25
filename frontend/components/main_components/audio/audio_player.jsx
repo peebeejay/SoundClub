@@ -57,33 +57,33 @@ class AudioPlayer extends React.Component {
     }
 
     return(
-      <div className="audio-player">
-        <div className="player-controls">
-          <div className="back-button">BackButton</div>
-          <div className="play-button">
-            <button ref={(pButton) => { this.pButton = pButton; }} className="round-button-audio-player" onClick={this.togglePlay}>
-              <i ref={(pButtonIcon) => { this.pButtonIcon = pButtonIcon; }} className="fa fa-play fa-2x"></i>
-            </button>
+        <div className="audio-player">
+          <div className="player-controls">
+            <div className="back-button">BackButton</div>
+            <div className="play-button">
+              <button ref={(pButton) => { this.pButton = pButton; }} className="round-button-audio-player" onClick={this.togglePlay}>
+                <i ref={(pButtonIcon) => { this.pButtonIcon = pButtonIcon; }} className="fa fa-play fa-2x"></i>
+              </button>
 
+            </div>
+            <div className="forward-button">ForwardButton</div>
           </div>
-          <div className="forward-button">ForwardButton</div>
-        </div>
 
-        <div className="audio-tracker-container">
-          <div className="elapsed-time">{ this.state.playTime }</div>
-          <div className="audio-tracker" >
-            <div className="playhead" ></div>
+          <div className="audio-tracker-container">
+            <div className="elapsed-time">{ this.state.playTime }</div>
+            <div className="audio-tracker" >
+              <div className="playhead" ></div>
+            </div>
+            <div className="duration">{ Math.floor(this.state.duration) }</div>
           </div>
-          <div className="duration">{ Math.floor(this.state.duration) }</div>
+
+          <div className="audio-information">Audio Info</div>
+
+          <div className="like-button">Like Button</div>
+
+          { _song &&
+            <audio autoPlay="true" ref={(music) => { this.music = music; }} src={this.props.now_playing.song.audio} /> }
         </div>
-
-        <div className="audio-information">Audio Info</div>
-
-        <div className="like-button">Like Button</div>
-
-        { _song &&
-        <audio autoPlay="true" ref={(music) => { this.music = music; }} src={this.props.now_playing.song.audio} /> }
-      </div>
     );
   }
 }
