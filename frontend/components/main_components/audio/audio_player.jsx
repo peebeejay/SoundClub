@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 class AudioPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.playAudio = this.playAudio.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
-    this.state = { duration: '', playTime: 0, audio: "" };
+    this.state = { duration: '', playTime: 0 };
   }
 
   updatePlayTime() {
@@ -19,80 +18,50 @@ class AudioPlayer extends React.Component {
     }, 1000);
   }
 
-  componentDidMount() {
-
-  }
-
   componentWillReceiveProps(newProps) {
-    // if (newProps.now_playing.song.id !== this.props.now_playing.song.id ) {
-    //   console.log(this.state);
-    //   this.setState({ audio: newProps.now_playing.song.audio }, () => console.log(this.state));
-    //   console.log(newProps.now_playing.song.audio);
-    //   console.log(this.state);
-    // }
-
-    // debugger
-    if (newProps.now_playing.song.id === this.props.now_playing.song.id ) {
-      this.togglePlay();
+    // If newProps includes the same 'now_playing' song, then simply toggle pause / play.
+    // The second conditional filters for global state changes of the value of now_playing.playing.
+    if (newProps.now_playing.song.id === this.props.now_playing.song.id &&
+      newProps.now_playing.playing !== this.props.now_playing.playing) {
+        this.togglePlay(newProps);
     }
-
   }
 
-  togglePlay() {
-    if (this.music.paused) {
+  togglePlay(newProps) {
+    let props = newProps ? newProps : this.props;
+
+    if (props.now_playing.playing) {
       this.music.play();
       this.updatePlayTime();
-      this.pButtonIcon.className= "";
+      // this.pButtonIcon.className= "";
       this.pButtonIcon.className = "fa fa-pause fa-2x";
-      this.pButton.classnName = "";
+      // this.pButton.className = "";
       this.pButton.className="round-button-audio-player-pause";
     } else {
       this.music.pause();
       clearInterval(this.interval);
-      this.pButtonIcon.className = "";
+      // this.pButtonIcon.className = "";
       this.pButtonIcon.className = "fa fa-play fa-2x";
-      this.pButton.classnName = "";
-      this.pButton.className="round-button-audio-player";
-    }
-  }
-
-
-
-  playAudio() {
-    if (this.music.paused) {
-      this.music.play();
-      this.updatePlayTime();
-      this.pButtonIcon.className= "";
-      this.pButtonIcon.className = "fa fa-pause fa-2x";
-      this.pButton.classnName = "";
-      this.pButton.className="round-button-audio-player-pause";
-    } else {
-      this.music.pause();
-      clearInterval(this.interval);
-      this.pButtonIcon.className = "";
-      this.pButtonIcon.className = "fa fa-play fa-2x";
-      this.pButton.classnName = "";
+      // this.pButton.className = "";
       this.pButton.className="round-button-audio-player";
     }
 
     this.setState({ duration: this.music.duration });
-    console.log(this.music.duration);
+    console.log("duration: " + this.music.duration);
   }
 
   render() {
     let _song;
     if (Object.keys(this.props.now_playing.song).length > 0) {
       _song = this.props.now_playing.song;
-      // debugger
     }
-
 
     return(
       <div className="audio-player">
         <div className="player-controls">
           <div className="back-button">BackButton</div>
           <div className="play-button">
-            <button ref={(pButton) => { this.pButton = pButton; }} className="round-button-audio-player" onClick={this.playAudio}>
+            <button ref={(pButton) => { this.pButton = pButton; }} className="round-button-audio-player" onClick={this.togglePlay}>
               <i ref={(pButtonIcon) => { this.pButtonIcon = pButtonIcon; }} className="fa fa-play fa-2x"></i>
             </button>
 
