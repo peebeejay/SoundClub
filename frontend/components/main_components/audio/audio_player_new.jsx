@@ -31,8 +31,6 @@ class AudioPlayerNew extends React.Component {
   }
 
   togglePlay(newProps) {
-    // debugger
-
     let props = newProps ? newProps : this.props;
 
     if (props.nowPlaying.playing) {
@@ -49,7 +47,6 @@ class AudioPlayerNew extends React.Component {
 
   render() {
     let _song;
-    // debugger
     if (Object.keys(this.props.nowPlaying.song).length > 0) {
       _song = this.props.nowPlaying.song;
     }
@@ -73,7 +70,6 @@ class AudioPlayerNew extends React.Component {
   }
 }
 
-
 const mapStateToProps = (state, ownProps) => {
   return({
     nowPlaying: state.nowPlaying
@@ -90,10 +86,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(AudioPlayerNew));
-
-
-// <source src="http://s3.amazonaws.com/soundclub-assets-dev/songs/audios/000/000/001/original/open-uri20170424-2781-ji89lm?1493050157" type="audio/mpeg" />
-
 
 //
 // <div class="ap__item ap__item--track">
