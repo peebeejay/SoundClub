@@ -8,8 +8,12 @@
   text-decoration:none;
   background-color: #ff5500;
   font-weight:bold;
-  // transition: all 0.1s ease;
   cursor: pointer;
+
+  &:hover {
+    background-color: #ec4d08;
+    border: 3px solid #ec4d08;
+  }
 }
 
   .song-list-play-button {
@@ -56,8 +60,3 @@
       margin-left: 0px;
     }
   }
-
-.pause-play-button:hover {
-  background-color: #ec4d08;
-  border: 3px solid #ec4d08;
-}

@@ -10,8 +10,6 @@
   .discover-item-img img{
     height: 173px;
     width: 173px;
-    // opacity: 0.95;
-    // transition: .1s ease;
   }
 
   .discover-img-container-middle {
@@ -22,7 +20,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-
   }
 
   .discover-img-container:hover .discover-img-container-middle {
@@ -35,7 +32,6 @@
     width: 173px;
     background: #f2f2f2;
     border: 0;
-    // border: 1px solid transparent;
   }
 
   .discover-item-title > a {
@@ -65,5 +61,4 @@
   .blank, .blank {
     color: transparent !important;
   }
-
 }
