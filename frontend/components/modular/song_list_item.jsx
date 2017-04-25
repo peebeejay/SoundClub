@@ -20,7 +20,7 @@ class SongListItem extends React.Component {
         <div className="music-content">
           <div className="play-info">
             <div className="play-button-container">
-              <PlayButton song={this.props.song} />
+              <PlayButton song={this.props.song} type={"song-list"} />
             </div>
 
             <div className="artist-title">

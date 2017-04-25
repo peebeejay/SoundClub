@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PlayButton from './play_button.jsx';
 
 class DiscoverSongListItem extends React.Component {
   constructor(props) {
@@ -15,9 +16,9 @@ class DiscoverSongListItem extends React.Component {
         <div className="discover-img-container">
           <img src={`http:${this.props.song.img}`} />
           <div className="discover-img-container-middle">
-            <a className="round-button">
-              <i className="fa fa-play fa-2x"></i>
-            </a>
+            <PlayButton song={this.props.song} type={"discover-list"} />
+
+
           </div>
         </div>
         <div className="discover-item-title"><Link to={`songs/${this.props.song.id}`}>{this.props.song.title}</Link></div>
@@ -29,5 +30,8 @@ class DiscoverSongListItem extends React.Component {
     );
   }
 }
+// <a className="round-button">
+//   <i className="fa fa-play fa-2x"></i>
+// </a>
 
 export default DiscoverSongListItem;

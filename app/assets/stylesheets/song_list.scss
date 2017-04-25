@@ -7,63 +7,6 @@
   // border: 1px solid red;
   font: 100 14px/1.5  'Open Sans', sans-serif;
 
-
-
-  .round-button {
-  	box-sizing: border-box;
-  	display:block;
-  	width:40px;
-  	height:40px;
-  	padding-top: 6px;
-  	padding-left: 4px;
-  	line-height: 10px;
-  	border: 3px solid #ff5500;
-  	font-size:11px;
-  	border-radius: 50%;
-  	color:#f5f5f5;
-  	text-align:center;
-  	text-decoration:none;
-  	background-color: #ff5500;
-  	font-weight:bold;
-  	// transition: all 0.1s ease;
-    cursor: pointer;
-  }
-
-  .round-button:hover {
-  	background-color: #ec4d08;
-  	border: 3px solid #ec4d08;
-  }
-
-  .round-button-pause {
-    box-sizing: border-box;
-    display:block;
-    width:40px;
-    height:40px;
-    padding-top: 6px;
-    padding-left: 2px;
-    line-height: 10px;
-    border: 3px solid #ff5500;
-    font-size:11px;
-    color:#f5f5f5;
-    text-align:center;
-    text-decoration:none;
-    background-color: #ff5500;
-    font-weight:bold;
-    // transition: all 0.1s ease;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-
-  .round-button-pause:hover {
-    background-color: #ec4d08;
-    border: 3px solid #ec4d08;
-  }
-
-  div {
-    // padding: 5px;
-    // border: 1px solid red;
-  }
-
   .song-list-image {
     width: 150px;
     height: 150px;
@@ -85,7 +28,6 @@
       .play-button-container {
         margin-right: 10px;
       }
-
 
       .artist-title {
         flex: 1;

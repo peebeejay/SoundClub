@@ -9,6 +9,11 @@
   flex-direction: row;
   background-color: #f2f2f2;
 
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  
+
   .player-controls {
     display: flex;
     flex-direction: row;
