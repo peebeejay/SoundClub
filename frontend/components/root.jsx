@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import SessionFormContainer from './sessions/session_form_container';
@@ -36,19 +37,21 @@ class Root extends React.Component {
   render() {
     return(
       <Provider store={ this.props.store }>
-        <Router history={ hashHistory }>
-          <Route path="/" component={ App } >
-            <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn}/>
-            <Route path="/stream" component= { Stream } onEnter={this._redirectIfLoggedOut}/>
-            <Route path="/discover" component= { Discover } onEnter={this._redirectIfLoggedOut}/>
-            <Route path="/charts" component= { Charts } />
-            <Route path="/upload" component= { Upload } onEnter={this._redirectIfLoggedOut}/>
-            <Route path="/test" component= { TestComponent } />
-            <Route path="/songs/:id" component= { SongShow } />
-            <Route path="/artists/:id" component= { ArtistShow } />
-            <Route path="/signup" component= { Signup } />
-          </Route>
-        </Router>
+        <IntlProvider locale="en">
+          <Router history={ hashHistory }>
+            <Route path="/" component={ App } >
+              <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn}/>
+              <Route path="/stream" component= { Stream } onEnter={this._redirectIfLoggedOut}/>
+              <Route path="/discover" component= { Discover } onEnter={this._redirectIfLoggedOut}/>
+              <Route path="/charts" component= { Charts } />
+              <Route path="/upload" component= { Upload } onEnter={this._redirectIfLoggedOut}/>
+              <Route path="/test" component= { TestComponent } />
+              <Route path="/songs/:id" component= { SongShow } />
+              <Route path="/artists/:id" component= { ArtistShow } />
+              <Route path="/signup" component= { Signup } />
+            </Route>
+          </Router>
+        </IntlProvider>
       </Provider>
     );
   }

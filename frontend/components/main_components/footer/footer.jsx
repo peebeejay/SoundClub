@@ -9,7 +9,6 @@ class Footer extends React.Component {
     return(
       <footer className="footer">
         <div className="footer-content">
-          Footer Component Placeholder
         </div>
       </footer>
     );

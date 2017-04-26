@@ -4,6 +4,6 @@
     json.artist do
       json.partial! 'api/users/user', user: song.artist
     end
-
+    json.comment_count song.comments.length
   end
 end

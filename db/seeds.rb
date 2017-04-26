@@ -80,9 +80,10 @@ ARTIST_ID = {
 
 IMAGE_URL = "http://s3.amazonaws.com/soundclub-assets-dev/songs/imgs/000/000/005/original/album.png?1492788892"
 
+SONGS = []
 p "Begin Seeding Songs..."
 (1..24).each do |num|
-  Song.create!(title: "Etude 0#{num}", user_id: ARTIST_ID[num], audio: open(AUDIO_URLS[num]), img: open(IMAGE_URL))
+  SONGS[num] = Song.create!(title: "Etude 0#{num}", user_id: ARTIST_ID[num], audio: open(AUDIO_URLS[num]), img: open(IMAGE_URL))
   p "..Seed Song #{num}, user_id: #{ARTIST_ID[num]}"
 end
 #
@@ -109,3 +110,7 @@ end
 # Song.create!(title: 'Etude 22', user_id: 5, audio: File.open('app/assets/audio/22_Etudes.mp3'), img: File.open('app/assets/images/album.png'))
 # Song.create!(title: 'Etude 23', user_id: 5, audio: File.open('app/assets/audio/23_Etudes.mp3'), img: File.open('app/assets/images/album.png'))
 # Song.create!(title: 'Etude 24', user_id: 5, audio: File.open('app/assets/audio/24_Etudes.mp3'), img: File.open('app/assets/images/album.png'))
+
+SONGS[14].comments.create!(user_id: u5.id, body: "One of my finer compositions")
+SONGS[14].comments.create!(user_id: u3.id, body: "Exquisite")
+SONGS[14].comments.create!(user_id: u5.id, body: "Merci")
