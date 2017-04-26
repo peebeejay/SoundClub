@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentsListItem from './comments_list_item.jsx';
+import CommentsListForm from './comments_list_form.jsx';
 import { Link } from 'react-router';
 
 class CommentsList extends React.Component {
@@ -8,18 +9,28 @@ class CommentsList extends React.Component {
   }
 
   render() {
-    // debugger
     let _song = this.props.song;
+    let _comments_list_items = "";
+    let _comments_length = 0;
+    let _currentUser = this.props.currentUser;
 
-    const comment_list_items = this.props.song.comments.map((comment) => {
-      return (<CommentsListItem key={ comment.id } comment={ comment } commenter={ _song.commenters[comment.user_id] }/>)
-    })
-
+    if ( _song.comments && _song.comments.length > 0 ) {
+      _comments_length = _song.comments.length;
+      _comments_list_items = _song.comments.map((comment) => {
+        return (<CommentsListItem key={ comment.id }
+                                  comment={ comment }deleteComment
+                                  commenter={ _song.commenters[comment.user_id] }
+                                  removeComment={ this.props.removeComment }
+                                  currentUser={ _currentUser } />)
+      })
+    }
 
     return(
       <div className="comments-list">
-        <div className="new-comment-form">
-            New Comment Form Placeholder
+        <div className="new-comment-form-container">
+          { _currentUser && <CommentsListForm currentUser={ _currentUser }
+                                              song={ _song }
+                                              createComment={ this.props.createComment } />}
         </div>
 
         <div className="comments-container">
@@ -39,17 +50,13 @@ class CommentsList extends React.Component {
             <div className="follow-button"></div>
           </div>
           <div className="comments-list-items-container">
-            <div className="comment-count"><i className="fa fa-comment"></i>&nbsp;&nbsp;{ _song.comments.length } comments</div>
-            <div className="comment-list-items"> { comment_list_items } </div>
+            <div className="comment-count"><i className="fa fa-comment"></i>&nbsp;&nbsp;{ _comments_length } comments</div>
+            <div className="comment-list-items"> { _comments_list_items } </div>
           </div>
-
         </div>
-
-
       </div>
     )
   }
-
 }
 
 export default CommentsList;
