@@ -6,12 +6,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  // font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
   font-size: 14px;
 }
 
 pre, code {
   font-family: Consolas, Courier, monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: inherit;
   color: #333;
   background: rgb(250, 250, 250);
@@ -25,7 +27,7 @@ pre {
     Audio Player - AP
 ------------------------*/
 // $primaryColor: steelblue;
-$primaryColor: steelblue;
+$primaryColor: #ff5500;
 $apBG: #f2f2f2;
 $plBG: #fff;
 $plCurrentBG: $primaryColor;
@@ -36,14 +38,15 @@ $iconColor: #777;
 $iconColorActive: $primaryColor;
 $iconBGActive: $primaryColor;
 $barBG: #ddd;
-$progressBG: $primaryColor;
+$progressBG: #ff5500;
 
 $font-family: inherit;
 $font-size: 14px;
 
-$apHeight: 50px;
-$apMaxWidth: 1440px;
-$barSize: 3px;
+$apHeight: 46px;
+$apMaxWidth: 1400px;
+$apMinWidth: 1000px;
+$barSize: 1px;
 
 $apZ: 99999;
 $volZ: 88888;
@@ -70,18 +73,25 @@ $plZ: 77777;
 }
 .ap__inner {
   display: flex;
-  max-width: $apMaxWidth;
-  margin: auto;
+  flex-direction: row;
+  max-width: 1400px;
+  min-width: 1000px;
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 .ap__item {
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
 .ap__item--playback > .ap__controls,
 .ap__item--settings > .ap__controls {
-  flex: 0 25%;
+  flex: 0 33%;
 }
 @keyframes fs {
   0% {
@@ -95,7 +105,7 @@ $plZ: 77777;
 }
 // track bar
 .ap__item--track {
-  flex: 1 40%;
+  flex: 1 50%;
   padding: 0 20px;
 }
 .track {
@@ -115,6 +125,7 @@ $plZ: 77777;
   text-align: left;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font: 100 14px/1.5  'Open Sans', sans-serif;
 }
 .track__time {
   position: absolute;
@@ -123,8 +134,8 @@ $plZ: 77777;
 }
 .progress-container {
   position: relative;
-  padding: 7px 0;
-  margin-top: 15px;
+  padding: 5px 0;
+  margin-top: 13px;
   overflow: hidden;
   cursor: pointer;
   &:hover .progress__bar:after {
@@ -470,4 +481,81 @@ $plZ: 77777;
 }
 .h-show {
   display: block;
+}
+
+/*-----------------------
+    CUSTOM - CUSTOM - CUSTOM
+------------------------*/
+
+.track-now-playing-custom {
+  color: #ff5500;
+  text-align: right;
+  font: 100 11px/1.5  'Open Sans', sans-serif;
+  padding-right: 10px;
+}
+
+.track-duration-custom {
+  color: #333333;
+  text-align: left;
+  font: 100 11px/1.5  'Open Sans', sans-serif;
+  margin-left: 10px;
+}
+
+.ap__item--settings {
+  flex: none;
+  margin: 0px 10px
+}
+
+.ap__item--playback {
+  flex: 1 5%;
+}
+
+.ap_-item--info {
+  flex: 1 10%;
+}
+
+.audio-player-image  {
+  margin-right: 10px;
+
+  img {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+}
+
+.audio-player-playing-track-text {
+  a {
+    text-decoration: none;
+    color: #999;
+    font: 100 11px/1.5  'Open Sans', sans-serif;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: #000000;
+  }
+}
+
+.audio-player-track-info {
+  a {
+    text-decoration: none;
+    color: #666666;
+    font: 100 11px/1.5  'Open Sans', sans-serif;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: #000000;
+  }
 }

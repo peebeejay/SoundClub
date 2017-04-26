@@ -12,6 +12,8 @@
   position: fixed;
   left: 0px;
   bottom: 0px;
+  transition: .5 ease;
+
 
 
   .player-controls {
@@ -61,7 +63,7 @@
     cursor: pointer;
     border-radius: 50%;
   }
-  
+
   .round-button-audio-player:hover {
   	background-color: #ec4d08;
   	border: 3px solid #ec4d08;
