@@ -6,6 +6,7 @@ import { fetchSong, removeSongs } from '../../actions/song_actions.js';
 import Navbar from '../main_components/navbar/navbar.jsx';
 import FooterContainer from '../main_components/footer/footer_container.jsx';
 import SongListItem from '../modular/song_list_item.jsx';
+import CommentsList from './comments_list.jsx';
 
 class SongShow extends React.Component {
   constructor(props) {
@@ -52,6 +53,9 @@ class SongShow extends React.Component {
               </div>
 
           </div>
+          { _song.id && <CommentsList song={_song} /> }
+
+
         </div>
         <FooterContainer />
       </div>

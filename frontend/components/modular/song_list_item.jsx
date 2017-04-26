@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import PlayButton from './play_button.jsx';
+import { FormattedRelative } from 'react-intl';
 
 class SongListItem extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class SongListItem extends React.Component {
   }
 
   render() {
-
+    // debugger
     return(
       <div className="song-list-item-container">
         <div className="song-list-image-container">
@@ -39,7 +40,7 @@ class SongListItem extends React.Component {
             </div>
 
             <div className="date-container">
-              <div className="date">{(this.props.song.created_at).slice(0, 10)}</div>
+              <div className="date"><FormattedRelative value={this.props.song.created_at} /></div>
             </div>
 
           </div>

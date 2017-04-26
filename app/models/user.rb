@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id
 
+  has_many :comments,
+    class_name: 'Comment',
+    primary_key: :id,
+    foreign_key: :user_id
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end

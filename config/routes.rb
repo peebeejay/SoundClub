@@ -7,5 +7,6 @@ Rails.application.routes.draw do
    resources :follows, only: [:create, :destroy, :show]
    get '/songs/discover', to: 'songs#discover'
    resources :songs, only: [:index, :create, :show]
+   resources :comments, only: [:create, :destroy]
  end
 end

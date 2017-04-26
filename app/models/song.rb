@@ -21,6 +21,15 @@ class Song < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id
 
+  has_many :comments,
+    class_name: 'Comment',
+    primary_key: :id,
+    foreign_key: :song_id
+
+  has_many :commenters,
+    through: :comments,
+    source: :user
+
 
   ###From EricMoy Songcloud
   def extract_metadata
