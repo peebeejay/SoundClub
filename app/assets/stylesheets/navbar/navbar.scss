@@ -29,6 +29,12 @@
     // float: left;
   }
 
+  .navbar-username > a {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   a {
     display: block;
     width: 104px;

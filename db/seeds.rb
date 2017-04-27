@@ -14,10 +14,12 @@ Song.destroy_all
 u1 = User.create!(username: "Guest", password: "YesWeCan", display_name: "Guest Account", img: open("https://www.poets.org/sites/default/files/styles/286x289/public/images/biographies/EdgarGuest_NewBioImage.jpg?itok=HQXa6PJW"))
 
 # Seed Test Accounts
-u2 = User.create!(username: "GeorgeBush", password: "NeverBeFooledAgain", display_name: "George Bush", location: "Texas")
+u2 = User.create!(username: "GeorgeBush", password: "NeverBeFooledAgain", display_name: "George Bush", location: "Texas", img: open("http://www.newyorker.com/wp-content/uploads/2015/10/Borowitz-George-Bush-Smiling-1200.jpg"))
 u3 = User.create!(username: "BarackObama", password: "YesWeCan", display_name: "Barack Obama", location: "Hyde Park, Chicago", img: open("http://img.usmagazine.com/article-leads-vertical-300/1250529817_barack_obama_290x402.jpg"))
 u4 = User.create!(username: "DonaldTrump", password: "$$$$$$", display_name: "Donald Trump", location: "New York, NY")
 u5 = User.create!(username: "FrederickChopin", password: "EtudeNocturne", display_name: "Frederick Chopin", location: "Paris", img: open("https://s-media-cache-ak0.pinimg.com/originals/87/e0/72/87e07208b391750225c37360277538e4.jpg"))
+u6 = User.create!(username: "Mozart", password: "Sonata", display_name: "Wolfgang Amadeus Mozart", location: "Vienna", img: open("http://kidsmusiccorner.co.uk/wp-content/uploads/2010/01/Mozart.jpg"))
+u7 = User.create!(username: "Debussy", password: "Arabesque", display_name: "Claude Debussy", location: "Paris", img: open("http://www.clearnote.net/assets/images/74610bc.jpg"))
 
 p "Complete Seeding Users"
 p u1.id, u2.id, u3.id, u4.id, u5.id
@@ -114,3 +116,8 @@ end
 SONGS[14].comments.create!(user_id: u5.id, body: "One of my finer compositions")
 SONGS[14].comments.create!(user_id: u3.id, body: "Exquisite")
 SONGS[14].comments.create!(user_id: u5.id, body: "Merci")
+
+
+
+Follow.create!(follower_id: u5.id, followee_id: u6.id)
+Follow.create!(follower_id: u5.id, followee_id: u7.id)
