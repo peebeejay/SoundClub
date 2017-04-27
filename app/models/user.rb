@@ -20,6 +20,26 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id
 
+  has_many :followees,
+    class_name: 'Follow',
+    primary_key: :id,
+    foreign_key: :follower_id
+
+  # Who the user follows
+  has_many :follows,
+    through: :followees,
+    source: :followee
+
+  has_many :followings,
+    class_name: 'Follow',
+    primary_key: :id,
+    foreign_key: :followee_id
+
+  # Followers of the user
+  has_many :followers,
+    through: :followings,
+    source: :follower
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end

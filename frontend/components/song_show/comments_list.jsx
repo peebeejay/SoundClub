@@ -2,6 +2,7 @@ import React from 'react';
 import CommentsListItem from './comments_list_item.jsx';
 import CommentsListForm from './comments_list_form.jsx';
 import { Link } from 'react-router';
+import FollowButton from '../modular/follow_button.jsx';
 
 class CommentsList extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class CommentsList extends React.Component {
         <div className="comments-container">
           <div className="comments-user-info">
             <div className="user-image">
-              <img src={ _song.artist.img } />
+              <Link to={ `artists/${ _song.artist.id }` }><img src={ _song.artist.img } /></Link>
             </div>
             <span className="user-name"><Link to={`artists/${_song.artist.id}`}>{ _song.artist.display_name }</Link></span>
             <div className="user-stats">
@@ -47,7 +48,9 @@ class CommentsList extends React.Component {
                 <i className="fa fa-headphones"></i>{ _song.artist.song_count }
               </div>
             </div>
-            <div className="follow-button"></div>
+            <div className="follow-button-container">
+              <FollowButton artistId={ _song.artist.id }/>
+            </div>
           </div>
           <div className="comments-list-items-container">
             <div className="comment-count"><i className="fa fa-comment"></i>&nbsp;&nbsp;{ _comments_length } comments</div>

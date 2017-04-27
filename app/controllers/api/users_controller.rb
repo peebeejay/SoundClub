@@ -11,6 +11,7 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.includes(:songs).find(params[:id])
     if @user
+      @follows = @user.follows.pluck(:id)
       render 'api/users/show'
     else
       render json: @user.errors, status: 404

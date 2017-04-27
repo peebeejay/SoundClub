@@ -1,0 +1,25 @@
+.follow-button-content {
+  .follow-button {
+    border-radius: 3px;
+    cursor: pointer;
+    font: 100 11px/1.5  'Open Sans', sans-serif;
+    padding: 2px 2px;
+  }
+
+  .not-following {
+    background-color: #ff5500;
+    border: 1px solid #ff5500;
+    color: #ffffff;
+  }
+
+
+  .following {
+    background-color: #ffffff;
+    color: #f50;
+    border: 1px solid #e5e5e5;
+    &:hover {
+      border: 1px solid #ff5500;
+    }
+
+  }
+}
