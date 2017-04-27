@@ -6,6 +6,17 @@ export const signup = (user) => {
   });
 };
 
+export const signUpForm = (formData) => {
+  return $.ajax({
+    method: "POST",
+    url: 'api/users',
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: formData
+  });
+};
+
 export const login = (user) => {
   return $.ajax({
     method: "POST",

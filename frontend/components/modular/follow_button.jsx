@@ -30,7 +30,7 @@ class FollowButton extends React.Component {
   }
 
   render() {
-    if ( !this.props.currentUser )
+    if ( !this.props.currentUser || this.props.currentUser.id === this.props.artistId)
       return( <div></div>);
 
     // True if currentUser IS a follower ; false if currentUser IS NOT a follower
