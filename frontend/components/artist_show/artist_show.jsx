@@ -5,6 +5,7 @@ import { withRouter, Link } from 'react-router';
 import Navbar from '../main_components/navbar/navbar.jsx';
 import FooterContainer from '../main_components/footer/footer_container.jsx';
 import SongList from '../modular/song_list.jsx';
+import FollowButton from '../modular/follow_button.jsx';
 import { fetchUser, removeUser } from '../../actions/user_actions.js';
 
 class ArtistShow extends React.Component {
@@ -32,7 +33,7 @@ class ArtistShow extends React.Component {
     if (Object.keys(this.props.user).length > 0) {
       _user = this.props.user;
     }
-
+    // debugger
     return(
       <div className="main">
         { (this.props.router.location.pathname !== '/') && <Navbar /> }
@@ -53,10 +54,14 @@ class ArtistShow extends React.Component {
                 </div>
               </div>
 
-              <div className="left-tabs-nav">
+
+              <div className="left-tabs-nav flex-row">
                 <ul className="left-tabs-list">
                   <li className="active-li"><Link activeClassName="active" >Songs</Link></li>
                 </ul>
+                <div className="follow-button-container">
+                  { (_user.id && this.props.currentUser) && <FollowButton artistId={ _user.id } type={"artist"}/> }
+                </div>
               </div>
 
               <div className="song-list">
@@ -73,7 +78,8 @@ class ArtistShow extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return({
-    user: state.user
+    user: state.user,
+    currentUser: state.session.currentUser
   });
 };
 

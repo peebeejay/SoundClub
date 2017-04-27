@@ -49,7 +49,7 @@ class CommentsList extends React.Component {
               </div>
             </div>
             <div className="follow-button-container">
-              <FollowButton artistId={ _song.artist.id }/>
+              <FollowButton artistId={ _song.artist.id } type={ "song" }/>
             </div>
           </div>
           <div className="comments-list-items-container">

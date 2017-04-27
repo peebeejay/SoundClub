@@ -63,3 +63,8 @@ button:focus {
   display: none !important;
   height: 0 !important;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
