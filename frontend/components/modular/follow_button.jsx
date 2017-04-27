@@ -13,7 +13,7 @@ class FollowButton extends React.Component {
 
   handleFollow(e) {
     e.preventDefault();
-    this.props.createFollow({ follower_id: currentUser.id, followee_id: this.props.artistId}).then(
+    this.props.createFollow({ follower_id: this.props.currentUser.id, followee_id: this.props.artistId}).then(
       () => this.enableButton());
     this.setState({ disabled: true })
   }
@@ -30,8 +30,16 @@ class FollowButton extends React.Component {
   }
 
   render() {
+    if ( !this.props.currentUser )
+      return( <div></div>);
+      
     // True if currentUser IS a follower ; false if currentUser IS NOT a follower
-    let _currentUserFollows = this.props.currentUser.follows.includes(this.props.artistId)
+    let _currentUserFollows = false;
+    if (this.props.currentUser.followees &&
+        Object.keys(this.props.currentUser.followees).includes(this.props.artistId.toString())) {
+          _currentUserFollows = true;
+      }
+
     return(
       <div className="follow-button-content">
         { (_currentUserFollows) ?
