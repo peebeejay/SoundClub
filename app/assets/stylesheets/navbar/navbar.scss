@@ -25,8 +25,11 @@
     display: flex
   }
 
-  li {
-    // float: left;
+  .soundclub-logo a {
+      padding: 0;
+      background-image: image-url("soundclub_small2.png");
+      background-size: cover;
+      height: 45px;
   }
 
   .navbar-username > a {
@@ -48,9 +51,6 @@
     border-right: 1px solid black;
   }
 
-  a.logo-temp {
-    background-color: gray;
-  }
 
   a:hover {
     color: #eeeeee;
