@@ -32,9 +32,10 @@ class FollowButton extends React.Component {
   render() {
     if ( !this.props.currentUser )
       return( <div></div>);
-      
+
     // True if currentUser IS a follower ; false if currentUser IS NOT a follower
     let _currentUserFollows = false;
+    // debugger;
     if (this.props.currentUser.followees &&
         Object.keys(this.props.currentUser.followees).includes(this.props.artistId.toString())) {
           _currentUserFollows = true;
@@ -43,12 +44,12 @@ class FollowButton extends React.Component {
     return(
       <div className="follow-button-content">
         { (_currentUserFollows) ?
-          <button className="follow-button following"
+          <button className={ `follow-button following ${this.props.type}` }
                   onClick={ this.handleUnfollow }
                   disabled={ this.state.disabled } >
                   Following</button> :
 
-          <button className="follow-button not-following"
+          <button className={ `follow-button not-following ${this.props.type}` }
                   onClick={ this.handleFollow }
                   disabled={ this.state.disabled } >
                   Follow</button>

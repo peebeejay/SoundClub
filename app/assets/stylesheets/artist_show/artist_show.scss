@@ -14,9 +14,14 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+  position: relative;
 
   .left-tabs-nav {
     margin-left: 20px;
+  }
+
+  .follow-button-container {
+    margin-left: 10px;
   }
 
   .artist-header {
