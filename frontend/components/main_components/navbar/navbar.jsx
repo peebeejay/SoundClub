@@ -58,7 +58,7 @@ class Navbar extends React.Component {
         <section className="navbar">
           <header className="navbar-content">
             <ul>
-              <li><Link className="logo-temp" to={"/"}>SoundClub</Link></li>
+              <li className="soundclub-logo"><Link className="logo-temp" to={"/"}></Link></li>
               <li><Link className="nav-discover" activeClassName="active" to={"/charts"}>Charts</Link></li>
             </ul>
             <ul>

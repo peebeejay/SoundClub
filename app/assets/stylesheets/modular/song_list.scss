@@ -79,6 +79,29 @@
       }
     }
 
+    .waveform {
+      height: 65px;
+    }
+
+    .comments-likes {
+      text-align: right;
+      justify-content: flex-end;
+
+      .comments-count, a, i {
+        color: #999;
+        font-size: 11px;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          color: #333333;
+        }
+
+      }
+    }
+
+
+
   }
 
 

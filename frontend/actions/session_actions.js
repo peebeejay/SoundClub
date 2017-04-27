@@ -23,6 +23,13 @@ export const signUp = (user) => dispatch => {
           err => dispatch(receiveErrors(err)));
 };
 
+export const signUpForm = (user) => dispatch => {
+  // debugger
+  return APIUtil.signUpForm(user).then(
+    (user) => dispatch(receiveCurrentUser(user)),
+    (err)  => dispatch(receiveErrors(err)));
+};
+
 export const login = (user) => dispatch => {
   return APIUtil.login(user)
     .then(user => dispatch(receiveCurrentUser(user)),

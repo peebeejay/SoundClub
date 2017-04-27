@@ -10,6 +10,8 @@ class SongListItem extends React.Component {
 
   render() {
     // debugger
+
+
     return(
       <div className="song-list-item-container">
         <div className="song-list-image-container">
@@ -45,7 +47,16 @@ class SongListItem extends React.Component {
 
           </div>
           <div className="waveform"></div>
-          <div className="comments-likes"></div>
+          <div className="comments-likes flex-row">
+            <div className="likes-count"></div>
+            <div className="plays-count"></div>
+            <div className="comments-count">
+              <Link to={`songs/${this.props.song.id}` }>
+                <i className="fa fa-comment" />
+                &nbsp;&nbsp;{ this.props.song.comment_count }
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     );
