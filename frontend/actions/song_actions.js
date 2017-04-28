@@ -1,4 +1,5 @@
 import * as SongAPIUtil from '../util/song_api_util';
+import { receiveCurrentUser } from './session_actions.js';
 
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
@@ -48,9 +49,14 @@ export const streamSongs = (id) => dispatch => {
   );
 };
 
-// May have to change in the future
 export const createSong = (song) => dispatch => {
   return SongAPIUtil.createSong(song).then(
     (song) => dispatch(receiveSong(song))
+  );
+};
+
+export const deleteSong = id => dispatch => {
+  return SongAPIUtil.deleteSong(id).then(
+    (user) => dispatch(receiveCurrentUser(user))
   );
 };

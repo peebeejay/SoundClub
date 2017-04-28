@@ -11,6 +11,10 @@
     width: 150px;
     height: 150px;
     padding: 10px;
+    object-fit: cover;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   .music-content {

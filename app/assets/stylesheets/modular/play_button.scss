@@ -38,7 +38,7 @@
     }
   }
 
-  .discover-list-play-button {
+  .discover-list-play-button, .song-details-play-button {
     width:60px;
     height:60px;
     padding-top: 11.5px;
@@ -47,7 +47,7 @@
     font-size:15px;
   }
 
-  .discover-list-pause-button {
+  .discover-list-pause-button, .song-details-pause-button {
     width:60px;
     height:60px;
     // padding-top: 12.5px;

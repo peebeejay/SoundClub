@@ -10,13 +10,11 @@ class Api::CommentsController < ApplicationController
       @song = Song.find(@comment.song_id)
       render 'api/songs/show'
     else
-
       render json: @comment.errors, status: 422
     end
   end
 
   def destroy
-    # debugger
     @comment = Comment.find(params[:id])
     if @comment
       @song = Song.find(@comment.song_id)
@@ -25,7 +23,6 @@ class Api::CommentsController < ApplicationController
     else
       render json: ["nil"], status: 422
     end
-
   end
 
   private def comment_params

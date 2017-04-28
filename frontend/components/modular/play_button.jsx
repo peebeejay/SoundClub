@@ -18,7 +18,8 @@ class PlayButton extends React.Component {
   render() {
     // Checks what type of play button should be rendered.
     // Available types are { song-list, discover-list, player }
-    if ( this.props.type === "discover-list" || this.props.type === "song-list") {
+
+    if ( ["discover-list", "song-list", "song-details"].includes(this.props.type)) {
       // Play Button for discover-lists and song-list types
       if (this.props.nowPlaying &&
         this.props.nowPlaying.playing &&

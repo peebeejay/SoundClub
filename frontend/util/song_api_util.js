@@ -26,6 +26,13 @@ export const streamSongs = (id) => {
   });
 };
 
+export const deleteSong = (id) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `api/songs/${id}`
+  });
+};
+
 // May have to change in the future
 export const createSong = (formData) => {
   return $.ajax({
