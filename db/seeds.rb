@@ -203,8 +203,8 @@ Song.create!(title: "Piano Concerto No. 1 (Zimerman, Bernstein)", user_id: brahm
 p "Complete Brahms"
 
 # Rachmaninoff
-# Song.create!(title: "Piano Concerto No. 2 (Op. 18) - Adagio Sostenuto", user_id: rachmaninoff.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/009.+Sergej+Vassiljevitsj+Rachmaninoff+-+Piano+Concerto+No.+2+(Op.+18)+-+Adagio+Sostenuto.mp3"), img: open("http://www.velvetglass.com/Etcetera/artofthealbum/art%20of%20the%20album%20Albums/art/DSC_9432.jpg"))
-Song.create!(title: "Piano Concerto No. 2 (Op. 18) - Moderato", user_id: rachmaninoff.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/055.+Sergej+Vassiljevitsj+Rachmaninoff+-+Piano+Concerto+No.+2+(Op.+18)+-+Moderato.mp3"), img: open("http://www.velvetglass.com/Etcetera/artofthealbum/art%20of%20the%20album%20Albums/art/DSC_9432.jpg"))
+Song.create!(title: "Piano Concerto No. 2 (Op. 18) - Adagio Sostenuto", user_id: rachmaninoff.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/009.+Sergej+Vassiljevitsj+Rachmaninoff+-+Piano+Concerto+No.+2+(Op.+18)+-+Adagio+Sostenuto.mp3"), img: open("http://e.snmc.io/lk/f/l/dabac015f5646c4bdbcbc7c18b6dbee1/1789629.jpg"))
+Song.create!(title: "Piano Concerto No. 2 (Op. 18) - Moderato", user_id: rachmaninoff.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/055.+Sergej+Vassiljevitsj+Rachmaninoff+-+Piano+Concerto+No.+2+(Op.+18)+-+Moderato.mp3"), img: open("http://e.snmc.io/lk/f/l/dabac015f5646c4bdbcbc7c18b6dbee1/1789629.jpg"))
 p "Complete Rachmaninoff"
 
 # Haydn
