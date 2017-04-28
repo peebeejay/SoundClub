@@ -42,6 +42,12 @@ export const discoverSongs = () => dispatch => {
   );
 };
 
+export const streamSongs = (id) => dispatch => {
+  return SongAPIUtil.streamSongs(id).then(
+    (songs) => dispatch(receiveSongs(songs))
+  );
+};
+
 // May have to change in the future
 export const createSong = (song) => dispatch => {
   return SongAPIUtil.createSong(song).then(

@@ -19,6 +19,13 @@ export const discoverSongs = () => {
   });
 };
 
+export const streamSongs = (id) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/songs/stream/${id}`
+  });
+};
+
 // May have to change in the future
 export const createSong = (formData) => {
   return $.ajax({

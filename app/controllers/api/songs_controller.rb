@@ -11,6 +11,12 @@ class Api::SongsController < ApplicationController
     render "api/songs/index"
   end
 
+  def stream
+    @follows = User.find(params[:id]).follows.includes(:songs)
+    @songs = @follows.reduce([]) { |accum, el| accum += el.songs}.sort_by(&:created_at)[0...10]
+    render "api/songs/index"
+  end
+
   def show
     @song = Song.includes(:comments, :commenters).find(params[:id])
     if @song
@@ -30,6 +36,6 @@ class Api::SongsController < ApplicationController
   end
 
   private def song_params
-    params.require(:song).permit(:title, :description, :audio, :img)
+    params.require(:song).permit(:title, :description, :audio, :img, :user_id)
   end
 end

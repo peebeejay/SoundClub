@@ -6,7 +6,7 @@ import { fetchSong, removeSongs } from '../../actions/song_actions.js';
 import { createComment, removeComment } from '../../actions/comment_actions.js';
 import Navbar from '../main_components/navbar/navbar.jsx';
 import FooterContainer from '../main_components/footer/footer_container.jsx';
-import SongListItem from '../modular/song_list_item.jsx';
+import SongDetails from './song_details.jsx';
 import CommentsList from './comments_list.jsx';
 
 class SongShow extends React.Component {
@@ -43,11 +43,11 @@ class SongShow extends React.Component {
     return(
       <div className="main">
         { (this.props.router.location.pathname !== '/') && <Navbar /> }
-        <div className="content-wrapper-artist">
-          <div className="content-artist">
-              <div className="artist-header">
-                <div className="artist-header-content">
-                  { _song.id && <SongListItem song={_song} /> }
+        <div className="content-wrapper-song">
+          <div className="content-song">
+              <div className="song-header">
+                <div className="song-header-content">
+                  { _song.id && <SongDetails song={_song} /> }
 
                 </div>
               </div>
