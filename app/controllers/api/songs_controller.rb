@@ -35,7 +35,18 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def destroy
+    @song = Song.find(params[:id]);
+    if @song
+      @song.destroy!
+      @user = current_user
+      render 'api/users/show';
+    else
+      render json: ["nil"], status: 422
+    end
+  end
+
   private def song_params
-    params.require(:song).permit(:title, :description, :audio, :img, :user_id)
+    params.require(:song).permit(:title, :description, :audio, :img)
   end
 end

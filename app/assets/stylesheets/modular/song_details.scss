@@ -22,6 +22,9 @@
     padding: 10px;
     // align: right;
     margin-left: auto;
+    object-fit: cover;
+    overflow: hidden;
+    background-size: cover;
   }
 
   .music-content {

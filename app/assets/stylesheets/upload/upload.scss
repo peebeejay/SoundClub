@@ -58,7 +58,6 @@
     display: none;
   }
 
-
   // Upload Form Phase 2 CSS
   .upload-img-preview {
     width: 133px;
@@ -66,6 +65,9 @@
     background-color: lightgray;
     border: 1px solid lightgray;
     border-radius: 3px;
+    object-fit: cover;
+    overflow: hidden;
+    background-size: cover;
   }
 
   .upload-select-img {

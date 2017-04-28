@@ -70,6 +70,13 @@ User.all.each { |user| p user.id, user.display_name }
 #     SEED SONGS    #
 ####################
 
+# Guest
+Song.create!(title: "Handel's Zadok the Priest: Coronation Anthem", user_id: guest.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/Handel+-+Zadok+the+Priest.mp3"), img: open("https://s-media-cache-ak0.pinimg.com/originals/15/40/da/1540daf87d9c2602e4c934555c479d03.jpg"))
+Song.create!(title: "Chopin's Andante Spianato and Grande Polonaise Brillante in E flat major Op. 22 - Kate Liu ", user_id: guest.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/Kate+Liu+%C3%A2%C2%80%C2%93+Andante+Spianato+and+Grande+Polonaise+Brillante+in+E+flat+major+Op.+22+(second+stage).mp3"), img: open("http://mp3red.me/cover/4019643-460x460/guest-piano-concerto-no-1-op-11-andante-spianato-et-grande-polonaise-brillante-op-22.jpg"))
+Song.create!(title: "Ren Guang's Colourful Clouds Chasing the Moon - Yundi Li", user_id: guest.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/Yundi+Li+-+Colourful+Clouds+Chasing+the+Moon.mp3"), img: open("https://i.ytimg.com/vi/Z-EZTdVJmVQ/hqdefault.jpg"))
+Song.create!(title: "Chopin's Barcarolle Op. 60 - Zimmerman", user_id: guest.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/Zimerman+plays+Chopin+Barcarolle+Op.+60.mp3"), img: open("https://i.ytimg.com/vi/W2H9eHf8yb4/hqdefault.jpg"))
+p "Complete Guest"
+
 # Chopin
 Song.create!(title: "Nocturne No. 1, Op. 9 in B-flat", user_id: chopin.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/01+-+Nocturne+No.+1%2C+Op.+9+in+B-flat.mp3"), img: open("http://e.snmc.io/lk/f/l/bd44ae8f49bc5fef0905a6d982851017/4040776.jpg"))
 Song.create!(title: "Nocturne No. 2, Op. 9 in E-flat", user_id: chopin.id, audio: open("https://s3.amazonaws.com/soundclub-seeds/02+-+Nocturne+No.+2%2C+Op.+9+in+E-flat.mp3"), img: open("http://e.snmc.io/lk/f/l/bd44ae8f49bc5fef0905a6d982851017/4040776.jpg"))

@@ -4,7 +4,7 @@ class Song < ActiveRecord::Base
 
   before_validation :extract_metadata
 
-  validates :title, :user_id, presence: true
+  validates :title, :user_id, :audio, :img, presence: true
 
   has_attached_file :audio
   validates_attachment_content_type :audio, :content_type => [

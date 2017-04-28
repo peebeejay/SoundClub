@@ -7,7 +7,7 @@ Rails.application.routes.draw do
    resources :follows, only: [:create, :destroy]
    get '/songs/stream/:id', to: 'songs#stream'
    get '/songs/discover', to: 'songs#discover'
-   resources :songs, only: [:index, :create, :show]
+   resources :songs, only: [:index, :create, :show, :destroy]
    resources :comments, only: [:create, :destroy]
  end
 end

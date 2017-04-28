@@ -43,16 +43,9 @@ class SongDetails extends React.Component {
             <div className="plays-count"></div>
           </div>
         </div>
-
-
         <div className="song-details-image-container">
-          <Link to={`songs/${this.props.song.id}`}>
             <img className="song-details-image" src={this.props.song.img} />
-          </Link>
-
         </div>
-
-
       </div>
     )
   }

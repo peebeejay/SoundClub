@@ -116,13 +116,13 @@ class Upload extends React.Component {
                       {image}
                       <div className="upload-select-img">
                         <i className="fa fa-camera" />
-                        <span>&nbsp;Upload Image</span>
+                        <span>&nbsp;Upload Image*</span>
                       </div>
                       <input className="hidden" type="file" onChange={ this.uploadImage } />
                     </label>
 
                     <div className="flex-column form-container">
-                      <label> Title </label>
+                      <label> Title* </label>
                       <input id="title"
                         type="text"
                         name="title"
