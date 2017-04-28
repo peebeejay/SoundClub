@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id
 
+
   has_many :followees,
     class_name: 'Follow',
     primary_key: :id,
@@ -39,6 +40,16 @@ class User < ActiveRecord::Base
   has_many :followers,
     through: :followings,
     source: :follower
+
+  # Likes Associations
+  has_many :likings,
+    class_name: 'Like',
+    primary_key: :id,
+    foreign_key: :user_id
+
+  has_many :likes,
+    through: :likings,
+    source: :song
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

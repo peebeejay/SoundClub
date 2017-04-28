@@ -6,8 +6,6 @@ export const createFollow = (follow) => {
   });
 };
 
-
-//TODO: NEED TO DO MAD WORK ON THIS ONE.
 export const removeFollow = (id) => {
   return $.ajax({
     method: "DELETE",

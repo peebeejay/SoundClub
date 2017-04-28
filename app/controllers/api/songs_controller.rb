@@ -1,13 +1,19 @@
 class Api::SongsController < ApplicationController
   def index
-    @songs = Song.includes(:artist, :comments).all
+    @songs = Song.includes(:artist, :comments, :likings).all
     render :index
   end
 
   def discover
-    @songs = Song.includes(:artist, :comments).order("RANDOM()").limit(8)
+    @songs = Song.includes(:artist, :comments, :likings).order("RANDOM()").limit(8)
 
     p @songs.map { |song| song.title }
+    render "api/songs/index"
+  end
+
+  def user_songs
+    # debugger
+    @songs = Song.includes(:artist, :comments, :likings).where(user_id: params[:user_id])
     render "api/songs/index"
   end
 
@@ -18,7 +24,7 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.includes(:comments, :commenters).find(params[:id])
+    @song = Song.includes(:comments, :commenters, :likings).find(params[:id])
     if @song
       render "api/songs/show"
     else

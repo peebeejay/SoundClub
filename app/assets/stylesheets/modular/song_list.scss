@@ -89,7 +89,21 @@
       text-align: right;
       justify-content: flex-end;
 
-      .comments-count, a, i {
+      .likes-count-container {
+        display: flex;
+        font: inherit;
+        font-size: 11px;
+        // margin-top: 1px;
+        margin-right: 10px;
+      }
+
+      .actual-likes-count {
+        color: #999;
+        font: 100 11px/1.5  'Open Sans', sans-serif;
+      }
+
+
+      .comments-count, .comments-count a, .comments-count i {
         color: #999;
         font-size: 11px;
         text-decoration: none;

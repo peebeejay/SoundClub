@@ -1,0 +1,28 @@
+.like-button-inner-container {
+
+  .like-button-discover-list {
+    border: 0;
+    background: 0 0;
+    color: lightgray;
+    cursor: pointer;
+    padding: 0;
+    font-size: 11px;
+    margin-top: 2.5px;
+    &:hover {
+      color: #f99;
+    }
+  }
+
+  .like-button-liked-discover-list {
+    border: 0;
+    background: 0 0;
+    color: #f33;
+    cursor: pointer;
+    padding: 0;
+    font-size: 11px;
+    margin-top: 2.5px;
+    &:hover {
+      color: #f99;
+    }
+  }
+}

@@ -31,6 +31,12 @@ export const fetchSongs = () => dispatch => {
   ) ;
 };
 
+export const fetchSongsByUser = (user_id) => dispatch => {
+  return SongAPIUtil.fetchSongsByUser(user_id).then(
+    (songs) => dispatch(receiveSongs(songs))
+  );
+};
+
 export const fetchSong = (id) => dispatch => {
   return SongAPIUtil.fetchSong(id).then(
     (song) => dispatch(receiveSong(song))
