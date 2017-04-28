@@ -22,7 +22,7 @@ class Discover extends React.Component {
         </div>
         <div className={"content-right-wrapper"}>
           <div className={"content-right"}>
-            Right Content
+            
           </div>
         </div>
       </Main>

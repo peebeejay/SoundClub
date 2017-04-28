@@ -16,12 +16,10 @@ class DiscoverSongList extends React.Component {
     this.state.receivedSongs = false;
     this.props.removeSongs();
 
-    // debugger
     window.setTimeout(() => {
       this.props.discoverSongs().then(() => {
         let x = that;
         this.setState({ receivedSongs: true })
-        // debugger
       });
       console.log("done");
     }, 800);
@@ -47,13 +45,6 @@ class DiscoverSongList extends React.Component {
     );
   }
 }
-
-// <ul className="discover-song-list-row">
-//   <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[8]}/> : <DiscoverSongBlank /> }</li>
-//   <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[9]}/> : <DiscoverSongBlank /> }</li>
-//   <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[10]}/> : <DiscoverSongBlank /> }</li>
-//   <li className={"discover-item"}>{ recievedSongs ? <DiscoverSongListItem song={this.props.songs[11]}/> : <DiscoverSongBlank /> }</li>
-// </ul>
 
 const mapStateToProps = (state, ownProps) => {
   return({
