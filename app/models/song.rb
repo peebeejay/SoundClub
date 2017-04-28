@@ -21,6 +21,8 @@ class Song < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :user_id
 
+
+  # Comments Associations
   has_many :comments,
     class_name: 'Comment',
     primary_key: :id,
@@ -28,6 +30,17 @@ class Song < ActiveRecord::Base
 
   has_many :commenters,
     through: :comments,
+    source: :user
+
+
+  # Likes Associations
+  has_many :likings,
+    class_name: 'Like',
+    primary_key: :id,
+    foreign_key: :song_id
+
+  has_many :likes,
+    through: :likings,
     source: :user
 
 

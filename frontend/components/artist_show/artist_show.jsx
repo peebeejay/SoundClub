@@ -7,6 +7,7 @@ import FooterContainer from '../main_components/footer/footer_container.jsx';
 import SongList from '../modular/song_list.jsx';
 import FollowButton from '../modular/follow_button.jsx';
 import { fetchUser, removeUser } from '../../actions/user_actions.js';
+import { removeSongs, fetchSongsByUser } from '../../actions/song_actions.js';
 
 class ArtistShow extends React.Component {
   constructor(props) {
@@ -15,10 +16,18 @@ class ArtistShow extends React.Component {
 
   componentWillUnmount() {
     this.props.removeUser();
+    this.props.removeSongs();
+  }
+
+  componentWillMount() {
+    this.props.removeSongs();
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.params.id);
+    // let _user_id = this.props.params.id;
+    this.props.fetchUser(this.props.params.id).then(
+      () => this.props.fetchSongsByUser(this.props.params.id)
+    )
   }
 
   componentWillReceiveProps(newProps) {
@@ -65,7 +74,7 @@ class ArtistShow extends React.Component {
               </div>
 
               <div className="song-list">
-                { _user.songs && <SongList songs={_user.songs} /> }
+                { this.props.songs && <SongList songs={ this.props.songs } /> }
               </div>
 
           </div>
@@ -78,6 +87,9 @@ class ArtistShow extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return({
+    songs: Object.keys(state.songs).map((id) => {
+      return state.songs[id];
+    }),
     user: state.user,
     currentUser: state.session.currentUser
   });
@@ -86,7 +98,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return({
     fetchUser: (id) => dispatch(fetchUser(id)),
-    removeUser: () => dispatch(removeUser())
+    removeUser: () => dispatch(removeUser()),
+    removeSongs: () => dispatch(removeSongs()),
+    fetchSongsByUser: (user_id) => dispatch(fetchSongsByUser(user_id))
   });
 };
 

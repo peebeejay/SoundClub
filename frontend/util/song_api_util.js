@@ -12,6 +12,13 @@ export const fetchSongs = () => {
   });
 };
 
+export const fetchSongsByUser = (user_id) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/songs/user/${user_id}`
+  });
+};
+
 export const discoverSongs = () => {
   return $.ajax({
     method: "GET",

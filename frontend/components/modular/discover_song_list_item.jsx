@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import PlayButton from './play_button.jsx';
+import LikeButton from './like_button.jsx';
+
 
 class DiscoverSongListItem extends React.Component {
   constructor(props) {
@@ -23,15 +25,12 @@ class DiscoverSongListItem extends React.Component {
         </div>
         <div className="discover-item-title"><Link to={`songs/${this.props.song.id}`}>{this.props.song.title}</Link></div>
         <div className="discover-item-artist"><Link to={`artists/${this.props.song.artist.id}`}>{this.props.song.artist.username}</Link></div>
-
-
+        <LikeButton song={ this.props.song }
+                    type={ "discover-list" }/>
 
       </figure>
     );
   }
 }
-// <a className="round-button">
-//   <i className="fa fa-play fa-2x"></i>
-// </a>
 
 export default DiscoverSongListItem;

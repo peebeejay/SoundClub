@@ -12,6 +12,7 @@ const SongReducer = (state = {}, action) => {
       return merge({}, action.songs);
 
     case RECEIVE_SONG:
+      // debugger
       newState[action.song.id] = action.song;
       return newState;
 

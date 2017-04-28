@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import PlayButton from './play_button.jsx';
+import LikeButton from './like_button.jsx';
 import { FormattedRelative } from 'react-intl';
 
 class SongListItem extends React.Component {
@@ -9,9 +10,6 @@ class SongListItem extends React.Component {
   }
 
   render() {
-    // debugger
-
-
     return(
       <div className="song-list-item-container">
         <div className="song-list-image-container">
@@ -48,7 +46,15 @@ class SongListItem extends React.Component {
           </div>
           <div className="waveform"></div>
           <div className="comments-likes flex-row">
-            <div className="likes-count"></div>
+            <div className="likes-count">
+              <div className="likes-count-container">
+                <LikeButton song={ this.props.song }
+                  type={ "discover-list" }/>
+                <div className="actual-likes-count">&nbsp;&nbsp;{ this.props.song.likes_count }</div>
+
+              </div>
+
+            </div>
             <div className="plays-count"></div>
             <div className="comments-count">
               <Link to={`songs/${this.props.song.id}` }>
