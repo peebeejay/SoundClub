@@ -13,7 +13,6 @@ class LoginForm extends React.Component {
     this.update = this.update.bind(this);
     this.submitCredentials = this.submitCredentials.bind(this);
     this.cancel = this.cancel.bind(this);
-    // this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   submitCredentials() {
@@ -24,15 +23,6 @@ class LoginForm extends React.Component {
         () => this.props.router.push('stream')
       );
     }
-
-  // handleKeyPress(e) {
-  //   e.preventDefault();
-  //   console.log(e);
-  //   console.log("In On KeyPress")
-  //   if (e.key === 'Enter') {
-  //     this.submitCredentials()();
-  //   }
-  // }
 
   cancel() {
     this.props.hideModal("loginForm");
@@ -50,7 +40,7 @@ class LoginForm extends React.Component {
       <div className="confirm-modal">
         { isShowing &&
           <div>
-            <div className="modal-backdrop"></div>
+            <div className="modal-backdrop" onClick={this.cancel} ></div>
             <div className="confirm-modal-content">
               <span className="confirm-modal-message">Login</span>
 

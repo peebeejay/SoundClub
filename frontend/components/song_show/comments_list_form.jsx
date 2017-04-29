@@ -8,7 +8,8 @@ class CommentsListForm extends React.Component {
     this.state = { body: "" }
   }
 
-  onSubmit() {
+  onSubmit(e) {
+    e.preventDefault();
     if (this.state.body.length > 0) {
       this.props.createComment({ song_id: this.props.song.id, body: this.state.body }).then(
         () => this.setState({ body: "" })
