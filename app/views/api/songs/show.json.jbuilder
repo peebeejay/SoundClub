@@ -1,7 +1,8 @@
 json.partial! "api/songs/song", song: @song
 
 json.comments do
-  comments = @song.comments.sort_by { |comment| comment.created_at }
+  # comments = @song.comments.sort_by { |comment| comment.created_at }
+  comments = @song.comments.order(created_at: :desc)
   json.array! comments do |comment|
     json.partial! "api/comments/comment", comment: comment
   end
