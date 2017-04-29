@@ -27,27 +27,26 @@ class LikeButton extends React.Component {
     }
   }
 
-
   render() {
     let _liked = this.props.song.likes;
     let _type = this.props.type;
-    // debugger
 
     return(
-      <div className="like-button-inner-container">
-        <button className={ _liked ? `like-button-liked-${ _type }` : `like-button-${ _type }`}
-                onClick={ this.handleClick }>
+      <div>
+        { (this.props.currentUser) && <div className="like-button-inner-container">
+          <button className={ _liked ? `like-button-liked-${ _type }` : `like-button-${ _type }`}
+                  onClick={ this.handleClick }>
 
-          <i className="fa fa-heart" />
-        </button>
+            <i className="fa fa-heart" />
+          </button>
+        </div> }
       </div>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  // songs: state.songs
-
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

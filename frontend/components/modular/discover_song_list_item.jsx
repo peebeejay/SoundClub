@@ -9,9 +9,6 @@ class DiscoverSongListItem extends React.Component {
     super(props);
   }
 
-// NOTE:
-// Eventually, the anchor link .round-button will be required to dispatch an action to play a respective song.
-
   render() {
     return (
       <figure className={"discover-item-img"}>
@@ -25,9 +22,9 @@ class DiscoverSongListItem extends React.Component {
         </div>
         <div className="discover-item-title"><Link to={`songs/${this.props.song.id}`}>{this.props.song.title}</Link></div>
         <div className="discover-item-artist"><Link to={`artists/${this.props.song.artist.id}`}>{this.props.song.artist.username}</Link></div>
-        <LikeButton song={ this.props.song }
+        { this.props.currentUser && <LikeButton song={ this.props.song }
                     type={ "discover-list" }/>
-
+        }
       </figure>
     );
   }

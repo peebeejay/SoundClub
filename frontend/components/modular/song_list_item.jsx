@@ -49,7 +49,7 @@ class SongListItem extends React.Component {
             <div className="likes-count">
               <div className="likes-count-container">
                 <LikeButton song={ this.props.song }
-                  type={ "discover-list" }/>
+                  type={ "song-list" }/>
                 <div className="actual-likes-count">&nbsp;&nbsp;{ this.props.song.likes_count }</div>
 
               </div>

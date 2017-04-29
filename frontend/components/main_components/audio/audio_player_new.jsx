@@ -20,7 +20,7 @@ class AudioPlayerNew extends React.Component {
       if ( this.music.currentTime !== this.state.playTime ) {
         let newWidth = this.music.currentTime / this.props.nowPlaying.song.duration * 100
         this.setState( {playTime: this.music.currentTime, width: newWidth });
-        // console.log(this.music.currentTime);
+        console.log(this.music.currentTime);
       }
     }, 200);
   }

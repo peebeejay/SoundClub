@@ -22,7 +22,8 @@ class Charts extends React.Component {
           <div className={"content-left"}>
             <LeftTabsNavigation />
             <div className="left-tab-header">Listen to the most popular tracks:</div>
-            <SongList songs={this.props.songs}/>
+            <SongList songs={this.props.songs}
+                      currentUser={ this.props.currentUser }/>
           </div>
         </div>
         <div className={"content-right-wrapper"}>
@@ -41,7 +42,8 @@ const mapStateToProps = (state, ownProps) => {
   return({
     songs: Object.keys(state.songs).map((id) => {
       return state.songs[id];
-    })
+    }),
+    currentUser: state.session.currentUser
   });
 };
 

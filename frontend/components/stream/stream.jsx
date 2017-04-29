@@ -12,10 +12,6 @@ class Stream extends React.Component {
     this.state = { receivedResponse: false }
   }
 
-  // componentWillMount() {
-  //   this.props.removeSongs();
-  // }
-
   componentDidMount() {
     this.props.streamSongs(this.props.currentUser.id).then(
       () => this.setState({ receivedResponse: true })
@@ -33,7 +29,8 @@ class Stream extends React.Component {
             <LeftTabsNavigation />
             <div className="left-tab-header">Hear the latest songs from the people you follow:</div>
             { _noFollows && compelFollow }
-            <SongList songs={this.props.songs}/>
+            <SongList songs={this.props.songs}
+                      currentUser={ this.props.currentUser }/>
           </div>
         </div>
         <div className={"content-right-wrapper"}>

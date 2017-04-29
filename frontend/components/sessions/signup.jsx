@@ -14,33 +14,10 @@ class Signup extends React.Component {
                    password: '', disableSubmit: false
                  }
 
-  // this.processAudioFile = this.processAudioFile.bind(this);
   this.uploadImage = this.uploadImage.bind(this);
   this._update = this._update.bind(this);
   this._submit = this._submit.bind(this);
   }
-
-  // processAudioFile(e) {
-  //   e.preventDefault();
-  //   // debugger;
-  //   // console.log("processing audio file??");
-  //   let file = e.currentTarget.files[0];
-  //   let fileReader = new FileReader();
-  //
-  //   fileReader.onloadstart = () => {
-  //     this.setState({ showForm: true })
-  //   }
-  //
-  //   fileReader.onloadend = () => {
-  //     this.setState({
-  //       audioFile: file,
-  //       audioUrl: fileReader.result
-  //     })
-  //   }
-  //
-  //   if (file)
-  //     fileReader.readAsDataURL(file);
-  // }
 
   uploadImage(e) {
     e.preventDefault();

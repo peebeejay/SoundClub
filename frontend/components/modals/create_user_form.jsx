@@ -41,7 +41,7 @@ class CreateUserForm extends React.Component {
       <div className="confirm-modal">
         { isShowing &&
           <div>
-            <div className="modal-backdrop"></div>
+            <div className="modal-backdrop" onClick={ this.cancel } ></div>
             <div className="confirm-modal-content">
               <span className="confirm-modal-message">Create account</span>
 
@@ -74,7 +74,7 @@ class CreateUserForm extends React.Component {
               </label>
 
               <div className="buttons-container">
-                <button className="cancel" onClick={() => this.cancel()}>Cancel</button>
+                <button className="cancel" onClick={ this.cancel }>Cancel</button>
                 <button className="submit" onClick={this.submitCredentials()}>Submit</button>
               </div>
             </div>
