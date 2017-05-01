@@ -10,16 +10,16 @@ class LikeButton extends React.Component {
   }
 
   handleClick() {
-    console.log("handling click");
+    // console.log("handling click");
     if ( this.props.song.likes ) {
-      console.log("handle removing like");
+      // console.log("handle removing like");
       this.props.removeLike(this.props.song.id).then(
         () => this.setState({disabled: true }));
       this.setState({ disabled: false})
     }
 
     else if ( !this.props.song.likes ) {
-      console.log("adding a like");
+      // console.log("adding a like");
       this.props.createLike(this.props.song.id).then(
         () => this.setState({ disabled: false}));
       this.setState({ disabled: true })

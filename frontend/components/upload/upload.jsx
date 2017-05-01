@@ -44,7 +44,7 @@ class Upload extends React.Component {
     let fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-      console.log("image load end");
+      // console.log("image load end");
       this.setState({
         imageFile:file,
         imageUrl: fileReader.result
@@ -80,7 +80,7 @@ class Upload extends React.Component {
     let image
     if (this.state.imageUrl) {
       image = <img className="upload-img-preview" src={this.state.imageUrl} />
-      console.log("rendering image object");
+      // console.log("rendering image object");
     } else {
       image = <img className="upload-img-preview" />
     }
