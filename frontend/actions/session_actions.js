@@ -24,7 +24,6 @@ export const signUp = (user) => dispatch => {
 };
 
 export const signUpForm = (user) => dispatch => {
-  // debugger
   return APIUtil.signUpForm(user).then(
     (user) => dispatch(receiveCurrentUser(user)),
     (err)  => dispatch(receiveErrors(err)));

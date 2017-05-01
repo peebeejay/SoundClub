@@ -6,7 +6,7 @@ import PlayButton from '../../modular/play_button.jsx';
 import NextButton from './buttons/next_button';
 import VolumeButton from './buttons/volume_button';
 
-class AudioPlayerNew extends React.Component {
+class AudioPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.togglePlay = this.togglePlay.bind(this);
@@ -35,13 +35,11 @@ class AudioPlayerNew extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) { // POST-RENDER
-
     // If current nowPlaying song === previous nowPlaying song
     if (this.props.nowPlaying.song.id !== prevProps.nowPlaying.song.id) {
       this.updatePlayTime();
     }
   }
-
 
   togglePlay(newProps) {
     let props = newProps ? newProps : this.props;
@@ -53,7 +51,6 @@ class AudioPlayerNew extends React.Component {
       this.music.pause();
       clearInterval(this.interval);
     }
-
   }
 
   _printTime(duration) {
@@ -63,7 +60,6 @@ class AudioPlayerNew extends React.Component {
     if (secs < 10)
       secs = `0${secs}`;
 
-    // debugger
     return (
       `${mins}:${secs}`
     )
@@ -71,12 +67,10 @@ class AudioPlayerNew extends React.Component {
 
   render() {
     let _song;
-    if (Object.keys(this.props.nowPlaying.song).length > 0) {
+    if (Object.keys(this.props.nowPlaying.song).length > 0)
       _song = this.props.nowPlaying.song;
-    }
 
     return(
-
       <div className={ _song ? "ap" : "ap hidden" } id="ap">
           <div className="ap__inner">
 
@@ -85,7 +79,6 @@ class AudioPlayerNew extends React.Component {
               <PlayButton type={"player"} />
               <NextButton />
             </div>
-
 
             <div className="ap__item ap__item--track">
               <div className="track-now-playing-custom">
@@ -105,7 +98,6 @@ class AudioPlayerNew extends React.Component {
                 { _song && <span className="track__time--duration">{ this._printTime(this.props.nowPlaying.song.duration) }</span> }
               </div>
             </div>
-
 
             <div className="ap__item ap__item--settings">
               <div className="ap__controls volume-container">
@@ -129,8 +121,6 @@ class AudioPlayerNew extends React.Component {
               </div>
 
             </div>
-
-
           </div>
           { _song ?
             <audio autoPlay="true" ref={(music) => { this.music = music; }} src={this.props.nowPlaying.song.audio} /> :
@@ -156,4 +146,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(AudioPlayerNew));
+)(withRouter(AudioPlayer));

@@ -18,7 +18,7 @@ class LeftTabsNavigation extends React.Component {
     } else if (this.props.location.pathname === '/charts') {
       chartsActive = true;
     }
-    // debugger
+    
     return(
       <div className="left-tabs-nav">
         <ul className="left-tabs-list">
@@ -28,7 +28,6 @@ class LeftTabsNavigation extends React.Component {
         </ul>
       </div>
     );
-
   }
 }
 

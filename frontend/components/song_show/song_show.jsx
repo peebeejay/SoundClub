@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 import { fetchSong, removeSongs, deleteSong } from '../../actions/song_actions.js';
 import { createComment, removeComment } from '../../actions/comment_actions.js';
 import Navbar from '../main_components/navbar/navbar.jsx';
-import FooterContainer from '../main_components/footer/footer_container.jsx';
+import Footer from '../main_components/footer/footer.jsx';
 import SongDetails from './song_details.jsx';
 import CommentsList from './comments_list.jsx';
 import DeleteSongButton from './delete_song_button.jsx';
@@ -40,7 +40,6 @@ class SongShow extends React.Component {
     if (Object.keys(this.props.songs).includes(this.props.params.id))
       _song = this.props.songs[this.props.params.id];
 
-
     return(
       <div className="main">
         { (this.props.router.location.pathname !== '/') && <Navbar /> }
@@ -66,10 +65,9 @@ class SongShow extends React.Component {
                               deleteSong={ this.props.deleteSong }
                               router={ this.props.router }/>
             }
-
           </div>
         </div>
-        <FooterContainer />
+        <Footer />
       </div>
     );
   }

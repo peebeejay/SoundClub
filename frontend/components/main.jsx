@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './main_components/navbar/navbar.jsx';
-import FooterContainer from './main_components/footer/footer_container.jsx';
+import Footer from './main_components/footer/footer.jsx';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
@@ -19,7 +19,7 @@ class Main extends React.Component {
             { children }
           </div>
         </div>
-        <FooterContainer />
+        <Footer />
       </div>
     );
   }

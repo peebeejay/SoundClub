@@ -3,11 +3,11 @@ import { Link, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { logout, login } from "../../../actions/session_actions";
 import { showModal, hideModal, toggleModal } from '../../../actions/modal_actions';
+import SearchBar from '../../modular/search_bar.jsx';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   loginGuest() {
@@ -33,7 +33,6 @@ class Navbar extends React.Component {
       if (this.props.location.pathname === '/discover')
         discoverActive = true;
 
-
       return(
         <section className="navbar">
           <header className="navbar-content">
@@ -42,7 +41,9 @@ class Navbar extends React.Component {
               <li><Link className={discoverActive ? "active nav-home" : "nav-home"} activeClassName="active" to={"/stream"}>Home</Link></li>
               <li><Link className="nav-charts" activeClassName="active" to={"/charts"}>Charts</Link></li>
             </ul>
+            <SearchBar />
             <ul>
+              <li><Link></Link></li>
               <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>
               <li className="navbar-username"><Link to={`/artists/${this.props.currentUser.id}`}>{this.props.currentUser.username}</Link></li>
               <li><button className="nav-signout-button" onClick={this.logout()}> Sign Out</button></li>

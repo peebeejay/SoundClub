@@ -8,7 +8,6 @@ import { login } from './actions/session_actions';
 import { showModal, hideModal } from './actions/modal_actions';
 import { fetchSong, fetchSongs, discoverSongs, createSong, removeSong, removeSongs } from './actions/song_actions';
 import { fetchUser } from './actions/user_actions';
-// import { fromNow, moment } from 'moment';
 // END REMOVE IN PRODUCTION
 
 document.addEventListener('DOMContentLoaded', () => {

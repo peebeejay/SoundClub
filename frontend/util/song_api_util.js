@@ -40,7 +40,6 @@ export const deleteSong = (id) => {
   });
 };
 
-// May have to change in the future
 export const createSong = (formData) => {
   return $.ajax({
     method: "POST",

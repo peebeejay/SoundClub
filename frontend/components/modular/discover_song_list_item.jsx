@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import PlayButton from './play_button.jsx';
 import LikeButton from './like_button.jsx';
 
-
 class DiscoverSongListItem extends React.Component {
   constructor(props) {
     super(props);

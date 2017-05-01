@@ -35,7 +35,6 @@ class FollowButton extends React.Component {
 
     // True if currentUser IS a follower ; false if currentUser IS NOT a follower
     let _currentUserFollows = false;
-    // debugger;
     if (this.props.currentUser.followees &&
         Object.keys(this.props.currentUser.followees).includes(this.props.artistId.toString())) {
           _currentUserFollows = true;

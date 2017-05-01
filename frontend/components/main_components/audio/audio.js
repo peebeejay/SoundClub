@@ -4,7 +4,6 @@
 
 var AudioPlayer = (function() {
 
-  // Player vars!
   var
   docTitle = document.title,
   player   = document.getElementById('ap'),
