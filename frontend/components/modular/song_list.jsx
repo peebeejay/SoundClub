@@ -9,8 +9,6 @@ class SongList extends React.Component {
   render() {
     let song_items;
     if (this.props.songs) {
-      // debugger
-
       song_items = this.props.songs.map((song) => {
         return (<SongListItem key={song.id} song={song} />);
       });
@@ -19,7 +17,6 @@ class SongList extends React.Component {
     }
 
     return(
-
       <div>
         {song_items}
       </div>

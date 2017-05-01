@@ -12,7 +12,6 @@ class SongDetails extends React.Component {
     return(
       <div className="song-details-item-container">
 
-
         <div className="music-content">
           <div className="play-info">
             <div className="play-button-container">

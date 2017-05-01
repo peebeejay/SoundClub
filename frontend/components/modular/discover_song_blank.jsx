@@ -18,5 +18,3 @@ class DiscoverSongBlank extends React.Component {
 }
 
 export default DiscoverSongBlank;
-
-//background: transparent image-url("")

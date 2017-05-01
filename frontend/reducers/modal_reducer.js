@@ -9,7 +9,7 @@ const _initialModalStates = {
 const ModalReducer = (state = _initialModalStates, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
-  // debugger
+
   switch(action.type) {
     case SHOW_MODAL:
       if (noFormsCurrentlyOpen(newState, action.modal_name))

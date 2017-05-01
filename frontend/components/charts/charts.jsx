@@ -36,7 +36,6 @@ class Charts extends React.Component {
   }
 }
 
-
 // Eventually need functions that will check plays and rank accordingly.
 const mapStateToProps = (state, ownProps) => {
   return({

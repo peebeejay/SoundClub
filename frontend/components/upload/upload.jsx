@@ -20,8 +20,6 @@ class Upload extends React.Component {
 
   processAudioFile(e) {
     e.preventDefault();
-    // debugger;
-    // console.log("processing audio file??");
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
 
@@ -42,7 +40,6 @@ class Upload extends React.Component {
 
   uploadImage(e) {
     e.preventDefault();
-
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
 

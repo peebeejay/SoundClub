@@ -8,11 +8,9 @@ const SongReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_SONGS:
-      // MAY HAVE TO ADD RECEIVED SONGS TO LIST OF EXISTING SONGS
       return merge({}, action.songs);
 
     case RECEIVE_SONG:
-      // debugger
       newState[action.song.id] = action.song;
       return newState;
 

@@ -3,7 +3,7 @@ import Main from '../main.jsx';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
 import Navbar from '../main_components/navbar/navbar.jsx';
-import FooterContainer from '../main_components/footer/footer_container.jsx';
+import Footer from '../main_components/footer/footer.jsx';
 import SongList from '../modular/song_list.jsx';
 import FollowButton from '../modular/follow_button.jsx';
 import { fetchUser, removeUser } from '../../actions/user_actions.js';
@@ -24,7 +24,6 @@ class ArtistShow extends React.Component {
   }
 
   componentDidMount() {
-    // let _user_id = this.props.params.id;
     this.props.fetchUser(this.props.params.id).then(
       () => this.props.fetchSongsByUser(this.props.params.id)
     )
@@ -39,10 +38,9 @@ class ArtistShow extends React.Component {
   render() {
     let _user = {};
     let _img;
-    if (Object.keys(this.props.user).length > 0) {
+    if (Object.keys(this.props.user).length > 0)
       _user = this.props.user;
-    }
-    // debugger
+
     return(
       <div className="main">
         { (this.props.router.location.pathname !== '/') && <Navbar /> }
@@ -63,7 +61,6 @@ class ArtistShow extends React.Component {
                 </div>
               </div>
 
-
               <div className="left-tabs-nav flex-row">
                 <ul className="left-tabs-list">
                   <li className="active-li"><Link activeClassName="active" >Songs</Link></li>
@@ -79,7 +76,7 @@ class ArtistShow extends React.Component {
 
           </div>
         </div>
-        <FooterContainer />
+        <Footer />
       </div>
     );
   }

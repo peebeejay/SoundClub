@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { toggleModal } from '../../actions/modal_actions';
 import { login } from '../../actions/session_actions';
 import DiscoverSongList from '../modular/discover_song_list';
-// import Explore from './explore.jsx';
 
 class Splash extends React.Component {
   constructor(props) {
