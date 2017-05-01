@@ -21,7 +21,6 @@ class DiscoverSongList extends React.Component {
         let x = that;
         this.setState({ receivedSongs: true })
       });
-      console.log("done");
     }, 800);
   }
 
