@@ -296,34 +296,37 @@ $plZ: 77777;
     filter: drop-shadow(0 0 3px rgba($iconColorActive, .4));
   }
 }
-@media(max-width:1024px) {
-  .ap__item > .ap__controls {
-    flex: 1;
-  }
-}
-@media(max-width:580px) {
-  .ap {
-    min-width: 250px;
-  }
-  .ap, .ap__inner {
-    height: auto;
-  }
-  .ap__inner {
-    flex-wrap: wrap;
-  }
-  .ap__item--track {
-    margin-bottom: 10px;
-    padding: 0 20px;
 
-    order: 1;
-    flex: 1 1 100%;
-  }
-  .ap__item--playback,
-  .ap__item--settings {
-    flex: 1 1 50%;
-    order: 2;
-  }
-}
+
+
+// @media(max-width:1024px) {
+//   .ap__item > .ap__controls {
+//     flex: 1;
+//   }
+// }
+// @media(max-width:580px) {
+//   .ap {
+//     min-width: 250px;
+//   }
+//   .ap, .ap__inner {
+//     height: auto;
+//   }
+//   .ap__inner {
+//     flex-wrap: wrap;
+//   }
+//   .ap__item--track {
+//     margin-bottom: 10px;
+//     padding: 0 20px;
+//
+//     order: 1;
+//     flex: 1 1 100%;
+//   }
+//   .ap__item--playback,
+//   .ap__item--settings {
+//     flex: 1 1 50%;
+//     order: 2;
+//   }
+// }
 /*-----------------------
     Playlist Player - PL
 ------------------------*/
