@@ -10,20 +10,24 @@ class DiscoverSongListItem extends React.Component {
 
   render() {
     return (
-      <figure className={"discover-item-img"}>
+      <figure className={`discover-item-img ${ this.props.type } `}>
         <div className="discover-img-container">
-          <img src={`http:${this.props.song.img}`} />
+          <img src={`http:${this.props.song.img}`} className={ this.props.type }/>
+
+          <div className="discover-img-container-like">
+            { this.props.currentUser &&
+              <LikeButton song={ this.props.song }
+                type={ "discover-list" }/>
+            }
+          </div>
+
           <div className="discover-img-container-middle">
             <PlayButton song={this.props.song} type={"discover-list"} />
-
 
           </div>
         </div>
         <div className="discover-item-title"><Link to={`songs/${this.props.song.id}`}>{this.props.song.title}</Link></div>
         <div className="discover-item-artist"><Link to={`artists/${this.props.song.artist.id}`}>{this.props.song.artist.username}</Link></div>
-        { this.props.currentUser && <LikeButton song={ this.props.song }
-                    type={ "discover-list" }/>
-        }
       </figure>
     );
   }

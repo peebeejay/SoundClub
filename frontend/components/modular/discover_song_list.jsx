@@ -25,20 +25,39 @@ class DiscoverSongList extends React.Component {
   }
 
   render() {
+    const top_row = [0, 1, 2, 3].map((el) => {
+      return(
+        <li className={"discover-item"}>
+          { this.state.receivedSongs ?
+            <DiscoverSongListItem song={this.props.songs[el]}
+                                  currentUser={ this.props.currentUser }
+                                  type={ this.props.type } /> :
+            <DiscoverSongBlank type={ this.props.type }/> }
+        </li>
+      )
+    });
+
+    const bottom_row = [4, 5, 6, 7].map((el) => {
+      return(
+        <li className={"discover-item"}>
+          { this.state.receivedSongs ?
+            <DiscoverSongListItem song={this.props.songs[el]}
+                                  currentUser={ this.props.currentUser }
+                                  type={ this.props.type } /> :
+            <DiscoverSongBlank type={ this.props.type }/> }
+        </li>
+      )
+    });
+
+
     return(
       <div className="discover-song-list">
         <ul className="discover-song-list-row">
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[0]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[1]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[2]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[3]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
+          { top_row }
         </ul>
 
         <ul className="discover-song-list-row">
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[4]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[5]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[6]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
-          <li className={"discover-item"}>{ this.state.receivedSongs ? <DiscoverSongListItem song={this.props.songs[7]} currentUser={ this.props.currentUser }/> : <DiscoverSongBlank /> }</li>
+          { bottom_row }
         </ul>
       </div>
     );
