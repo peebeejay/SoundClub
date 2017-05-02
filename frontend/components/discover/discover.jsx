@@ -17,12 +17,12 @@ class Discover extends React.Component {
           <div className={"content-left"}>
             <LeftTabsNavigation />
             <div className="left-tab-header">Suggested tracks curated just for you:</div>
-            <DiscoverSongList />
+            <DiscoverSongList type={ "discover" }/>
           </div>
         </div>
         <div className={"content-right-wrapper"}>
           <div className={"content-right"}>
-            
+
           </div>
         </div>
       </Main>

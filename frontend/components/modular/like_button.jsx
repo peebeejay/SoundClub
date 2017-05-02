@@ -10,18 +10,15 @@ class LikeButton extends React.Component {
   }
 
   handleClick() {
-    // console.log("handling click");
     if ( this.props.song.likes ) {
-      // console.log("handle removing like");
       this.props.removeLike(this.props.song.id).then(
-        () => this.setState({disabled: true }));
-      this.setState({ disabled: false})
+        () => this.setState({disabled: false }));
+      this.setState({ disabled: true})
     }
 
     else if ( !this.props.song.likes ) {
-      // console.log("adding a like");
       this.props.createLike(this.props.song.id).then(
-        () => this.setState({ disabled: false}));
+        () => this.setState({ disabled: false }));
       this.setState({ disabled: true })
 
     }
@@ -35,6 +32,7 @@ class LikeButton extends React.Component {
       <div>
         { (this.props.currentUser) && <div className="like-button-inner-container">
           <button className={ _liked ? `like-button-liked-${ _type }` : `like-button-${ _type }`}
+                  disabled={ this.state.disabled }
                   onClick={ this.handleClick }>
 
             <i className="fa fa-heart" />

@@ -1,9 +1,9 @@
 .discover-song-list-row {
   display: flex;
   margin: 0px auto 60px;
+  justify-content: center;
 
   .discover-img-container {
-    // margin-right: 20px;
     position: relative;
   }
 
@@ -11,9 +11,14 @@
     width: 173px;
     margin-right: 20px;
   }
+
   .discover-item-img img{
     height: 173px;
     width: 173px;
+  }
+
+  .discover-item-img.splash {
+    margin: 0 30px;
   }
 
   .discover-img-container-middle {
@@ -26,8 +31,11 @@
     -ms-transform: translate(-50%, -50%);
   }
 
-  .discover-img-container:hover .discover-img-container-middle {
-    opacity: 1;
+  .discover-img-container-like {
+    position: absolute;
+    top: 82%;
+    left: 84%;
+
   }
 
   .discover-item-img-empty > img {
@@ -36,6 +44,19 @@
     width: 173px;
     background: #f2f2f2;
     border: 0;
+  }
+
+  .discover-item-img-empty > img.splash {
+    margin: 0 30px;
+    height: 173px;
+    width: 173px;
+    background: #f2f2f2;
+    border: 0;
+  }
+
+
+  .discover-img-container:hover .discover-img-container-middle {
+    opacity: 1;
   }
 
   .discover-item-title > a {

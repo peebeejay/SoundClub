@@ -46,8 +46,8 @@ class Splash extends React.Component {
           </header>
 
           <h2>Explore What's Trending</h2>
-            <div className={"splash-discover"}>
-              <DiscoverSongList />
+            <div className={ "splash-discover" }>
+              <DiscoverSongList type={ "splash" } />
             </div>
         </div>
       </div>

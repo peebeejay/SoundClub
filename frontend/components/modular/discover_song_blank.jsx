@@ -9,7 +9,7 @@ class DiscoverSongBlank extends React.Component {
   render() {
     return (
       <figure className={"discover-item-img-empty"}>
-        <img />
+        <img className= { this.props.type }/>
         <div className="discover-item-title blank">{"| "}</div>
         <div className="discover-item-artist blank">{"| "}</div>
       </figure>
