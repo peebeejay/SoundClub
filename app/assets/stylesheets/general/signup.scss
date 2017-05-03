@@ -4,7 +4,109 @@
   padding: 110px 50px 80px;
   margin: 0 auto;
   width: 70%;
+<<<<<<< HEAD
 }
+=======
+
+  .signup {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .signup-header {
+    font: 100 22px/1.5  'Open Sans', sans-serif;
+    letter-spacing: 1.5px;
+    margin: 0 auto;
+    padding: 35px 0 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  // Upload Form Phase 2 CSS
+  .signup-img-preview {
+    width: 133px;
+    height: 133px;
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  .signup-select-img {
+    background-color: #ff5500;
+    border: 1px solid rgb(255, 85, 0);
+    border-radius: 3px;
+    // margin: 0 auto;
+    color: white;
+    padding: 4px 2px 4px 2px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  span, label {
+    font: 100 12px/1.5  'Open Sans', sans-serif;
+  }
+
+  .form-container {
+    padding: 0px 15px 15px;
+    margin-right: 15px;
+  }
+
+  .submit-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 60px 0 0 0;
+  }
+
+  button {
+    margin: 5px;
+    border-radius: 3px;
+    font: 100 13px/1.5  'Open Sans', sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+    padding: 2px 11px 2px 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  button.cancel {
+    border: 1px solid #6b6b6b;
+    background-color: transparent;
+    margin-right: 10px;
+    color: #6b6b6b;
+  }
+
+  button.cancel:hover {
+    border: 1px solid lightgray;
+  }
+
+  button.submit {
+    background-color: #ff5500;
+    border: 1px solid rgb(255, 85, 0);
+    color: white;
+  }
+
+  button.submit:hover {
+    background-color: #ec4d08;
+  }
+
+  button.disable {
+    background-color: lightgray !important;
+    transition: 1s ease !important;
+    border: 1px solid #6b6b6b;
+    color: white;
+  }
+
+  button.disable:hover {
+    background-color: lightgray !important;
+    transition: 1s ease !important;
+  }
+}
+
+>>>>>>> d5a6efa6be4955fc829de72853d9d74cb28335b0
   width: 70%;
 
   .signup {
@@ -96,7 +198,11 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+<<<<<<< HEAD
     margin: 20px 0 0 0;
+=======
+    margin: 60px 0 0 0;
+>>>>>>> d5a6efa6be4955fc829de72853d9d74cb28335b0
   }
 
   button {
@@ -142,3 +248,24 @@
     transition: 1s ease !important;
   }
 }
+<<<<<<< HEAD
+=======
+
+.display-block {
+  display: block;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-justify-end {
+  justify-content: flex-end;
+}
+>>>>>>> d5a6efa6be4955fc829de72853d9d74cb28335b0
