@@ -16,16 +16,19 @@ class CreateUserForm extends React.Component {
 
   submitCredentials() {
     return () => {
-      let stateCopy = merge({}, this.state);
-      this.state = { username: "", display_name: "", location: "", password: "" };
-      this.props.signUp(stateCopy).then(
-        () => this.props.hideModal("createUserForm")).then(
-        () => this.props.router.push('/stream')
-      );
+      if (this.state.username !== "" && this.state.display_name !== "" && this.state.password !== "") {
+        let stateCopy = merge({}, this.state);
+        // this.state = { username: "", display_name: "", location: "", password: "" };
+        this.props.signUp(stateCopy).then(
+          () => this.setState({ username: "", display_name: "", location: "", password: "" })).then(
+          () => this.props.hideModal("createUserForm")).then(
+          () => this.props.router.push('/stream'));
+      }
     };
   }
 
   cancel() {
+    this.state = { username: "", display_name: "", location: "", password: "" };
     this.props.hideModal("createUserForm");
   }
 
@@ -36,7 +39,14 @@ class CreateUserForm extends React.Component {
   }
 
   render() {
+    let _errors;
     let { isShowing } = this.props;
+    // debugger
+
+    if (this.props.errors && Object.keys(this.props.errors).length !== 0)
+      _errors = this.props.errors.responseJSON
+
+    // debugger
     return (
       <div className="confirm-modal">
         { isShowing &&
@@ -45,33 +55,44 @@ class CreateUserForm extends React.Component {
             <div className="confirm-modal-content">
               <span className="confirm-modal-message">Create account</span>
 
-            <label>Username*
-                <input className="confirm-modal-input"
-                       type="text"
-                       value={this.state.username}
-                       onChange={this.update('username')}/>
-              </label>
-
-              <label>Display Name*
+              <div className="modal-field">
+                <label>Username*
                   <input className="confirm-modal-input"
-                         type="text"
-                         value={this.state.display_name}
-                         onChange={this.update('display_name')}/>
-              </label>
+                    type="text"
+                    value={this.state.username}
+                    onChange={this.update('username')}/>
+                </label>
+                { (_errors && _errors.username) ? <div className="modal-error">Username has already been chosen</div>  : <div></div>}
+              </div>
 
-              <label>Location
+              <div className="modal-field">
+                <label>Display Name*
+                    <input className="confirm-modal-input"
+                           type="text"
+                           value={this.state.display_name}
+                           onChange={this.update('display_name')}/>
+                </label>
+                { (_errors && _errors.display_name) ? <div className="modal-error">Display Name can't be blank</div>  : <div></div>}
+              </div>
+
+              <div className="modal-field">
+                <label>Location
                   <input className="confirm-modal-input"
-                         type="text"
-                         value={this.state.location}
-                         onChange={this.update('location')}/>
-              </label>
+                    type="text"
+                    value={this.state.location}
+                    onChange={this.update('location')}/>
+                </label>
+              </div>
 
-              <label>Password*
-                <input className="confirm-modal-input"
-                       type="password"
-                       value={this.state.password}
-                       onChange={this.update('password')}/>
-              </label>
+              <div className="modal-field">
+                <label>Password*
+                  <input className="confirm-modal-input"
+                    type="password"
+                    value={this.state.password}
+                    onChange={this.update('password')}/>
+                </label>
+                { (_errors && _errors.password) ? <div className="modal-error">Password must be at least 6 characters</div>  : <div></div>}
+              </div>
 
               <div className="buttons-container">
                 <button className="cancel" onClick={ this.cancel }>Cancel</button>
@@ -87,7 +108,8 @@ class CreateUserForm extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return({
-    isShowing: state.modal.createUserForm
+    isShowing: state.modal.createUserForm,
+    errors: state.session.errors
   });
 };
 

@@ -3,8 +3,8 @@
 
   label, span {
     font: 100 14px/1.5  'Open Sans', sans-serif;
-
   }
+
   .modal-backdrop {
     position: fixed;
     left: 0;
@@ -38,14 +38,16 @@
 
   .confirm-modal-input {
     display: block;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 5px;
-    /* border: none; */
     outline: none;
     border: 1px solid gray;
     width: 90%;
-    margin-bottom: 10px;
     font: inherit;
+  }
+
+  .modal-field {
+    margin-top: 10px;
   }
 
   .name {
@@ -90,9 +92,10 @@
     }
   }
 
-
-
-
+  .modal-error {
+    color: red;
+    font-size: 11px;
+  }
 
 
 }

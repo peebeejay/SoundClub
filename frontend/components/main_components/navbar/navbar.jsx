@@ -45,7 +45,20 @@ class Navbar extends React.Component {
             <ul>
               <li><Link></Link></li>
               <li><Link to={"/upload"} activeClassName="active-upload">Upload</Link></li>
-              <li className="navbar-username"><Link to={`/artists/${this.props.currentUser.id}`}>{this.props.currentUser.username}</Link></li>
+              <li className="navbar-username">
+                <Link to={`/artists/${this.props.currentUser.id}`}>
+
+                  <div className="navbar-username-content">
+                    <div className="navbar-username-image">
+                      <img className="navbar-username-img" src={ this.props.currentUser.img }/>
+                    </div>
+                    <div className="navbar-username-name">
+                      <span>{this.props.currentUser.username}</span>
+                    </div>
+                  </div>
+                  
+                </Link>
+              </li>
               <li><button className="nav-signout-button" onClick={this.logout()}> Sign Out</button></li>
             </ul>
           </header>

@@ -2,7 +2,7 @@ import { RECEIVE_ERRORS, RECEIVE_CURRENT_USER} from '../actions/session_actions'
 
 const _nullUser = {
   currentUser: null,
-  errors: []
+  errors: {}
 };
 
 const SessionReducer = (state = _nullUser, action) => {
@@ -13,7 +13,7 @@ const SessionReducer = (state = _nullUser, action) => {
 
     case RECEIVE_ERRORS:
       return Object.assign({}, _nullUser, { errors: action.errors });
-      
+
     default:
       return state;
   }
