@@ -31,7 +31,8 @@ class DiscoverSongList extends React.Component {
           { this.state.receivedSongs ?
             <DiscoverSongListItem song={this.props.songs[el]}
                                   currentUser={ this.props.currentUser }
-                                  type={ this.props.type } /> :
+                                  type={ this.props.type }
+                                  key={ el }/> :
             <DiscoverSongBlank type={ this.props.type }/> }
         </li>
       )
@@ -43,7 +44,8 @@ class DiscoverSongList extends React.Component {
           { this.state.receivedSongs ?
             <DiscoverSongListItem song={this.props.songs[el]}
                                   currentUser={ this.props.currentUser }
-                                  type={ this.props.type } /> :
+                                  type={ this.props.type }
+                                  key={ el }/> :
             <DiscoverSongBlank type={ this.props.type }/> }
         </li>
       )

@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+const prod = process.argv.indexOf('-p') !== -1;
 
 module.exports = {
   context: __dirname,
@@ -22,5 +24,13 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-maps'
+  devtool: 'source-maps',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 };
