@@ -84,7 +84,7 @@ $plZ: 77777;
 }
 .ap__item {
   display: flex;
-  flex: 1;
+  // flex: 1;
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -105,7 +105,7 @@ $plZ: 77777;
 }
 // track bar
 .ap__item--track {
-  flex: 1 50%;
+  width: 65%;
   padding: 0 20px;
 }
 .track {
@@ -510,11 +510,13 @@ $plZ: 77777;
 }
 
 .ap__item--playback {
-  flex: 1 5%;
+  // flex: 1 5%;
+  width: 15%;
 }
 
-.ap_-item--info {
-  flex: 1 10%;
+.ap__item--info {
+  // flex: 1 10%;
+  width: 20%;
 }
 
 .audio-player-image  {
@@ -550,17 +552,23 @@ $plZ: 77777;
 }
 
 .audio-player-track-info {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   a {
     text-decoration: none;
     color: #666666;
     font: 100 11px/1.5  'Open Sans', sans-serif;
-    line-height: 16px;
-    overflow: hidden;
-    white-space: nowrap;
     cursor: pointer;
+    max-width: 100%;
   }
 
   a:hover {
     color: #000000;
   }
+}
+
+.audio-player-info {
+  width: 80%;
 }

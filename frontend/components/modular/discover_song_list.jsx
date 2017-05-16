@@ -78,7 +78,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return({
-    discoverSongs: (songs) => dispatch(discoverSongs(songs)),
+    discoverSongs: () => dispatch(discoverSongs()),
     removeSongs: () => dispatch(removeSongs())
   });
 };

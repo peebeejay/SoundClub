@@ -1,5 +1,6 @@
 import * as SongAPIUtil from '../util/song_api_util';
 import { receiveCurrentUser } from './session_actions.js';
+import { receiveNowPlaying } from './now_playing_actions.js';
 
 export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
@@ -66,14 +67,18 @@ export const streamSongs = (id) => dispatch => {
 export const createSong = (song) => dispatch => {
   return SongAPIUtil.createSong(song).then(
     (song) => dispatch(receiveSong(song)),
-    (err) => {
-      // debugger
-      dispatch(receiveErrors(err)) }
+    (err) => dispatch(receiveErrors(err))
   );
 };
 
 export const deleteSong = id => dispatch => {
   return SongAPIUtil.deleteSong(id).then(
     (user) => dispatch(receiveCurrentUser(user))
+  );
+};
+
+export const fetchRandomSong = () => dispatch => {
+  return SongAPIUtil.fetchRandomSong().then(
+    (song) => dispatch(receiveNowPlaying(song))
   );
 };

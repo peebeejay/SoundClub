@@ -21,6 +21,11 @@ class Api::SongsController < ApplicationController
     render "api/songs/index"
   end
 
+  def random_song
+    @song = Song.includes(:comments, :commenters, :likings, artist: [:follows]).order("RANDOM()").limit(1)[0]
+    render "api/songs/show"
+  end
+
   def show
     @song = Song.includes(:comments, :commenters, :likings).find(params[:id])
     if @song

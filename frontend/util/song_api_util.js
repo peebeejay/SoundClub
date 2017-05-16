@@ -5,6 +5,13 @@ export const fetchSong = (id) => {
   });
 };
 
+export const fetchRandomSong = () => {
+  return $.ajax({
+    method: "GET",
+    url: "api/songs/random"
+  })
+}
+
 export const fetchSongs = () => {
   return $.ajax({
     method: "GET",
