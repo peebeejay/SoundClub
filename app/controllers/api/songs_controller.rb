@@ -32,7 +32,7 @@ class Api::SongsController < ApplicationController
 
   def create
     @song = current_user.songs.new(song_params)
-    if @song.save!
+    if @song.save
       render "api/songs/show"
     else
       render json: @song.errors, status: 422
@@ -42,7 +42,7 @@ class Api::SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id]);
     if @song
-      @song.destroy!
+      @song.destroy
       @user = current_user
       render 'api/users/show';
     else

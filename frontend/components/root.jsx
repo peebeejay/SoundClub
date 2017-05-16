@@ -38,14 +38,14 @@ class Root extends React.Component {
         <IntlProvider locale="en">
           <Router history={ hashHistory }>
             <Route path="/" component={ App } >
-              <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn}/>
-              <Route path="/stream" component= { Stream } onEnter={this._redirectIfLoggedOut}/>
-              <Route path="/discover" component= { Discover } onEnter={this._redirectIfLoggedOut}/>
+              <IndexRoute component={ Splash } onEnter={this._redirectIfLoggedIn} />
+              <Route path="/stream" component= { Stream } onEnter={this._redirectIfLoggedOut} />
+              <Route path="/discover" component= { Discover } onEnter={this._redirectIfLoggedOut} />
               <Route path="/charts" component= { Charts } />
-              <Route path="/upload" component= { Upload } onEnter={this._redirectIfLoggedOut}/>
+              <Route path="/upload" component= { Upload } onEnter={this._redirectIfLoggedOut} />
               <Route path="/songs/:id" component= { SongShow } />
               <Route path="/artists/:id" component= { ArtistShow } />
-              <Route path="/signup" component= { Signup } />
+              <Route path="/signup" component= { Signup } onEnter={this._redirectIfLoggedIn} />
             </Route>
           </Router>
         </IntlProvider>

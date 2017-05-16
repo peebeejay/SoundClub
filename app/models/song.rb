@@ -2,9 +2,9 @@ class Song < ActiveRecord::Base
   # has_attached_file :audio
   # validates_attachment_content_type :audio, content_type: /\Aimage\/.*\z/
 
-  before_validation :extract_metadata
+  # before_validation :extract_metadata
 
-  validates :title, :user_id, :audio, :img, presence: true
+  validates :title, :user_id, :audio, presence: true
 
   has_attached_file :audio
   validates_attachment_content_type :audio, :content_type => [
@@ -15,6 +15,7 @@ class Song < ActiveRecord::Base
 
   has_attached_file :img
   validates_attachment_content_type :img, content_type: /\Aimage\/.*\Z/
+  validates_attachment_presence :img
 
   belongs_to :artist,
     class_name: 'User',

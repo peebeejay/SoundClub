@@ -1,10 +1,10 @@
-import { RECEIVE_SONGS, RECEIVE_SONG, REMOVE_SONG, REMOVE_SONGS } from '../actions/song_actions';
+import { RECEIVE_SONGS, RECEIVE_SONG, REMOVE_SONG, REMOVE_SONGS, RECEIVE_SONG_ERRORS } from '../actions/song_actions';
 import { merge } from 'lodash';
 
-const SongReducer = (state = {}, action) => {
+
+const SongReducer = (state = { }, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
-
 
   switch(action.type) {
     case RECEIVE_SONGS:
@@ -20,6 +20,10 @@ const SongReducer = (state = {}, action) => {
 
     case REMOVE_SONGS:
       return {};
+
+    case RECEIVE_SONG_ERRORS:
+      newState.errors = action.errors;
+      return newState;
 
     default:
       return state;

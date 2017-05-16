@@ -37,10 +37,10 @@
   }
 
   .confirm-modal-input {
-    display: block;
-    border-radius: 3px;
-    padding: 5px;
-    outline: none;
+    // display: block;
+    border-radius: 2px;
+    padding: 4px;
+    // outline: none;
     border: 1px solid gray;
     width: 90%;
     font: inherit;
@@ -59,8 +59,9 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    margin-top: 10px;
 
-    button {
+    input, div.cancel {
       margin: 5px;
       border-radius: 3px;
       font: 100 13px/1.5  'Open Sans', sans-serif;
@@ -70,24 +71,24 @@
       cursor: pointer;
     }
 
-    button.cancel {
+    div.cancel {
       border: 1px solid #6b6b6b;
       background-color: transparent;
       margin-right: 10px;
       color: #6b6b6b;
     }
 
-    button.cancel:hover {
+    div.cancel:hover {
       border: 1px solid lightgray;
     }
 
-    button.submit {
+    input.submit {
       background-color: #ff5500;
       border: 1px solid rgb(255, 85, 0);
       color: white;
     }
 
-    button.submit:hover {
+    input.submit:hover {
       background-color: #ec4d08;
     }
   }

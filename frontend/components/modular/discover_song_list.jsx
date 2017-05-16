@@ -33,7 +33,8 @@ class DiscoverSongList extends React.Component {
                                   currentUser={ this.props.currentUser }
                                   type={ this.props.type }
                                   key={ el }/> :
-            <DiscoverSongBlank type={ this.props.type }/> }
+            <DiscoverSongBlank type={ this.props.type }
+                               key={ el } /> }
         </li>
       )
     });
@@ -46,11 +47,11 @@ class DiscoverSongList extends React.Component {
                                   currentUser={ this.props.currentUser }
                                   type={ this.props.type }
                                   key={ el }/> :
-            <DiscoverSongBlank type={ this.props.type }/> }
+            <DiscoverSongBlank type={ this.props.type }
+                               key={ el } /> }
         </li>
       )
     });
-
 
     return(
       <div className="discover-song-list">

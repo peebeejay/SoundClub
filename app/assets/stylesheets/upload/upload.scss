@@ -74,7 +74,7 @@
     background-color: #ff5500;
     border: 1px solid rgb(255, 85, 0);
     border-radius: 3px;
-    // margin: 0 auto;
+    margin-top: 10px;
     color: white;
     padding: 4px 2px 4px 2px;
     text-align: center;
@@ -97,7 +97,7 @@
     margin: 60px 0 0 0;
   }
 
-  button {
+  input.submit, div.cancel {
     margin: 5px;
     border-radius: 3px;
     font: 100 13px/1.5  'Open Sans', sans-serif;
@@ -107,35 +107,35 @@
     cursor: pointer;
   }
 
-  button.cancel {
+  div.cancel {
     border: 1px solid #6b6b6b;
     background-color: transparent;
     margin-right: 10px;
     color: #6b6b6b;
   }
 
-  button.cancel:hover {
+  div.cancel:hover {
     border: 1px solid lightgray;
   }
 
-  button.submit {
+  input.submit {
     background-color: #ff5500;
     border: 1px solid rgb(255, 85, 0);
     color: white;
   }
 
-  button.submit:hover {
+  input.submit:hover {
     background-color: #ec4d08;
   }
 
-  button.disable {
+  input.disable, div.disable {
     background-color: lightgray !important;
     transition: 1s ease !important;
     border: 1px solid #6b6b6b;
     color: white;
   }
 
-  button.disable:hover {
+  input.disable:hover, div.disable:hover {
     background-color: lightgray !important;
     transition: 1s ease !important;
   }

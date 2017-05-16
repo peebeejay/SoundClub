@@ -5,6 +5,7 @@ export const RECEIVE_SONGS = "RECEIVE_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const REMOVE_SONG = "REMOVE_SONG";
 export const REMOVE_SONGS = "REMOVE_SONGS";
+export const RECEIVE_SONG_ERRORS = "RECEIVE_SONG_ERRORS";
 
 export const receiveSongs = (songs) => ({
   type: RECEIVE_SONGS,
@@ -25,10 +26,17 @@ export const removeSongs = () => ({
   type: REMOVE_SONGS
 });
 
+export const receiveErrors = (errors) => {
+  return {
+    type: RECEIVE_SONG_ERRORS,
+    errors
+  };
+};
+
 export const fetchSongs = () => dispatch => {
   return SongAPIUtil.fetchSongs().then(
     (songs) => dispatch(receiveSongs(songs))
-  ) ;
+  );
 };
 
 export const fetchSongsByUser = (user_id) => dispatch => {
@@ -57,7 +65,10 @@ export const streamSongs = (id) => dispatch => {
 
 export const createSong = (song) => dispatch => {
   return SongAPIUtil.createSong(song).then(
-    (song) => dispatch(receiveSong(song))
+    (song) => dispatch(receiveSong(song)),
+    (err) => {
+      // debugger
+      dispatch(receiveErrors(err)) }
   );
 };
 

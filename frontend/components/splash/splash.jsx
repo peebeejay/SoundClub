@@ -32,7 +32,7 @@ class Splash extends React.Component {
               <li className="login-signup-section float-left">
                 <button className="login-signin" onClick={ this.loginGuest() }>Guest</button>
                 <button className="login-signin" onClick={ () => this.props.toggleModal("loginForm") }>Sign In</button>
-                <button className="login-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Create account</button>
+                <button className="login-signup" onClick={ () => this.props.router.push('/signup') }>Create account</button>
               </li>
             </ul>
 
@@ -40,7 +40,7 @@ class Splash extends React.Component {
               <div className="main-text">Connect on SoundClub</div>
               <div className="sub-text">Discover and listen to music from around the world</div>
               <div className="button">
-                <button className="login-signup" onClick={ () => this.props.toggleModal("createUserForm") }>Sign up for free</button>
+                <button className="login-signup" onClick={ () => this.props.router.push('/signup') }>Sign up for free</button>
               </div>
             </div>
           </header>

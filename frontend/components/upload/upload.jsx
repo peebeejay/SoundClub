@@ -7,15 +7,19 @@ import { createSong } from '../../actions/song_actions.js';
 class Upload extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showForm: false, audioFile: null,
-                   audioUrl: null, imageFile: null,
-                   imageUrl: null, title: '',
+    this.state = { showForm: false, audioFile: '',
+                   audioUrl: '', imageFile: '',
+                   imageUrl: '', title: '',
                    description: '', disableSubmit: false
                  }
     this.processAudioFile = this.processAudioFile.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this._cancel = this._cancel.bind(this);
     this._submit = this._submit.bind(this);
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ disableSubmit: false });
   }
 
   processAudioFile(e) {
@@ -60,7 +64,8 @@ class Upload extends React.Component {
   }
 
   _cancel() {
-    this.props.router.push('/stream');
+    this.setState({ showForm: false });
+    // this.props.router.push('/stream');
   }
 
   _submit(e) {
@@ -77,7 +82,13 @@ class Upload extends React.Component {
   }
 
   render() {
-    let image
+    let image;
+    let _errors;
+
+    if (this.props.errors && Object.keys(this.props.errors).length !== 0) {
+      _errors = this.props.errors.responseJSON
+    }
+
     if (this.state.imageUrl) {
       image = <img className="upload-img-preview" src={this.state.imageUrl} />
       // console.log("rendering image object");
@@ -106,16 +117,17 @@ class Upload extends React.Component {
             { this.state.showForm &&
               <div className="upload">
                 <div className="upload-header">Upload to SoundClub</div>
-                <form>
+                <form onSubmit={ this._submit }>
                   <div className="flex-row form-container">
 
-                    <label>
+                    <label className="flex-column">
                       {image}
                       <div className="upload-select-img">
                         <i className="fa fa-camera" />
                         <span>&nbsp;Upload Image*</span>
                       </div>
                       <input className="hidden" type="file" onChange={ this.uploadImage } />
+                      { (_errors && _errors.img) ? <div className="error">Select Appropriate Album Art</div>  : <div></div> }
                     </label>
 
                     <div className="flex-column form-container">
@@ -125,6 +137,7 @@ class Upload extends React.Component {
                         name="title"
                         value={ this.state.title }
                         onChange={this._update("title")}/>
+                      { (_errors && _errors.title) ? <div className="error">Enter Title</div>  : <div></div> }
 
 
                       <label>Description</label>
@@ -133,16 +146,17 @@ class Upload extends React.Component {
                              name="description"
                              value={ this.state.description }
                              onChange={this._update("description")}/>
+                           { (_errors && _errors.audio_content_type) ? <div className="error">Audio Format is Invalid - Press Back</div>  : <div></div> }
 
                        <div className="submit-buttons">
-                        <button className={this.state.disableSubmit ? "disable" : "cancel" }
+                        <div className="cancel"
                                 disabled={this.state.disableSubmit}
-                                onClick={this._cancel}>Cancel</button>
+                                onClick={this._cancel}>Back</div>
 
-                        <button className={this.state.disableSubmit ? "disable" : "submit" }
-                                disabled={this.state.disableSubmit}
-                                onClick={this._submit}>Submit
-                        </button>
+                        <input className="submit"
+                               value="Submit"
+                               type="submit"
+                               disabled={this.state.disableSubmit} />
                       </div>
                     </div>
                   </div>
@@ -156,7 +170,8 @@ class Upload extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  songs: state.songs
+  songs: state.songs,
+  errors: state.songs.errors
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

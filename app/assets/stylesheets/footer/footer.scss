@@ -3,13 +3,30 @@
   min-width: 1000px;
   max-width: 1400px;
   width: 90%;
-  // padding: 0px 0px;
   margin-bottom: 47px;
   height: 0px;
   background-color: white;
-  // width: 100% // For example, if you want a player that spans the entire width of the page.
+  font: 100 10px/1.5  'Open Sans', sans-serif;
 }
 
 .footer-content {
-  padding: 0px 30px;
+  padding: 10px 0px 0px;
+}
+
+.footer-content > ul {
+  list-style: none;
+}
+
+.footer-content li {
+  color: darkgray;
+}
+
+.footer-content a {
+  text-decoration: none;
+  color: darkgray;
+  font: inherit;
+
+  &:hover {
+    color: #666;
+  }
 }

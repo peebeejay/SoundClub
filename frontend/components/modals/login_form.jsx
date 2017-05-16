@@ -15,9 +15,10 @@ class LoginForm extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
 
-  submitCredentials() {
-      let stateCopy = merge({}, this.state);
-      this.state = { username: "", password: "" };
+  submitCredentials(e) {
+    e.preventDefault();
+    let stateCopy = merge({}, this.state);
+    this.state = { username: "", password: "" };
       this.props.login(stateCopy).then(
         () => this.props.hideModal("loginForm")).then(
         () => this.props.router.push('stream')
@@ -36,32 +37,42 @@ class LoginForm extends React.Component {
 
   render() {
     let { isShowing } = this.props;
+    let _errors;
+
+    if (this.props.errors && Object.keys(this.props.errors).length !== 0) {
+      _errors = this.props.errors.responseJSON
+    }
+
     return (
       <div className="confirm-modal">
         { isShowing &&
           <div>
-            <div className="modal-backdrop" onClick={this.cancel} ></div>
+            <div className="modal-backdrop" onClick={this.cancel } ></div>
             <div className="confirm-modal-content">
               <span className="confirm-modal-message">Login</span>
 
-            <label>Username
+            <form onSubmit={ this.submitCredentials } >
+              <label>Username
                 <input className="confirm-modal-input"
-                       type="text"
-                       value={this.state.username}
-                       onChange={this.update('username')}/>
+                  type="text"
+                  value={this.state.username}
+                  onChange={this.update('username')}/>
               </label>
 
               <label>Password
                 <input className="confirm-modal-input"
-                       type="password"
-                       value={this.state.password}
-                       onChange={this.update('password')}/>
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}/>
               </label>
+              { (_errors && _errors.base) ? <div className="modal-error">{ _errors.base[0] }</div>  : <div></div> }
 
               <div className="buttons-container">
-                <button className="cancel" onClick={this.cancel}>Cancel</button>
-                <button className="submit"  onClick={this.submitCredentials}>Submit</button>
+                <input className="submit" value="Submit" type="submit" />
+                <div className="cancel" onClick={this.cancel}> Cancel </div>
               </div>
+            </form>
+
             </div>
           </div>
         }
@@ -70,11 +81,10 @@ class LoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return({
-    isShowing: state.modal.loginForm
-  });
-};
+const mapStateToProps = (state, ownProps) => ({
+  isShowing: state.modal.loginForm,
+  errors: state.session.errors
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   login: (user) => dispatch(login(user)),

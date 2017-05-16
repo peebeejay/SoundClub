@@ -99,7 +99,7 @@ class AudioPlayer extends React.Component {
               </div>
             </div>
 
-            <div className="ap__item ap__item--settings">
+            {/*<div className="ap__item ap__item--settings">
               <div className="ap__controls volume-container">
                 <VolumeButton />
 
@@ -109,7 +109,7 @@ class AudioPlayer extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>*/}
 
             <div className="ap__item ap__item--info">
               <div className="audio-player-image">

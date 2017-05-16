@@ -44,8 +44,6 @@ button:focus {
 
 }
 
-
-
  // GENERALIZED AND RE-USEABLE CLASSES
 .content-left {
   padding: 30px 0px;
@@ -84,4 +82,9 @@ button:focus {
 
 .display-block {
   display: block;
+}
+
+.error {
+  color: red;
+  font: 100 11px/1.5  'Open Sans', sans-serif;
 }

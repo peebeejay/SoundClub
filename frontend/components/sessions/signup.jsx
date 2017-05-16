@@ -8,8 +8,8 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = { showForm: false, audioFile: null,
-                   audioUrl: null, imageFile: null,
-                   imageUrl: null, username: '',
+                   audioUrl: null, imageFile: '',
+                   imageUrl: '', username: '',
                    displayName: '', location: '',
                    password: '', disableSubmit: false
                  }
@@ -19,6 +19,10 @@ class Signup extends React.Component {
   this._submit = this._submit.bind(this);
   }
 
+  componentWillReceiveProps() {
+    this.setState({ disableSubmit: false });
+  }
+
   uploadImage(e) {
     e.preventDefault();
 
@@ -26,9 +30,8 @@ class Signup extends React.Component {
     let fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-      // console.log("image load end");
       this.setState({
-        imageFile:file,
+        imageFile: file,
         imageUrl: fileReader.result
       })
     }
@@ -57,17 +60,20 @@ class Signup extends React.Component {
     this.setState({ disableSubmit: true })
 
     this.props.signUpForm(formData).then(
-      ({ song }) => {
-        this.props.router.push('/stream');
-      }
+      () => this.props.router.push('/stream')
     )
   }
 
   render() {
-    let image
+    let image;
+    let _errors;
+
+    if (this.props.errors && Object.keys(this.props.errors).length !== 0) {
+      _errors = this.props.errors.responseJSON
+    }
+
     if (this.state.imageUrl) {
       image = <img className="signup-img-preview" src={this.state.imageUrl} />
-      // console.log("rendering image object");
     } else {
       image = <img className="signup-img-preview" />
     }
@@ -80,14 +86,15 @@ class Signup extends React.Component {
             <form>
               <div className="flex-row form-container">
 
-                <label>
-                  {image}
-                  <div className="signup-select-img">
-                    <i className="fa fa-camera" />
-                    <span>&nbsp;Upload Image</span>
-                  </div>
-                  <input className="hidden" type="file" onChange={ this.uploadImage } />
-                </label>
+                  <label className="flex-column">
+                    {image}
+                    <div className="signup-select-img">
+                      <i className="fa fa-camera" />
+                      <span>&nbsp;Upload Image</span>
+                    </div>
+                    <input className="hidden" type="file" onChange={ this.uploadImage } />
+                    { (_errors && _errors.img) ? <div className="error">Select a profile picture</div>  : <div></div> }
+                  </label>
 
                 <div className="flex-column form-container">
                   <label> Username* </label>
@@ -96,6 +103,7 @@ class Signup extends React.Component {
                     name="username"
                     value={ this.state.username }
                     onChange={this._update("username")}/>
+                  { (_errors && _errors.username) ? <div className="error">Enter another Username</div>  : <div></div> }
 
 
                   <label>Display name*</label>
@@ -104,6 +112,7 @@ class Signup extends React.Component {
                          name="displayName"
                          value={ this.state.displayName }
                          onChange={this._update("displayName")}/>
+                       { (_errors && _errors.display_name) ? <div className="error">Display Name can't be blank</div>  : <div></div> }
 
                   <label>Location</label>
                   <input id="location"
@@ -118,6 +127,7 @@ class Signup extends React.Component {
                          name="password"
                          value={ this.state.password }
                          onChange={this._update("password")}/>
+                       { (_errors && _errors.password) ? <div className="error">Minimum 6 characters</div>  : <div></div> }
 
                    <div className="submit-buttons">
                     <button className={this.state.disableSubmit ? "disable" : "cancel" }
@@ -139,11 +149,9 @@ class Signup extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return({
-
-  });
-};
+const mapStateToProps = (state, ownProps) => ({
+  errors: state.session.errors
+})
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return({
