@@ -12,6 +12,7 @@ import Charts from './charts/charts.jsx';
 import SongShow from './song_show/song_show.jsx';
 import ArtistShow from './artist_show/artist_show.jsx';
 import Signup from './sessions/signup.jsx';
+import Search from './search/search.jsx';
 
 class Root extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class Root extends React.Component {
               <Route path="/songs/:id" component= { SongShow } />
               <Route path="/artists/:id" component= { ArtistShow } />
               <Route path="/signup" component= { Signup } onEnter={this._redirectIfLoggedIn} />
+              <Route path="/search" component={ Search } />
             </Route>
           </Router>
         </IntlProvider>

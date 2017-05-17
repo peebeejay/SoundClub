@@ -18,7 +18,7 @@ class LeftTabsNavigation extends React.Component {
     } else if (this.props.location.pathname === '/charts') {
       chartsActive = true;
     }
-    
+
     return(
       <div className="left-tabs-nav">
         <ul className="left-tabs-list">
@@ -35,7 +35,7 @@ const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({});
+const mapDispatchToProps = (dispatch, ownProps) => ({ });
 
 export default connect(
   mapStateToProps,

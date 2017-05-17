@@ -9,8 +9,8 @@ export const fetchRandomSong = () => {
   return $.ajax({
     method: "GET",
     url: "api/songs/random"
-  })
-}
+  });
+};
 
 export const fetchSongs = () => {
   return $.ajax({
@@ -55,5 +55,13 @@ export const createSong = (formData) => {
     contentType: false,
     processData: false,
     data: formData
+  });
+};
+
+export const searchSongs = (search) => {
+  return $.ajax({
+    method: "GET",
+    url: 'api/songs/search',
+    data: { song: { search }}
   });
 };

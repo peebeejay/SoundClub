@@ -82,3 +82,10 @@ export const fetchRandomSong = () => dispatch => {
     (song) => dispatch(receiveNowPlaying(song))
   );
 };
+
+export const searchSongs = (search) => dispatch => {
+  // debugger
+  return SongAPIUtil.searchSongs(search).then(
+    (songs) => dispatch(receiveSongs(songs))
+  );
+};

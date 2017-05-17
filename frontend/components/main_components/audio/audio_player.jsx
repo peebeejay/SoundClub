@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import { connect } from 'react-redux';
+import { fetchRandomSong } from '../../../actions/song_actions';
 import BackButton from './buttons/back_button';
 import PlayButton from '../../modular/play_button.jsx';
 import NextButton from './buttons/next_button';
@@ -11,25 +12,47 @@ class AudioPlayer extends React.Component {
     super(props);
     this.togglePlay = this.togglePlay.bind(this);
     this._printTime = this._printTime.bind(this);
-    this.updatePlayTime();
-    this.state = { playTime: 0, width: 0 };
+    this.playNext = this.playNext.bind(this);
+    this.state = { playTime: 0, width: 0, fetching: false };
   }
 
   updatePlayTime() {
+    // debugger
     this.interval = setInterval(() => {
       if ( this.music.currentTime !== this.state.playTime ) {
         let newWidth = this.music.currentTime / this.props.nowPlaying.song.duration * 100
         this.setState( {playTime: this.music.currentTime, width: newWidth });
-        // console.log(this.music.currentTime);
+      }
+      else if ( this.music.currentTime &&
+                this.music.currentTime > this.props.nowPlaying.song.duration &&
+                this.state.playTime !== 0 ) {
+        // console.log("currentTime: " + this.music.currentTime + " duration: " + this.props.nowPlaying.song.duration);
+        // console.log("song complete");
+        this.playNext();
+        clearInterval(this.interval);
+      } else if ( this.music.currentTime !== 0 || this.state.playTime !==0 ) {
+        // console.log("currentTime: " + this.music.currentTime + " duration: " + this.props.nowPlaying.song.duration + " playTime: " + this.state.playTime );
+        clearInterval(this.interval);
       }
     }, 200);
+  }
+
+  playNext() {
+    if (this.state.fetching === false) {
+      this.state.fetching = true;
+      this.props.fetchRandomSong().then(
+        () => this.state.fetching = false
+      )
+    }
   }
 
   componentWillReceiveProps(newProps) { // PRE-RENDER
     // If newProps includes the same 'nowPlaying' song, then simply toggle pause / play.
     // The second conditional filters for global state changes of the value of nowPlaying.playing.
+
     if (newProps.nowPlaying.song.id === this.props.nowPlaying.song.id &&
       newProps.nowPlaying.playing !== this.props.nowPlaying.playing) {
+        // debugger
         this.togglePlay(newProps);
     }
   }
@@ -37,6 +60,7 @@ class AudioPlayer extends React.Component {
   componentDidUpdate(prevProps, prevState) { // POST-RENDER
     // If current nowPlaying song === previous nowPlaying song
     if (this.props.nowPlaying.song.id !== prevProps.nowPlaying.song.id) {
+      // debugger
       this.updatePlayTime();
     }
   }
@@ -47,8 +71,10 @@ class AudioPlayer extends React.Component {
     if (props.nowPlaying.playing) {
       this.music.play();
       this.updatePlayTime();
+      // debugger
     } else {
       this.music.pause();
+      // debugger
       clearInterval(this.interval);
     }
   }
@@ -131,17 +157,13 @@ class AudioPlayer extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return({
-    nowPlaying: state.nowPlaying
-  });
-};
+const mapStateToProps = (state, ownProps) => ({
+  nowPlaying: state.nowPlaying
+})
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return({
-
-  });
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  fetchRandomSong: () => dispatch(fetchRandomSong())
+})
 
 export default connect(
   mapStateToProps,

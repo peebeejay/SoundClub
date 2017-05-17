@@ -35,6 +35,15 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def search
+    search_term = "%#{song_params[:search]}%"
+    @songs = Song.includes(:comments, :commenters, :likings)
+                 .joins("JOIN users ON songs.user_id = users.id")
+                 .where("songs.title ILIKE ? OR users.display_name ILIKE ?", search_term, search_term)
+
+    render "api/songs/index"
+  end
+
   def create
     @song = current_user.songs.new(song_params)
     if @song.save
@@ -56,6 +65,6 @@ class Api::SongsController < ApplicationController
   end
 
   private def song_params
-    params.require(:song).permit(:title, :description, :audio, :img)
+    params.require(:song).permit(:title, :description, :audio, :img, :search)
   end
 end

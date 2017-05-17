@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
       <div className="confirm-modal">
         { isShowing &&
           <div>
-            <div className="modal-backdrop" onClick={this.cancel } ></div>
+            <div className="modal-backdrop" onClick={ this.cancel } ></div>
             <div className="confirm-modal-content">
               <span className="confirm-modal-message">Login</span>
 

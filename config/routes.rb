@@ -10,6 +10,8 @@ Rails.application.routes.draw do
    get '/songs/discover', to: 'songs#discover'
    get '/songs/user/:user_id', to: 'songs#user_songs'
    get '/songs/random', to: 'songs#random_song'
+   get '/songs/search', to: 'songs#search'
+
    resources :songs, only: [:index, :create, :show, :destroy] do
      delete '/likes', to: 'likes#destroy'
      resources :likes, only: [:create]
