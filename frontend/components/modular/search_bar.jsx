@@ -32,7 +32,7 @@ class SearchBar extends React.Component {
         <form className="header-search" onSubmit={ this.handleSubmit }>
           <input className="search-bar-input"
                  placeholder="Search"
-                  onChange={ this.update('search') } />
+                 onChange={ this.update('search') } />
          <div className="search-button" onClick={ this.handleSubmit }>
            <i className="fa fa-search" />
          </div>

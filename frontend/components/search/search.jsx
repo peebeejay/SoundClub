@@ -11,10 +11,6 @@ class Search extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchSongs();
-  }
-
   render() {
     return(
       <Main>
